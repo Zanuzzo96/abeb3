@@ -48,7 +48,6 @@ import { ADicasPage } from '../pages/a-dicas/a-dicas';
 import { UsuarioPage } from '../pages/usuario/usuario';
 import { MetodoPage } from '../pages/metodo/metodo';
 import { LocalizarProfissionalPage } from '../pages/localizar-profissional/localizar-profissional';
-import { TesteSedentarismoFreePage } from '../pages/teste-sedentarismo-free/teste-sedentarismo-free';
 import { DicasUsuarioFreePage } from '../pages/dicas-usuario-free/dicas-usuario-free';
 import { PerfilProfissionalPage } from '../pages/perfil-profissional/perfil-profissional';
 
@@ -180,7 +179,6 @@ import { ImagemSessaoPage } from '../pages/imagem-sessao/imagem-sessao';
     UDicasPage,
     UPerfilPage,
     LocalizarProfissionalPage,
-    TesteSedentarismoFreePage,
     DicasUsuarioFreePage,
     AlertRcNaoCadastradoPage,
 
@@ -268,8 +266,6 @@ import { ImagemSessaoPage } from '../pages/imagem-sessao/imagem-sessao';
     AlertaInternetPage,
     LocalizarProfissionalPage,
     AlertRcNaoCadastradoPage,
-    TesteSedentarismoFreePage,
-
 
 //admin
     AdminPage,

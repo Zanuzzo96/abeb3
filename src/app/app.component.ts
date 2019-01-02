@@ -17,6 +17,8 @@ import { SplashScreenPage } from '../pages/splash-screen/splash-screen';
 //import { UPerfilPage } from '../pages/u-perfil/u-perfil';
 import { ASorteiosPage } from '../pages/a-sorteios/a-sorteios';
 import { ADicasPage } from '../pages/a-dicas/a-dicas';
+import { AcConcluidoPage } from '../pages/ac-concluido/ac-concluido';
+
 
 
 

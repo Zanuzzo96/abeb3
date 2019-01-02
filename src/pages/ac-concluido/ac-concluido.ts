@@ -15,6 +15,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AcConcluidoPage {
 
+  public sexo = "M";
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

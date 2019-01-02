@@ -45,7 +45,8 @@ export class SeResultadoPage {
 
             let sedentarismo = {
               "id_login":ident,
-              "pontuacao":this.resultadoFinal
+              "pontuacao":this.resultadoFinal,
+              "id_usuario":ident
             }
 
             console.log(sedentarismo);
