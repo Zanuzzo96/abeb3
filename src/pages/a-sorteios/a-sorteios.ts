@@ -1,0 +1,68 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
+@IonicPage()
+@Component({
+  selector: 'page-a-sorteios',
+  templateUrl: 'a-sorteios.html',
+})
+export class ASorteiosPage {
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public alertCtrl: AlertController,
+              public http: Http) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ASorteiosPage');
+  }
+
+  profissional(){
+
+    let api = 'https://lipolysis.grupoanx.com.br/sorteio/profissional.php?sorteio=true';
+    this.http.get(api).toPromise().then((response) => {
+
+      console.log(response);
+      let retorno = response.json();
+
+    }).catch((response)=>{
+      console.log(response);
+
+    });
+
+    let alerta1 = this.alertCtrl.create({
+      subTitle : "Enviamos o Profissional contemplado para o seu email",
+      buttons : [{
+        text: "OK",
+      }],
+      cssClass: 'alertDanger'
+    }).present();
+  }
+
+  usuario(){
+
+    let api = 'https://lipolysis.grupoanx.com.br/sorteio/cliente.php?sorteio=true';
+    this.http.get(api).toPromise().then((response) => {
+
+      console.log(response);
+      let retorno = response.json();
+
+    }).catch((response)=>{
+      console.log(response);
+
+    });
+
+    let alerta2 = this.alertCtrl.create({
+      subTitle : "Enviamos o Usuário contemplado para o seu email",
+      buttons : [{
+        text: "OK",
+      }],
+      cssClass: 'alertDanger'
+    }).present();
+  }
+
+}

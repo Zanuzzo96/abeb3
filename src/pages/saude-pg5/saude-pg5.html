@@ -1,0 +1,42 @@
+<!--
+  Generated template for the SaudePg5Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="cinza1">
+    <ion-title>Histórico de Saúde</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>Ingere líquidos com frequência</h2>
+    <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
+    <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Observação</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+  <br>
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>Quantos?</h2>
+    <ion-item><ion-label>2 copos de 200 ml a dia = 400 ml</ion-label><ion-radio value="10 horas/dia"></ion-radio></ion-item>
+    <ion-item><ion-label>3 copos de 200 ml a dia = 600 ml</ion-label><ion-radio value="10 horas/dia"></ion-radio></ion-item>
+    <ion-item><ion-label>4 copos de 200 ml a dia = 800 ml</ion-label><ion-radio value="10 horas/dia"></ion-radio></ion-item>
+    <ion-item><ion-label>5 copos de 200 ml a dia = 1000 ml</ion-label><ion-radio value="10 horas/dia"></ion-radio></ion-item>
+    <ion-item><ion-label>6 copos de 200 ml a dia = 1200 ml</ion-label><ion-radio value="10 horas/dia"></ion-radio></ion-item>
+    <ion-item><ion-label>7 copos de 200 ml a dia = 1400 ml</ion-label><ion-radio value="10 horas/dia"></ion-radio></ion-item>
+    <ion-item><ion-label>8 copos de 200 ml a dia = 1600 ml</ion-label><ion-radio value="10 horas/dia"></ion-radio></ion-item>
+    <ion-item><ion-label>9 copos de 200 ml a dia = 1800 ml</ion-label><ion-radio value="10 horas/dia"></ion-radio></ion-item>
+    <ion-item><ion-label>10 copos de 200 ml a dia = 2000 ml</ion-label><ion-radio value="10 horas/dia"></ion-radio></ion-item>
+  </ion-list>
+  <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>
+</ion-content>

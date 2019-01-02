@@ -1,0 +1,60 @@
+<!--
+  Generated template for the SaudePg4Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="cinza1">
+    <ion-title>Histórico de Saúde</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>Funcionamento intestinal regular?</h2>
+    <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
+    <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Observações</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+  <br>
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>Pratica atividade física?</h2>
+    <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
+    <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Se sim quais?</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+  <br>
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>É fumante?</h2>
+    <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
+    <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
+  </ion-list>
+  <br>
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>Alimentação balanceada?</h2>
+    <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
+    <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Tipo?</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+  <br>
+  <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>
+</ion-content>

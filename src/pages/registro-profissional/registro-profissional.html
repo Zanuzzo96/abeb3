@@ -1,0 +1,103 @@
+
+<ion-header>
+
+  <ion-navbar color="cinza1">
+    <ion-title>Cadastro profissional</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item class="item">
+      <ion-label stacked>Nome do estabelecimento</ion-label>
+      <ion-input type="text" [(ngModel)]="cadastro.estabelecimento" required></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+      <ion-label stacked>Nome Completo</ion-label>
+      <ion-input type="text" [(ngModel)]="cadastro.nome" required></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+      <ion-label stacked>CPF</ion-label>
+      <ion-input type="number" [(ngModel)]="cadastro.cpf" required></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+      <ion-label stacked>Data de nascimento</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="cadastro.nasc" required></ion-datetime>
+    </ion-item>
+
+    <ion-item >
+      <ion-label stacked>Sexo</ion-label>
+      <ion-select class="teste" [(ngModel)]="cadastro.sexo">
+        <ion-option value="f">Feminino</ion-option>
+        <ion-option value="m">Masculino</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item">
+      <ion-label stacked>Telefone para contato dos clientes</ion-label>
+      <ion-input type="number" [(ngModel)]="cadastro.telefone" required></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="cadastro.email" required></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+      <ion-label stacked>CEP</ion-label>
+      <ion-input type="number" [(ngModel)]="cadastro.cep" required></ion-input>
+    </ion-item>
+
+    <span (click)="preencher()" class="preencher">Preencher endereço</span>
+
+    <ion-item class="item">
+      <ion-label stacked>Rua, numero e bairro</ion-label>
+      <ion-input type="text" [(ngModel)]="cadastro.endereco" required></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+      <ion-label stacked>Cidade</ion-label>
+      <ion-input type="text" [(ngModel)]="cadastro.cidade" required></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+      <ion-label stacked>Estado</ion-label>
+      <ion-input type="text" [(ngModel)]="cadastro.estado" required></ion-input>
+    </ion-item>
+
+    <h6>Formação</h6>
+
+    <ion-item>
+      <ion-label stacked>Escolha sua formação</ion-label>
+      <ion-select [(ngModel)]="cadastro.formacao">
+        <ion-option value="Esteticista Graduado(a)">Esteticista Graduado(a)</ion-option>
+        <ion-option value="Esteticista Técnico">Esteticista Técnico</ion-option>
+        <ion-option value="Dermato Funcional">Dermato Funcional</ion-option>
+        <ion-option value="Biomédico Esteta">Biomédico Esteta</ion-option>
+        <ion-option value="Farmacêutico Esteta">Farmacêutico Esteta</ion-option>
+        <ion-option value="Outros">Outros</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <h6>Dados de acesso</h6>
+    <ion-item class="item">
+      <ion-label stacked>Login</ion-label>
+      <ion-input type="text" [(ngModel)]="cadastro.login" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="cadastro.senha" required></ion-input>
+    </ion-item>
+
+    <button ion-button block color="amarelo1" class="btn" (click)="criarConta()">Cadastrar</button>
+
+  </ion-list>
+</ion-content>

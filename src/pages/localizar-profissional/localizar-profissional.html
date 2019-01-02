@@ -1,0 +1,69 @@
+<ion-header>
+
+  <ion-navbar color="cinza1">
+    <ion-title>Localizar profissional</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="endereco">
+    <h4 text-center>Seu endereço atual</h4>
+    <div class="atual">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3><ion-icon text-center name="ios-pin-outline"></ion-icon></ion-col>
+          <ion-col col-9 *ngIf="endereco != '' && cidade != '' ">
+            <h6>
+              {{endereco}} - {{local}}
+            </h6>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+  <div class="erro" *ngIf="retornoProfissional == 1 ">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3><ion-icon text-center name="ios-pin-outline"></ion-icon></ion-col>
+          <ion-col col-9>
+            <h6>Infelizmente não temos nenhum profissional proximo de você</h6>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>
+
+  <div class="profissionais" *ngIf="retornoProfissional == 2 ">
+    <h4 text-center>Profissionais habilitados<br>mais proximos</h4>
+
+
+    <div class="profissional" *ngFor="let item of dadosRetorno">
+      <ion-grid>
+        <ion-row>
+
+          <ion-col col-8>
+            <h5>{{item.estabelecimento}}</h5>
+            <h6>{{item.telefone}}</h6>
+            <h6>{{item.endereco}} - {{item.cidade}} - {{item.estado}}</h6>
+          </ion-col>
+
+          <ion-col col-2>
+            <ion-icon text-center name="ios-mail-outline" (click)="mensagem(item.id_login)"></ion-icon>
+          </ion-col>
+
+          <ion-col col-2>
+            <ion-icon text-center name="ios-arrow-dropright-circle" (click)="perfil(item.id_login,item.estabelecimento,item.telefone,item.endereco,item.cidade,item.estado)"></ion-icon>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+
+</ion-content>

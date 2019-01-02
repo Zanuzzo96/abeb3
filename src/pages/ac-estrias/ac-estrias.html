@@ -1,0 +1,50 @@
+<!--
+  Generated template for the AcEstriasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="cinza1">
+    <ion-title>Estrias</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>Cor</h2>
+    <ion-item><ion-label>Rubra/Violáceo</ion-label><ion-radio value="Flácida"></ion-radio></ion-item>
+    <ion-item><ion-label>Alba</ion-label><ion-radio value="Edematosa"></ion-radio></ion-item>
+  </ion-list>
+
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>Largura</h2>
+    <ion-item><ion-label>Fina</ion-label><ion-radio value="Flácida"></ion-radio></ion-item>
+    <ion-item><ion-label>Larga</ion-label><ion-radio value="Edematosa"></ion-radio></ion-item>
+  </ion-list>
+
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>Tipo</h2>
+    <ion-item><ion-label>Atrófica</ion-label><ion-radio value="Flácida"></ion-radio></ion-item>
+    <ion-item><ion-label>Hipertrófica</ion-label><ion-radio value="Edematosa"></ion-radio></ion-item>
+  </ion-list>
+
+  <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <h2>Quantidade</h2>
+    <ion-item><ion-label>Leve</ion-label><ion-radio value="Flácida"></ion-radio></ion-item>
+    <ion-item><ion-label>Moderada</ion-label><ion-radio value="Edematosa"></ion-radio></ion-item>
+    <ion-item><ion-label>Intensa</ion-label><ion-radio value="Edematosa"></ion-radio></ion-item>
+    <ion-item><ion-label>Grave</ion-label><ion-radio value="Edematosa"></ion-radio></ion-item>
+  </ion-list>
+
+    <ion-list>
+      <h2>Região</h2>
+      <ion-item><ion-input></ion-input></ion-item>
+    </ion-list>
+
+  <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>
+</ion-content>
