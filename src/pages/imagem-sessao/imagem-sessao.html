@@ -15,7 +15,7 @@
 
 <ion-content padding>
 
-  <input type="file" class="custom-file-input" value="" (change)="fileChange($event)">
+  <input type="file" class="custom-file-input" value="" [(ngModel)]="imagem" (change)="fileChange($event)">
   <img *ngIf="img1" [src]="img1" class="preview"/>
   <button ion-button block color="amarelo1" (click)="uploadImg()">Adicionar imagem</button>
 

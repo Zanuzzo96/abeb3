@@ -63,8 +63,9 @@ import { Network } from  '@ionic-native/network';
 import { NgProgressModule } from  'ng2-progressbar';
 import { HttpModule } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
 //providers
 import { LoginProvider } from '../providers/login/login';
 import { RcProvider } from '../providers/rc/rc';
@@ -365,6 +366,9 @@ import { ImagemSessaoPage } from '../pages/imagem-sessao/imagem-sessao';
     LoginProvider,
     RcProvider,
     FileTransfer,
+    FileTransferObject,
+    File,
+    Camera,
     DicaProvider,
     LocalizacaoProvider,
 
