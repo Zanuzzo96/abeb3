@@ -9,6 +9,8 @@ import { AcLipodistrofiaPage } from '../ac-lipodistrofia/ac-lipodistrofia';
 })
 export class AcEdemaPage {
 
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -27,12 +29,14 @@ export class AcEdemaPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcEdemaPage');
+    console.log('ionViewDidLoad AcEdemaPage', this.cliente);
   }
 
   continuar(){
     console.log(this.edema);
     this.navCtrl.push(AcLipodistrofiaPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,

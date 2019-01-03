@@ -8,7 +8,8 @@ import { AcBustoPage } from '../ac-busto/ac-busto';
   templateUrl: 'ac-posturais.html',
 })
 export class AcPosturaisPage {
-
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -49,11 +50,13 @@ export class AcPosturaisPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcPosturaisPage');
+    console.log('ionViewDidLoad AcPosturaisPage', this.cliente);
   }
 
   continuar(){
     this.navCtrl.push(AcBustoPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,

@@ -10,7 +10,8 @@ import { AcEstriasPage } from '../ac-estrias/ac-estrias';
   templateUrl: 'ac-flacidez.html',
 })
 export class AcFlacidezPage {
-
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -43,11 +44,13 @@ export class AcFlacidezPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcFlacidezPage');
+    console.log('ionViewDidLoad AcFlacidezPage', this.cliente);
   }
 
   continuar(){
     this.navCtrl.push(AcEstriasPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,

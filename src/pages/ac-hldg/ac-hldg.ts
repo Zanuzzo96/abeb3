@@ -9,6 +9,9 @@ import { AcEdemaPage } from '../ac-edema/ac-edema';
 })
 export class AcHldgPage {
 
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
+
   public hldg={
     "tipo":"",
     "grau":"",
@@ -22,12 +25,14 @@ export class AcHldgPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcHldgPage');
+    console.log('ionViewDidLoad AcHldgPage',this.cliente);
   }
 
   continuar(){
     console.log(this.hldg);
     this.navCtrl.push(AcEdemaPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldg.tipo,
       hldgGrau: this.hldg.grau,
       hldgLocal: this.hldg.local,

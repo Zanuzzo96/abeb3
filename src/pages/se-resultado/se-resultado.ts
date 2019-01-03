@@ -6,6 +6,8 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 import { Storage } from '@ionic/storage';
 import { UsuarioPage } from '../usuario/usuario';
 import { ProfissionalPage } from '../profissional/profissional';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+
 
 @IonicPage()
 @Component({
@@ -25,7 +27,8 @@ export class SeResultadoPage {
               public navParams: NavParams,
               public http: Http,
               public alertCtrl: AlertController,
-              public storage: Storage) {  }
+              public storage: Storage,
+              public loadingCtrl: LoadingController) {  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeResultadoPage');
@@ -41,6 +44,12 @@ export class SeResultadoPage {
       console.log('permissao', permissao)
 
       if( permissao == 2 ){
+
+          let loading = this.loadingCtrl.create({
+            content : "Registrando a avaliação e enviando para o seu email",
+          });
+
+          loading.present();
 
             let ident = this.cliente;
 
@@ -70,9 +79,19 @@ export class SeResultadoPage {
                   let retorno = res.json();
 
                   if( retorno == "sucesso"){
-                      this.navCtrl.push(ProfissionalPage)
-
+                    loading.dismiss();
+                    let alerta = this.alertCtrl.create({
+                      subTitle : "Avaliação já registrada no banco e enviada para o seu email, caso não encontre na caixa de entrada verifique no caixa de span",
+                      buttons : [{
+                        text: "OK",
+                        handler: () => {
+                           this.navCtrl.push(ProfissionalPage)
+                         }
+                      }]
+                    }).present();
                   }else if ( retorno == "erro"){
+                    loading.dismiss();
+
                     let alerta_erro = this.alertCtrl.create({
                       title: 'Ops .. Algo deu errado',
                       subTitle : "Tivemos um problema para salvar seu teste.",
@@ -86,6 +105,8 @@ export class SeResultadoPage {
                 err => {
 
                   console.log(err.json());
+                  loading.dismiss();
+
 
                   let alerta_erro_resposta = this.alertCtrl.create({
                     title: 'Ops .. Algo deu errado',

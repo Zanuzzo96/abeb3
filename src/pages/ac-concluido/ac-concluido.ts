@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+import { ProfissionalPage } from '../profissional/profissional';
+
 
 @IonicPage()
 @Component({
@@ -8,8 +12,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AcConcluidoPage {
 
-  public sexo = "M";
-
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -54,54 +58,92 @@ export class AcConcluidoPage {
   panturilhaEsq = this.navParams.get('panturilhaEsq');
   panturilhaDir = this.navParams.get('panturilhaDir');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http,) {
+
+      console.log(this.cliente);
+  }
+
+  ac = {
+    "cliente": this.cliente,
+    "hldgTipo": this.hldgTipo,
+    "hldgGrau": this.hldgGrau,
+    "hldgLocal": this.hldgLocal,
+    "hldgColoracao": this.hldgColoracao,
+    "hldgTemp": this.hldgTemp,
+    "hldgPalpacao": this.hldgPalpacao,
+    "edemaPressao": this.edemaPressao,
+    "edemaMmii": this.edemaMmii,
+    "edemaObs": this.edemaObs,
+    "lipoGordura": this.lipoGordura,
+    "lipoDistribuicao": this.lipoDistribuicao,
+    "lipoLocalizacao": this.lipoLocalizacao,
+    "lipoBiotipo": this.lipoBiotipo,
+    "ImcPeso": this.ImcPeso,
+    "Imcaltura": this.Imcaltura,
+    "ImcPesoMin": this.ImcPesoMin,
+    "ImcPesoMax": this.ImcPesoMax,
+    "ImcPesoObs": this.ImcPesoObs,
+    "ImcResultado": this.resultadoImc,
+    "flacidezTissular": this.flacidezTissular,
+    "flacidezTlocalidade": this.flacidezTlocalidade,
+    "flacidezMuscular": this.flacidezMuscular,
+    "flacidezMlocalidade": this.flacidezMlocalidade,
+    "estriasCor": this.estriasCor,
+    "estriasLargura": this.estriasLargura,
+    "estriasTipo": this.estriasTipo,
+    "estriasQuantidade": this.estriasQuantidade,
+    "estriasRegiao": this.estriasRegiao,
+    "posturaisOmbros" : this.posturaisOmbros,
+    "posturaisColuna" : this.posturaisColuna,
+    "posturaisQuadril" : this.posturaisQuadril,
+    "posturaisJoelhos" : this.posturaisJoelhos,
+    "busto": this.busto,
+    "bracoEsquerdo": this.bracoEsquerdo,
+    "bracoDireito": this.bracoDireito,
+    "abdomen": this.abdomen,
+    "cintura": this.cintura,
+    "quadril": this.quadril,
+    "culote": this.culote,
+    "coxaEsq": this.coxaEsq,
+    "coxaDir": this.coxaDir,
+    "panturilhaEsq": this.panturilhaEsq,
+    "panturilhaDir": this.panturilhaDir,
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcConcluidoPage');
-    console.log(this.hldgTipo);
-    console.log(this.hldgGrau);
-    console.log(this.hldgLocal);
-    console.log(this.hldgColoracao);
-    console.log(this.hldgTemp);
-    console.log(this.hldgPalpacao);
-    console.log(this.edemaPressao);
-    console.log(this.edemaMmii);
-    console.log(this.edemaObs);
-    console.log(this.lipoGordura);
-    console.log(this.lipoDistribuicao);
-    console.log(this.lipoLocalizacao);
-    console.log(this.lipoBiotipo);
-    console.log(this.ImcPeso);
-    console.log(this.Imcaltura);
-    console.log(this.ImcPesoMin);
-    console.log(this.ImcPesoMax);
-    console.log(this.ImcPesoObs);
-    console.log(this.resultadoImc);
-    console.log(this.flacidezTissular);
-    console.log(this.flacidezTlocalidade);
-    console.log(this.flacidezMuscular);
-    console.log(this.flacidezMlocalidade);
-    console.log(this.estriasCor);
-    console.log(this.estriasLargura);
-    console.log(this.estriasTipo);
-    console.log(this.estriasQuantidade);
-    console.log(this.estriasRegiao);
-    console.log(this.posturaisOmbros);
-    console.log(this.posturaisColuna);
-    console.log(this.posturaisQuadril);
-    console.log(this.posturaisJoelhos );
-    console.log(this.busto);
-    console.log(this.bracoEsquerdo);
-    console.log(this.bracoDireito);
-    console.log(this.abdomen);
-    console.log(this.cintura);
-    console.log(this.quadril);
-    console.log(this.culote);
-    console.log(this.coxaEsq);
-    console.log(this.coxaDir);
-    console.log(this.panturilhaEsq);
-    console.log(this.panturilhaDir);
+    console.log('ionViewDidLoad AcConcluidoPage', this.cliente);
+  }
+
+  continuar(){
+    let api = 'https://lipolysis.grupoanx.com.br/formulario/corporal.php';
+    let headers: Headers = new Headers();
+      headers.append('Content-type','application/json');
+      console.log(this.ac)
+      return this.http.post(
+        api,
+        this.ac,
+        new RequestOptions({ headers: headers })
+      ).subscribe(
+          res => {
+            console.log(res.json());
+
+            let retorno = res.json()
+
+          if(retorno == "sucesso"){
+            this.navCtrl.push(ProfissionalPage)
+          }
+
+          },
+          err => {
+
+            console.log(err.json());
+
+          }
+
+      );
   }
 
 }

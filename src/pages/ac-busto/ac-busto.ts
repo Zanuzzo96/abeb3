@@ -8,7 +8,8 @@ import { AcBracoPage } from '../ac-braco/ac-braco';
   templateUrl: 'ac-busto.html',
 })
 export class AcBustoPage {
-
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -42,8 +43,6 @@ export class AcBustoPage {
   posturaisQuadril = this.navParams.get('posturaisQuadril');
   posturaisJoelhos = this.navParams.get('posturaisJoelhos');
 
-  public sexo = "M";
-
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -52,11 +51,13 @@ export class AcBustoPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcBustoPage');
+    console.log('ionViewDidLoad AcBustoPage', this.cliente);
   }
 
   continuar(){
     this.navCtrl.push(AcBracoPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,

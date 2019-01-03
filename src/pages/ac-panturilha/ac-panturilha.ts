@@ -9,8 +9,8 @@ import { AcConcluidoPage } from '../ac-concluido/ac-concluido';
 })
 export class AcPanturilhaPage {
 
-  public sexo = "M";
-
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -63,10 +63,13 @@ export class AcPanturilhaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcPanturilhaPage');
+    console.log('cliente AcPanturilhaPage', this.cliente);
   }
 
   continuar(){
     this.navCtrl.push(AcConcluidoPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,

@@ -9,8 +9,8 @@ import { AcQuadrilPage } from '../ac-quadril/ac-quadril';
 })
 export class AcCinturaPage {
 
-  public sexo = "M";
-
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -56,11 +56,13 @@ export class AcCinturaPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcCinturaPage');
+    console.log('ionViewDidLoad AcCinturaPage', this.cliente);
   }
 
   continuar(){
     this.navCtrl.push(AcQuadrilPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,

@@ -12,6 +12,8 @@ AcResultadoImcPage
 })
 export class AcImcPage {
 
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -39,8 +41,8 @@ export class AcImcPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcImcPage');
-    
+    console.log('ionViewDidLoad AcImcPage', this.cliente);
+
   }
 
   continuar(peso,altura){
@@ -48,6 +50,8 @@ export class AcImcPage {
     var imcCalc = peso / (altura * altura);
 
     this.navCtrl.push(AcResultadoImcPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,

@@ -16,6 +16,8 @@ import { AcImcPage } from '../ac-imc/ac-imc';
 })
 export class AcLipodistrofiaPage {
 
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -37,20 +39,14 @@ export class AcLipodistrofiaPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcLipodistrofiaPage');
-    console.log(this.hldgTipo);
-    console.log(this.hldgGrau);
-    console.log(this.hldgLocal);
-    console.log(this.hldgColoracao);
-    console.log(this.hldgTemp);
-    console.log(this.hldgPalpacao);
-    console.log(this.edemaPressao);
-    console.log(this.edemaMmii);
-    console.log(this.edemaObs);
+    console.log('ionViewDidLoad AcLipodistrofiaPage', this.cliente);
+
   }
 
   continuar(){
     this.navCtrl.push(AcImcPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,

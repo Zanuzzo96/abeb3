@@ -11,8 +11,8 @@ import { AcCoxaPage } from '../ac-coxa/ac-coxa';
 })
 export class AcCulotePage {
 
-  public sexo = "M";
-
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -60,11 +60,13 @@ export class AcCulotePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcCulotePage');
+    console.log('ionViewDidLoad AcCulotePage', this.cliente);
   }
 
   continuar(){
     this.navCtrl.push(AcCoxaPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,

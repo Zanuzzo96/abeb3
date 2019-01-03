@@ -14,16 +14,19 @@ export class AcInicioPage {
   cliente = this.navParams.get('user');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(this.sexo)
+    console.log(this.cliente)
   }
 
-
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcInicioPage');
+    console.log('ionViewDidLoad AcInicioPage', this.cliente);
   }
 
   continuar(){
-    this.navCtrl.push(AcHldgPage)
+    this.navCtrl.push(AcHldgPage,{
+      sexo: this.sexo,
+      cliente: this.cliente
+    })
   }
 
   voltar(){

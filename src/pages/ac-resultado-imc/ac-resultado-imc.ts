@@ -8,7 +8,8 @@ import { AcFlacidezPage } from '../ac-flacidez/ac-flacidez';
   templateUrl: 'ac-resultado-imc.html',
 })
 export class AcResultadoImcPage {
-
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('cliente');
   hldgTipo = this.navParams.get('hldgTipo');
   hldgGrau = this.navParams.get('hldgGrau');
   hldgLocal = this.navParams.get('hldgLocal');
@@ -33,7 +34,7 @@ export class AcResultadoImcPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AcResultadoImcPage');
+    console.log('ionViewDidLoad AcResultadoImcPage', this.cliente, this.cliente);
 
     console.log(this.resultadoImc);
 
@@ -41,6 +42,8 @@ export class AcResultadoImcPage {
 
   continuar(){
     this.navCtrl.push(AcFlacidezPage,{
+      sexo: this.sexo,
+      cliente: this.cliente,
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
       hldgLocal: this.hldgLocal,
