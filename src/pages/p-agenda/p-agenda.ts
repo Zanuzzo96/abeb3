@@ -39,9 +39,11 @@ export class PAgendaPage {
     console.log('ionViewDidLoad PAgendaPage');
   }
 
-  sessoes(id){
+  sessoes(id,sexo,tratamento){
     this.navCtrl.push(PSessoesPage,{
-      "id":id
+      "id":id,
+      "sexo":sexo,
+      "tratamento":tratamento
     })
   }
 

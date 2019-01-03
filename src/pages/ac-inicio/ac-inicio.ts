@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AcHldgPage } from '../ac-hldg/ac-hldg';
-import { PSessoesPage } from '../p-sessoes/p-sessoes';
+import { ProfissionalPage } from '../profissional/profissional';
 
 @IonicPage()
 @Component({
@@ -10,10 +10,13 @@ import { PSessoesPage } from '../p-sessoes/p-sessoes';
 })
 export class AcInicioPage {
 
-  public sexo = "M";
+  sexo = this.navParams.get('sexo');
+  cliente = this.navParams.get('user');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcInicioPage');
@@ -24,7 +27,7 @@ export class AcInicioPage {
   }
 
   voltar(){
-    this.navCtrl.push(PSessoesPage)
+    this.navCtrl.push(ProfissionalPage)
   }
 
 

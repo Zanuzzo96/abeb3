@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Storage } from '@ionic/storage';
 import { UsuarioPage } from '../usuario/usuario';
-import { PSessoesPage } from '../p-sessoes/p-sessoes';
+import { ProfissionalPage } from '../profissional/profissional';
 
 @IonicPage()
 @Component({
@@ -17,6 +17,9 @@ export class SeResultadoPage {
   usuario: any;
   nivel:any;
   resultadoFinal : number = parseFloat(this.navParams.get('pontuacao'));
+  cliente = this.navParams.get('cliente');
+
+
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -26,6 +29,8 @@ export class SeResultadoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeResultadoPage');
+    console.log("cliente",this.cliente);
+
   }
 
   concluir(){
@@ -37,14 +42,13 @@ export class SeResultadoPage {
 
       if( permissao == 2 ){
 
-          this.usuario = this.storage.get("id_login").then((id)=>{
-            let ident = id;
+            let ident = this.cliente;
+
 
             console.log('id', ident)
 
 
             let sedentarismo = {
-              "id_login":ident,
               "pontuacao":this.resultadoFinal,
               "id_usuario":ident
             }
@@ -66,7 +70,7 @@ export class SeResultadoPage {
                   let retorno = res.json();
 
                   if( retorno == "sucesso"){
-                      this.navCtrl.push(PSessoesPage)
+                      this.navCtrl.push(ProfissionalPage)
 
                   }else if ( retorno == "erro"){
                     let alerta_erro = this.alertCtrl.create({
@@ -92,8 +96,8 @@ export class SeResultadoPage {
                   }).present();
 
                 }
-              );
-            });
+
+            );
     }else{
       this.navCtrl.push(UsuarioPage)
     }

@@ -18,13 +18,18 @@ export class SeCaminhadaPage {
 
   pontuacao : number = parseFloat(this.navParams.get('pontuacao'));
   caminhada: any;
-
+  cliente:any;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.cliente = this.navParams.get('cliente');
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeCaminhadaPage');
     console.log(this.pontuacao);
+    console.log("cliente",this.cliente);
+
   }
 
   continuar(){
@@ -33,7 +38,9 @@ export class SeCaminhadaPage {
     console.log(this.pontuacao);
 
     this.navCtrl.push(SeTresandaresPage,{
-      pontuacao : this.pontuacao
+      pontuacao : this.pontuacao,
+      cliente: this.cliente
+
     })
   }
 

@@ -20,18 +20,24 @@ export class PSessoesPage {
   cliente:any;
   tratamento: any;
   configuracao:any;
+  sexo:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.cliente = this.navParams.get('id');
     this.tratamento = this.navParams.get('tratamento');
+    this.sexo = this.navParams.get('sexo');
 
     if(this.tratamento){
-      this.configuracao = 1;
-    }else{
       this.configuracao = 0;
+    }else{
+      this.configuracao = 1;
     }
 
-    console.log(this.cliente)
+    console.log("cliente",this.cliente)
+    console.log("tratamento", this.tratamento)
+    console.log("sexo", this.sexo)
+
+
   }
 
   ionViewDidLoad() {
@@ -84,7 +90,10 @@ export class PSessoesPage {
         }
 
         corporal(){
-          this.navCtrl.push(AcInicioPage)
+          this.navCtrl.push(AcInicioPage,{
+            "user":this.cliente,
+            "sexo":this.sexo
+          })
         }
 
         saude(){
@@ -92,7 +101,9 @@ export class PSessoesPage {
         }
 
         sedentarismo(){
-          this.navCtrl.push(SeInicioPage)
+          this.navCtrl.push(SeInicioPage,{
+            "id_user":this.cliente
+          })
         }
 
         imagem(){

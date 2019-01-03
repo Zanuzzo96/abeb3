@@ -11,17 +11,21 @@ import { SeEsportePage } from '../se-esporte/se-esporte';
 export class SeEnergiaPage {
 
   energia : any;
+  cliente:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.cliente = this.navParams.get('cliente');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeEnergiaPage');
+    console.log("cliente",this.cliente);
   }
 
   continuar(){
     this.navCtrl.push(SeEsportePage,{
-      pontuacao: this.energia
+      pontuacao: this.energia,
+      cliente: this.cliente
     })
   }
 

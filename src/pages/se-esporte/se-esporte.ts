@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SeDuracaoesportePage } from '../se-duracaoesporte/se-duracaoesporte';
 
-/**
- * Generated class for the SeEsportePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-se-esporte',
@@ -18,15 +11,18 @@ export class SeEsportePage {
 
   esporte : any;
   pontuacao : number = parseFloat(this.navParams.get('pontuacao')) ;
-
-
+  cliente:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.cliente = this.navParams.get('cliente');
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeEsportePage');
     console.log(this.pontuacao);
+    console.log("cliente",this.cliente);
+
   }
 
   continuar(){
@@ -35,7 +31,8 @@ export class SeEsportePage {
     this.pontuacao += soma;
     console.log(this.pontuacao);
     this.navCtrl.push(SeDuracaoesportePage,{
-      pontuacao : this.pontuacao
+      pontuacao : this.pontuacao,
+      cliente: this.cliente
     });
   }
 

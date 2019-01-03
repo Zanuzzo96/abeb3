@@ -11,13 +11,19 @@ export class SeDuracaoesportePage {
 
   pontuacao : number = parseFloat(this.navParams.get('pontuacao'));
   duracao: any;
+  cliente:any;
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.cliente = this.navParams.get('cliente');
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeDuracaoesportePage');
     console.log(this.pontuacao);
+    console.log("cliente",this.cliente);
+
   }
 
   continuar(){
@@ -26,7 +32,8 @@ export class SeDuracaoesportePage {
     console.log(this.pontuacao);
 
     this.navCtrl.push(SeCaminhaPage,{
-      pontuacao : this.pontuacao
+      pontuacao : this.pontuacao,
+      cliente: this.cliente
     })
   }
 

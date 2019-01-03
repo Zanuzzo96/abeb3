@@ -18,13 +18,19 @@ export class SeTrabalhoPage {
 
   pontuacao : number = parseFloat(this.navParams.get('pontuacao'));
   trabalho: any;
+  cliente:any;
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.cliente = this.navParams.get('cliente');
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeTrabalhoPage');
     console.log(this.pontuacao);
+    console.log("cliente",this.cliente);
+
   }
 
   continuar(){
@@ -33,7 +39,9 @@ export class SeTrabalhoPage {
     console.log(this.pontuacao);
 
     this.navCtrl.push(SeAtividadesdomesticasPage,{
-      pontuacao : this.pontuacao
+      pontuacao : this.pontuacao,
+      cliente: this.cliente
+
     });
   }
 

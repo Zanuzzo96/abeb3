@@ -5,7 +5,7 @@ import { SeEnergiaPage } from '../se-energia/se-energia';
 import { UsuarioPage } from '../usuario/usuario';
 import { UHomePage } from '../u-home/u-home';
 import { Storage } from '@ionic/storage';
-import { PSessoesPage } from '../p-sessoes/p-sessoes';
+import { ProfissionalPage } from '../profissional/profissional';
 
 
 @IonicPage()
@@ -16,19 +16,28 @@ import { PSessoesPage } from '../p-sessoes/p-sessoes';
 export class SeInicioPage {
 
   permissao = 0
+  cliente:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
     storage.get('permissao').then((val2) => {
       this.permissao =  val2;
     });
+
+    this.cliente = this.navParams.get('id_user');
   }
+
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeInicioPage');
+    console.log("cliente",this.cliente);
   }
 
   iniciar(){
-    this.navCtrl.push(SeEnergiaPage)
+    this.navCtrl.push(SeEnergiaPage,{
+      "cliente":this.cliente
+    })
   }
 
   voltar(){
@@ -38,7 +47,7 @@ export class SeInicioPage {
     }else if(this.permissao == 0){
       this.navCtrl.push(UsuarioPage)
     }else if(this.permissao == 2){
-      this.navCtrl.push(PSessoesPage)
+      this.navCtrl.push(ProfissionalPage)
     }
 
   }

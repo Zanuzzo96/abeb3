@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SeTrabalhoPage } from '../se-trabalho/se-trabalho';
 
-/**
- * Generated class for the SeTresandaresPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-se-tresandares',
@@ -18,13 +11,18 @@ export class SeTresandaresPage {
 
   pontuacao : number = parseFloat(this.navParams.get('pontuacao'));
   tresandares: any;
+  cliente:any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.cliente = this.navParams.get('cliente');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeTresandaresPage');
     console.log(this.pontuacao);
+    console.log("cliente",this.cliente);
+
   }
 
   continuar(){
@@ -33,7 +31,9 @@ export class SeTresandaresPage {
     console.log(this.pontuacao);
 
     this.navCtrl.push(SeTrabalhoPage,{
-      pontuacao : this.pontuacao
+      pontuacao : this.pontuacao,
+      cliente: this.cliente
+      
     })
   }
 
