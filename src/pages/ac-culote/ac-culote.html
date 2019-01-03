@@ -1,9 +1,4 @@
-<!--
-  Generated template for the AcCulotePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar color="cinza1">
@@ -19,7 +14,7 @@
 
   <ion-list>
     <h2>Medida do culote</h2>
-    <ion-item><ion-input type="text" text-center></ion-input></ion-item>
+    <ion-item><ion-input type="text" text-center [(ngModel)]="culote.culote"></ion-input></ion-item>
   </ion-list>
   <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>
 </ion-content>

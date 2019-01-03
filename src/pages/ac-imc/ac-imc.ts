@@ -40,19 +40,7 @@ export class AcImcPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcImcPage');
-    console.log(this.hldgTipo);
-    console.log(this.hldgGrau);
-    console.log(this.hldgLocal);
-    console.log(this.hldgColoracao);
-    console.log(this.hldgTemp);
-    console.log(this.hldgPalpacao);
-    console.log(this.edemaPressao);
-    console.log(this.edemaMmii);
-    console.log(this.edemaObs);
-    console.log(this.lipoGordura);
-    console.log(this.lipoDistribuicao);
-    console.log(this.lipoLocalizacao);
-    console.log(this.lipoBiotipo);
+    
   }
 
   continuar(peso,altura){

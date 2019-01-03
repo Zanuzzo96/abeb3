@@ -54,11 +54,11 @@ export class AcResultadoImcPage {
       lipoDistribuicao: this.lipoDistribuicao,
       lipoLocalizacao: this.lipoLocalizacao,
       lipoBiotipo: this.lipoBiotipo,
-      ImcPeso: this.imc.peso,
-      Imcaltura: this.imc.altura,
-      ImcPesoMin: this.imc.pesoMin,
-      ImcPesoMax: this.imc.pesoMax,
-      ImcPesoObs: this.imc.obs,
+      ImcPeso: this.ImcPeso,
+      Imcaltura: this.Imcaltura,
+      ImcPesoMin: this.ImcPesoMin,
+      ImcPesoMax: this.ImcPesoMax,
+      ImcPesoObs: this.ImcPesoObs,
       ImcResultado: this.resultadoImc
     })
   }
