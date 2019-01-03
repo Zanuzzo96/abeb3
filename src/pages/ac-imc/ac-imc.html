@@ -17,29 +17,29 @@
 
   <ion-list>
     <h2>Peso atual</h2>
-    <ion-item><ion-input [(ngModel)]="imc.peso"></ion-input></ion-item>
+    <ion-item><ion-input type="number" text-center [(ngModel)]="imc.peso"></ion-input></ion-item>
   </ion-list>
 
   <ion-list>
     <h2>Altura</h2>
-    <ion-item><ion-input [(ngModel)]="imc.altura"></ion-input></ion-item>
+    <ion-item><ion-input type="number" text-center [(ngModel)]="imc.altura"></ion-input></ion-item>
   </ion-list>
 
   <ion-list>
     <h2>Peso mín.</h2>
-    <ion-item><ion-input [(ngModel)]="imc.pesoMin"></ion-input></ion-item>
+    <ion-item><ion-input type="number" text-center [(ngModel)]="imc.pesoMin"></ion-input></ion-item>
   </ion-list>
 
   <ion-list>
     <h2>Peso máx.</h2>
-    <ion-item><ion-input [(ngModel)]="imc.pesoMax"></ion-input></ion-item>
+    <ion-item><ion-input type="number" text-center [(ngModel)]="imc.pesoMax"></ion-input></ion-item>
   </ion-list>
 
   <ion-list>
     <h2>Observações</h2>
-    <ion-item><ion-input [(ngModel)]="imc.obs"></ion-input></ion-item>
+    <ion-item><ion-input type="text" text-center [(ngModel)]="imc.obs"></ion-input></ion-item>
   </ion-list>
 
-  <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>
+  <button ion-button block color="amarelo1" (click)="continuar(imc.peso,imc.altura)">Continuar</button>
 
 </ion-content>

@@ -16,16 +16,11 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-col col-10> <ion-input type="number" value="" placeholder="Digite os numeros" [(ngModel)]="rc"></ion-input></ion-col>
-      <ion-col col-2><button class="btn-adicionar" color="cinza1" ion-button (click)="incluir()"><ion-icon name="md-add"></ion-icon></button></ion-col>
+      <ion-col> <ion-input type="number" value="" placeholder="Digite os numeros" [(ngModel)]="rc"></ion-input></ion-col>
     </ion-row>
   </ion-grid>
 
-  <ul>
-    <li *ngFor="let item of rcs">{{item}}</li>
-
-  </ul>
   <br>
-  <button ion-button block color="amarelo1" (click)="Registrar()">Adicionar registros</button>
+  <button ion-button block color="amarelo1" (click)="registrar()">Adicionar registros</button>
 
 </ion-content>

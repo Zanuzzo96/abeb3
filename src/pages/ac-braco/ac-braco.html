@@ -19,12 +19,12 @@
 
   <ion-list>
     <h2>Medida do braço esquerdo</h2>
-    <ion-item><ion-input ></ion-input></ion-item>
+    <ion-item><ion-input type="text" text-center  [(ngModel)]="braco.esquerdo"></ion-input></ion-item>
   </ion-list>
 
   <ion-list>
     <h2>Medida do braço direito</h2>
-    <ion-item><ion-input ></ion-input></ion-item>
+    <ion-item><ion-input type="text" text-center  [(ngModel)]="braco.direito"></ion-input></ion-item>
   </ion-list>
 
   <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>

@@ -7,6 +7,7 @@ import { AProfissionaisPage } from '../a-profissionais/a-profissionais';
 import { AProspectosPage } from '../a-prospectos/a-prospectos';
 import { ARelatoriosPage } from '../a-relatorios/a-relatorios';
 import { ASorteiosPage } from '../a-sorteios/a-sorteios';
+import { ADicasPage } from '../a-dicas/a-dicas';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
 
@@ -43,7 +44,7 @@ constructor(
   }
 
   dicas(){
-    this.navCtrl.push(AAdicionardicaPage)
+    this.navCtrl.push(ADicasPage)
   }
 
   relatorios(){

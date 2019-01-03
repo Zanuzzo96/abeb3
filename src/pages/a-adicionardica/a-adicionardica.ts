@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 import { Http, Headers,Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-/**
- * Generated class for the AAdicionardicaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ADicasPage } from '../a-dicas/a-dicas';
+
 
 @IonicPage()
 @Component({
@@ -20,11 +16,18 @@ import 'rxjs/add/operator/toPromise';
 export class AAdicionardicaPage {
 
   img1:any;
+  titulo:any;
+  mensagem:any;
+  emtratamento:any;
+  semtratamento:any;
+  nivel: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public http: Http
+    public http: Http,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController,
   ) {
   }
 
@@ -47,11 +50,29 @@ export class AAdicionardicaPage {
   }
 
   uploadImg(){
-    console.log(this.img1);
+    let loading = this.loadingCtrl.create({
+      content : "Inserindo dica",
+    });
+
+    loading.present();
+
+    if(this.emtratamento == true && this.semtratamento == true){
+      this.nivel = 3;
+    }else if(this.emtratamento == true){
+      this.nivel = 2;
+    }else if(this.semtratamento == true){
+      this.nivel = 1;
+    }
+
+    console.log(this.nivel);
 
     let imagem = {
-      "imagem":this.img1
+      "imagem":this.img1,
+      "mensagem":this.mensagem,
+      "permissao":this.nivel,
+      "titulo":this.titulo
     }
+    console.log(imagem);
 
     let headers: Headers = new Headers();
     headers.append('Content-type','application/json');
@@ -62,8 +83,30 @@ export class AAdicionardicaPage {
         new RequestOptions({ headers: headers })
       ).subscribe(
           res => {
-            console.log("retorno da api");
-            console.log(res.json());
+
+            let retorno = res.json();
+
+            if(retorno == "sucesso"){
+              let alerta = this.alertCtrl.create({
+                subTitle : "Dica inserida com sucesso",
+                buttons : [{
+                  text: "OK",
+                  handler: () => {
+                     this.navCtrl.push(ADicasPage)
+                   }
+                }]
+              }).present();
+              loading.dismiss();
+            }else{
+              let alerta = this.alertCtrl.create({
+                subTitle : "Não conseguimos inserir a dica, tente novamente",
+                buttons : [{
+                  text: "OK",
+                }]
+              }).present();
+              loading.dismiss();
+            }
+
           },
           err => {
 

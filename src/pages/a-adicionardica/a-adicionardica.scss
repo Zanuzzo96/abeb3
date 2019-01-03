@@ -19,13 +19,17 @@ page-a-adicionardica {
     height:20px;
     width: 100%;
     margin-bottom: 10px;
-    margin-left: 50px;
   }
   .custom-file-input:hover::before {
     border-color: black;
   }
   .custom-file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+
+  ion-input{
+    border-bottom:1px solid #f89e33;
+    margin-bottom: 10px
   }
 
   ion-textarea{

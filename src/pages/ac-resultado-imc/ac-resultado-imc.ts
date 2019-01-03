@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AcFlacidezPage } from '../ac-flacidez/ac-flacidez';
 
-/**
- * Generated class for the AcResultadoImcPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-ac-resultado-imc',
@@ -34,42 +27,40 @@ export class AcResultadoImcPage {
   ImcPesoMin = this.navParams.get('ImcPesoMin');
   ImcPesoMax = this.navParams.get('ImcPesoMax');
   ImcPesoObs = this.navParams.get('ImcPesoObs');
-
-  altura : number = parseFloat(this.navParams.get('Imcaltura'));
-  Peso: number = parseFloat(this.navParams.get('ImcPeso'));
-  public calculo: any;
-
-  resultadoImc = 19;
+  resultadoImc = this.navParams.get('ImcResultado');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcResultadoImcPage');
-    console.log(this.altura);
 
-    console.log(this.hldgTipo);
-    console.log(this.hldgGrau);
-    console.log(this.hldgLocal);
-    console.log(this.hldgColoracao);
-    console.log(this.hldgTemp);
-    console.log(this.hldgPalpacao);
-    console.log(this.edemaPressao);
-    console.log(this.edemaMmii);
-    console.log(this.edemaObs);
-    console.log(this.lipoGordura);
-    console.log(this.lipoDistribuicao);
-    console.log(this.lipoLocalizacao);
-    console.log(this.lipoBiotipo);
-    console.log(this.ImcPeso);
-    console.log(this.Imcaltura);
-    console.log(this.ImcPesoMin);
-    console.log(this.ImcPesoMax);
-    console.log(this.ImcPesoObs);
+    console.log(this.resultadoImc);
+
   }
 
   continuar(){
-    this.navCtrl.push(AcFlacidezPage)
+    this.navCtrl.push(AcFlacidezPage,{
+      hldgTipo: this.hldgTipo,
+      hldgGrau: this.hldgGrau,
+      hldgLocal: this.hldgLocal,
+      hldgColoracao: this.hldgColoracao,
+      hldgTemp: this.hldgTemp,
+      hldgPalpacao: this.hldgPalpacao,
+      edemaPressao: this.edemaPressao,
+      edemaMmii: this.edemaMmii,
+      edemaObs: this.edemaObs,
+      lipoGordura: this.lipoGordura,
+      lipoDistribuicao: this.lipoDistribuicao,
+      lipoLocalizacao: this.lipoLocalizacao,
+      lipoBiotipo: this.lipoBiotipo,
+      ImcPeso: this.imc.peso,
+      Imcaltura: this.imc.altura,
+      ImcPesoMin: this.imc.pesoMin,
+      ImcPesoMax: this.imc.pesoMax,
+      ImcPesoObs: this.imc.obs,
+      ImcResultado: this.resultadoImc
+    })
   }
 
 }

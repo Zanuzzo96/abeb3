@@ -55,7 +55,10 @@ export class AcImcPage {
     console.log(this.lipoBiotipo);
   }
 
-  continuar(){
+  continuar(peso,altura){
+
+    var imcCalc = peso / (altura * altura);
+
     this.navCtrl.push(AcResultadoImcPage,{
       hldgTipo: this.hldgTipo,
       hldgGrau: this.hldgGrau,
@@ -75,7 +78,10 @@ export class AcImcPage {
       ImcPesoMin: this.imc.pesoMin,
       ImcPesoMax: this.imc.pesoMax,
       ImcPesoObs: this.imc.obs,
+      ImcResultado: imcCalc
     })
+
+    console.log(imcCalc)
   }
 
 }

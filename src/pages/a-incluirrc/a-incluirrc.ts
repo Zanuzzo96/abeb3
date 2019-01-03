@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AIncluirrcPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { AProfissionaisPage } from '../a-profissionais/a-profissionais';
 
 @IonicPage()
 @Component({
@@ -16,17 +14,83 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class AIncluirrcPage {
 
   rc = "";
-  rcs = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController,) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AIncluirrcPage');
   }
 
-  incluir() {
-    console.log(this.rc);
-    this.rcs.push(this.rc);
+  registrar() {
+    let loading = this.loadingCtrl.create({
+      content : "Cadastrando RC",
+    });
+
+    loading.present();
+
+    let numerorc = {
+      "rc": this.rc
+    }
+
+    let headers: Headers = new Headers();
+    headers.append('Content-type','application/json');
+
+      this.http.post(
+        'https://lipolysis.grupoanx.com.br/rc/index.php',
+        numerorc,
+        new RequestOptions({ headers: headers })
+      ).subscribe(
+          res => {
+
+            let retorno = res.json();
+            console.log(retorno);
+
+            if(retorno == "sucesso"){
+              let alerta = this.alertCtrl.create({
+                subTitle : "RC inserido com sucesso",
+                buttons : [{
+                  text: "OK",
+                  handler: () => {
+                     this.navCtrl.push(AProfissionaisPage)
+                   }
+                }]
+              }).present();
+              loading.dismiss();
+            }else if(retorno == "duplo"){
+              let alerta = this.alertCtrl.create({
+                subTitle : "RC já esta cadastrado no banco",
+                buttons : [{
+                  text: "OK",
+                  handler: () => {
+                     this.navCtrl.push(AProfissionaisPage)
+                   }
+                }]
+              }).present();
+              loading.dismiss();
+            }else{
+              let alerta = this.alertCtrl.create({
+                subTitle : "Não conseguimos inserir o RC, tente novamente",
+                buttons : [{
+                  text: "OK",
+                }]
+              }).present();
+              loading.dismiss();
+
+            }
+
+          },
+          err => {
+
+            console.log(err.json());
+            loading.dismiss();
+
+          }
+        );
   }
 }

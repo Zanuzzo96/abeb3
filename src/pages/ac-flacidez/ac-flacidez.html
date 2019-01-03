@@ -25,7 +25,7 @@
 
   <ion-list>
     <h2>Localização da flacidez tissular</h2>
-    <ion-item><ion-input [(ngModel)]="flacidez.tissularlocalidade"></ion-input></ion-item>
+    <ion-item><ion-input type="text" text-center [(ngModel)]="flacidez.tissularlocalidade"></ion-input></ion-item>
   </ion-list>
 
   <ion-list radio-group [(ngModel)]="flacidez.muscular">
@@ -38,7 +38,7 @@
 
   <ion-list>
     <h2>Localização da flacidez muscular</h2>
-    <ion-item><ion-input [(ngModel)]="flacidez.muscularlocalidade"></ion-input></ion-item>
+    <ion-item><ion-input type="text" text-center [(ngModel)]="flacidez.muscularlocalidade"></ion-input></ion-item>
   </ion-list>
 
   <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>

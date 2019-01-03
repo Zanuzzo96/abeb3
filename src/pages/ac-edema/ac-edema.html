@@ -23,12 +23,12 @@
 
   <ion-list>
     <h2>Sensação de peso / cansaço em MMII</h2>
-    <ion-item><ion-input [(ngModel)]="edema.mmii" ></ion-input></ion-item>
+    <ion-item><ion-input type="text" text-center [(ngModel)]="edema.mmii" ></ion-input></ion-item>
   </ion-list>
 
   <ion-list>
     <h2>Observações</h2>
-    <ion-item><ion-input [(ngModel)]="edema.obs"></ion-input></ion-item>
+    <ion-item><ion-input type="text" text-center [(ngModel)]="edema.obs"></ion-input></ion-item>
   </ion-list>
 
   <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>
