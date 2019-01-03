@@ -15,7 +15,9 @@ import 'rxjs/add/operator/toPromise';
 export class ImagemSessaoPage {
 
   img1:any;
-  imagem:any
+  imagem:any;
+  cliente = this.navParams.get('id_user');
+  id_tratamento = this.navParams.get('id_tratamento');
 
 
   constructor(
@@ -30,6 +32,8 @@ export class ImagemSessaoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ImagemSessaoPage');
+    console.log(this.cliente)
+    console.log(this.id_tratamento)
   }
 
   fileChange(event){
@@ -50,8 +54,13 @@ export class ImagemSessaoPage {
     console.log(this.img1);
 
     let imagem = {
-      "imagem":this.img1
+      "imagem":this.img1,
+      "id_user":this.cliente,
+      "id_tratamento":this.id_tratamento
     }
+
+    console.log(imagem.id_user)
+    console.log(imagem.id_tratamento)
 
     let headers: Headers = new Headers();
     headers.append('Content-type','application/json');

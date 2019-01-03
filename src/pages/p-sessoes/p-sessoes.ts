@@ -23,18 +23,19 @@ export class PSessoesPage {
   sexo:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
     this.cliente = this.navParams.get('id');
-    this.tratamento = this.navParams.get('tratamento');
+    this.id_tratamento = this.navParams.get('tratamento');
     this.sexo = this.navParams.get('sexo');
 
-    if(this.tratamento){
+    if(this.id_tratamento){
       this.configuracao = 0;
     }else{
       this.configuracao = 1;
     }
 
     console.log("cliente",this.cliente)
-    console.log("tratamento", this.tratamento)
+    console.log("tratamento", this.id_tratamento)
     console.log("sexo", this.sexo)
 
 
@@ -97,7 +98,10 @@ export class PSessoesPage {
         }
 
         saude(){
-          this.navCtrl.push(SaudePg1Page)
+          this.navCtrl.push(SaudePg1Page,{
+            "user":this.cliente,
+            "sexo":this.sexo
+          })
         }
 
         sedentarismo(){
@@ -107,11 +111,22 @@ export class PSessoesPage {
         }
 
         imagem(){
-          this.navCtrl.push(ImagemSessaoPage)
+          this.navCtrl.push(ImagemSessaoPage,{
+            "id_user":this.cliente,
+            "id_tratamento":this.id_tratamento
+          })
+
+          console.log("cliente",this.cliente)
+          console.log("tratamento", this.id_tratamento)
+        
         }
 
         agendar(){
           this.navCtrl.push(AgendaPage)
+        }
+
+        concluir(){
+
         }
 
 }
