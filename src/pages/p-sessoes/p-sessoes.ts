@@ -18,7 +18,7 @@ export class PSessoesPage {
 
   nome = "teste";
   cliente:any;
-  tratamento: any;
+  id_tratamento: any;
   configuracao:any;
   sexo:any;
 
@@ -118,11 +118,14 @@ export class PSessoesPage {
 
           console.log("cliente",this.cliente)
           console.log("tratamento", this.id_tratamento)
-        
+
         }
 
         agendar(){
-          this.navCtrl.push(AgendaPage)
+          this.navCtrl.push(AgendaPage,{
+            "id_user":this.cliente,
+            "id_tratamento":this.id_tratamento
+          })
         }
 
         concluir(){

@@ -7,6 +7,11 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { Http, Headers,Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { ProfissionalPage } from '../profissional/profissional';
+
+
 @IonicPage()
 @Component({
   selector: 'page-imagem-sessao',
@@ -25,15 +30,18 @@ export class ImagemSessaoPage {
     public navParams: NavParams,
     private transfer: FileTransfer,
     public camera: Camera,
-    public http: Http
+    public http: Http,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
    ) {
+
+     console.log(this.cliente)
+     console.log(this.id_tratamento)
 
       }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ImagemSessaoPage');
-    console.log(this.cliente)
-    console.log(this.id_tratamento)
   }
 
   fileChange(event){
@@ -52,6 +60,8 @@ export class ImagemSessaoPage {
 
   uploadImg(){
     console.log(this.img1);
+    console.log(this.cliente)
+    console.log(this.id_tratamento)
 
     let imagem = {
       "imagem":this.img1,
@@ -59,8 +69,11 @@ export class ImagemSessaoPage {
       "id_tratamento":this.id_tratamento
     }
 
-    console.log(imagem.id_user)
-    console.log(imagem.id_tratamento)
+    let loading = this.loadingCtrl.create({
+      content : "Inserindo imagem",
+    });
+
+    loading.present();
 
     let headers: Headers = new Headers();
     headers.append('Content-type','application/json');
@@ -71,41 +84,39 @@ export class ImagemSessaoPage {
         new RequestOptions({ headers: headers })
       ).subscribe(
           res => {
-            console.log("retorno da api");
-            console.log(res.json());
+
+            let retorno = res.json();
+
+            if( retorno == "sucesso"){
+              loading.dismiss();
+              let alerta = this.alertCtrl.create({
+                subTitle : "Imagem inserida com sucesso",
+                buttons : [{
+                  text: "OK",
+                  handler: () => {
+                     this.navCtrl.push(ProfissionalPage)
+                   }
+                }]
+              }).present();
+            }else if ( retorno == "erro"){
+              loading.dismiss();
+
+              let alerta_erro = this.alertCtrl.create({
+                title: 'Ops .. Algo deu errado',
+                subTitle : "Tivemos um problema para inserir imagem.",
+                buttons : [{
+                  text: "OK",
+                }]
+              }).present();
+            }
           },
           err => {
 
             console.log(err.json());
+            loading.dismiss();
 
           }
         );
-
-    //const fileTransfer: FileTransferObject = this.transfer.create();
-
-    // Upload a file:
-    //fileTransfer.upload(..).then(..).catch(..);
-
-    // Download a file:
-    //fileTransfer.download(..).then(..).catch(..);
-
-    // Abort active transfer:
-    //fileTransfer.abort();
-
-    // full example
-
-    //  let options: FileUploadOptions = {
-        // fileKey: 'file',
-        // fileName: 'name.jpg',
-        // headers: {}
-    //  }
-
-    //  fileTransfer.upload('', '', options)
-      // .then((data) => {
-         // success
-      // }, (err) => {
-         // error
-      // });
     }
 
 }
