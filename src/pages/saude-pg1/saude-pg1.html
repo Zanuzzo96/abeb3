@@ -14,14 +14,14 @@
 
 
 <ion-content padding>
-    
+
     <h2>Profissão</h2>
     <ion-item class="item">
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" [(ngModel)]="profissao"></ion-input>
     </ion-item>
     <br><br>
 
-    <ion-list radio-group [(ngModel)]="autoManufacturers">
+    <ion-list radio-group [(ngModel)]="muitotemposentado">
       <h2>Costuma permanecer muito tempo sentado(a)?</h2>
       <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
       <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>

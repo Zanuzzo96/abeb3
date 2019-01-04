@@ -3,12 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SaudePg3Page } from '../saude-pg3/saude-pg3';
 
 
-/**
- * Generated class for the SaudePg2Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,11 +14,24 @@ export class SaudePg2Page {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  cliente = this.navParams.get('cliente');
+  sexo = this.navParams.get('sexo');
+  profissao = this.navParams.get('profissao');
+  muitotemposentado = this.navParams.get('muitotemposentado');
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg2Page');
   }
 
+  qualidadesono: any;
+
   continuar(){
-    this.navCtrl.push(SaudePg3Page)
+    this.navCtrl.push(SaudePg3Page,{
+      cliente: this.cliente,
+      sexo: this.sexo,
+      profissao: this.profissao,
+      muitotemposentado: this.muitotemposentado,
+      qualidadesono: this.qualidadesono
+    })
   }
 }

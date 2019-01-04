@@ -12,15 +12,23 @@ export class SaudePg1Page {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  cliente = this.navParams.get('id');
+  cliente = this.navParams.get('user');
   sexo = this.navParams.get('sexo');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg1Page', this.cliente + this.sexo);
   }
 
+  profissao: any;
+  muitotemposentado: any;
+
   continuar(){
-    this.navCtrl.push(SaudePg2Page)
+    this.navCtrl.push(SaudePg2Page,{
+      cliente: this.cliente,
+      sexo: this.sexo,
+      profissao: this.profissao,
+      muitotemposentado: this.muitotemposentado
+    })
   }
 
 }

@@ -31,7 +31,8 @@ export class RegistroClientePage {
   }
 
   constructor(public loadingCtrl: LoadingController,
-              public alertCtrl: AlertController,public navCtrl: NavController,
+              public alertCtrl: AlertController,
+              public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http) {}
 

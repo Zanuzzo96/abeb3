@@ -42,7 +42,14 @@ export class UPerfilPage {
                     this.perfilUsuario.nome = perfilRetorno[0].nome;
                     this.perfilUsuario.cpf = perfilRetorno[0].cpf;
                     this.perfilUsuario.nasc = perfilRetorno[0].nasc;
-                    this.perfilUsuario.sexo = perfilRetorno[0].sexo;
+                    let sexo = perfilRetorno[0].sexo;
+
+                    if(sexo == "m"){
+                      this.perfilUsuario.sexo = "masculino"
+                    }else{
+                      this.perfilUsuario.sexo = "feminino"
+                    }
+
                     this.perfilUsuario.telefone = perfilRetorno[0].telefone;
                     this.perfilUsuario.email = perfilRetorno[0].email;
 

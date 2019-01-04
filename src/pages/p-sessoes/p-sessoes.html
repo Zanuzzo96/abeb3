@@ -72,7 +72,12 @@
 
   <div class="receita" *ngIf="configuracao == 0">
     <span text-center><br>Orientações da sessões</span>
-    <ion-textarea placeholder="Descreva aqui o que foi orientado ao cliente na sessão" rows="7" class="orientacao"></ion-textarea><br>
+    <ion-textarea placeholder="Descreva aqui o que foi orientado ao cliente na sessão" [(ngModel)]="orientacao" rows="7" class="orientacao"></ion-textarea><br>
+  </div>
+
+  <div class="receita" *ngIf="configuracao == 0">
+    <span text-center>Peso atual em Kg</span>
+    <ion-input class="peso" type="number" [(ngModel)]="peso"></ion-input><br>
   </div>
 
   <button icon-only class="btn" (click)="tratamento()" *ngIf="configuracao == 1">

@@ -46,9 +46,10 @@ export class PClientesPage {
 
   }
 
-  sessoes(id){
+  sessoes(id,sexo){
     this.navCtrl.push(PSessoesPage,{
       "id":id,
+      "sexo":sexo
     });
   }
 

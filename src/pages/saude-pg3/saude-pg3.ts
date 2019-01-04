@@ -15,8 +15,19 @@ export class SaudePg3Page {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  cliente = this.navParams.get('cliente');
+  sexo = this.navParams.get('sexo');
+  profissao = this.navParams.get('profissao');
+  muitotemposentado = this.navParams.get('muitotemposentado');
+  qualidadesono = this.navParams.get('qualidadesono');
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg3Page');
+    console.log(this.cliente);
+    console.log(this.sexo);
+    console.log(this.profissao);
+    console.log(this.muitotemposentado);
+    console.log(this.qualidadesono);
   }
 
   continuar(){

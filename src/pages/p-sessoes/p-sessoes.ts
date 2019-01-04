@@ -8,6 +8,11 @@ import { AcInicioPage } from '../ac-inicio/ac-inicio';
 import { ProfissionalPage } from '../profissional/profissional';
 import { AgendaPage } from '../agenda/agenda';
 import { ImagemSessaoPage } from '../imagem-sessao/imagem-sessao';
+import { IniciarTratamentoPage } from '../iniciar-tratamento/iniciar-tratamento';
+import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 @IonicPage()
 @Component({
@@ -17,16 +22,22 @@ import { ImagemSessaoPage } from '../imagem-sessao/imagem-sessao';
 export class PSessoesPage {
 
   nome = "teste";
-  cliente:any;
-  id_tratamento: any;
+  cliente = this.navParams.get('id');
+  id_tratamento = this.navParams.get('tratamento');
+  sexo = this.navParams.get('sexo');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
   configuracao:any;
-  sexo:any;
+  orientacao: any;
+  peso: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-    this.cliente = this.navParams.get('id');
-    this.id_tratamento = this.navParams.get('tratamento');
-    this.sexo = this.navParams.get('sexo');
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController
+  ) {
 
     if(this.id_tratamento){
       this.configuracao = 0;
@@ -37,6 +48,8 @@ export class PSessoesPage {
     console.log("cliente",this.cliente)
     console.log("tratamento", this.id_tratamento)
     console.log("sexo", this.sexo)
+    console.log("data", this.data)
+    console.log("hora", this.hora)
 
 
   }
@@ -128,7 +141,70 @@ export class PSessoesPage {
           })
         }
 
+        tratamento(){
+          this.navCtrl.push(IniciarTratamentoPage,{
+            "id_user":this.cliente
+          })
+        }
+
         concluir(){
+
+          let conclusao = {
+            "data": this.data,
+            "hora":this.hora,
+            "orientacao": this.orientacao,
+            "peso": this.peso,
+            "cliente": this.cliente,
+            "tratamento": this.id_tratamento
+          }
+
+          let loading = this.loadingCtrl.create({content : "Concluindo sessão"});
+
+          loading.present();
+
+          let api = 'https://lipolysis.grupoanx.com.br/profissional/concluir.php';
+          let headers: Headers = new Headers();
+            headers.append('Content-type','application/json');
+
+            return this.http.post(
+              api,
+              conclusao,
+              new RequestOptions({ headers: headers })
+            ).subscribe(
+                res => {
+                  console.log(res.json());
+                  let retorno = res.json();
+
+                    if(retorno == "sucesso"){
+                      loading.dismiss()
+
+                      let alerta = this.alertCtrl.create({
+                        subTitle : "Sessão concluida com sucesso",
+                        buttons : [{
+                          text: "OK",
+                          handler: () => {
+                             this.navCtrl.push(ProfissionalPage)
+                           }
+                        }]
+                      }).present();
+                    }else{
+                      loading.dismiss()
+
+                      let alerta = this.alertCtrl.create({
+                        subTitle : "Não conseguimos concluir a sessão, tente novamente",
+                        buttons : [{
+                          text: "OK",
+                        }]
+                      }).present();
+                    }
+
+                },
+                err => {
+                  loading.dismiss()
+
+                  console.log(err.json());
+                }
+            );
 
         }
 

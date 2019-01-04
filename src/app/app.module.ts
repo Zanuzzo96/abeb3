@@ -136,6 +136,7 @@ import { LocalizacaoProvider } from '../providers/localizacao/localizacao';
 import { MensagemPage } from '../pages/mensagem/mensagem';
 import { AgendaPage } from '../pages/agenda/agenda';
 import { ImagemSessaoPage } from '../pages/imagem-sessao/imagem-sessao';
+import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-tratamento';
 
 @NgModule({
   declarations: [
@@ -241,7 +242,8 @@ import { ImagemSessaoPage } from '../pages/imagem-sessao/imagem-sessao';
 
     PerfilProfissionalPage,
     AgendaPage,
-    ImagemSessaoPage
+    ImagemSessaoPage,
+    IniciarTratamentoPage
 
   ],
   imports: [
@@ -356,7 +358,9 @@ import { ImagemSessaoPage } from '../pages/imagem-sessao/imagem-sessao';
 
     PerfilProfissionalPage,
     AgendaPage,
-    ImagemSessaoPage
+    ImagemSessaoPage,
+    IniciarTratamentoPage
+    
   ],
   providers: [
     StatusBar,

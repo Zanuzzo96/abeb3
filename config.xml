@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="app.lipolysis.felipezanuzzo" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Lipolysis 4D</name>
-    <description>Aplicativo do método Lipolisysis 4D lipomodelagem</description>
+    <name>L4D</name>
+    <description>Aplicativo do método Lipolysis 4D lipomodelagem</description>
     <author email="felipezanuzzo@outlook.com" href="https://www.facebook.com/profile.php?id=100009948781762">Felipe Zanuzzo Biazibetti</author>
     <content src="index.html" />
     <access origin="*" />

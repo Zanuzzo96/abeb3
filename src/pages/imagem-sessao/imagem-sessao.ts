@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { Camera, CameraOptions } from '@ionic-native/camera';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-
 import { Http, Headers,Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
@@ -28,8 +25,6 @@ export class ImagemSessaoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private transfer: FileTransfer,
-    public camera: Camera,
     public http: Http,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController

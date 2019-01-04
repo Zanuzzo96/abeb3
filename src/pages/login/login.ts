@@ -84,11 +84,6 @@ export class LoginPage {
     }).catch((response) => {
       loading.dismiss()
     });
-
-
-
-
-
   }
 
   RecuperarSenha() {
