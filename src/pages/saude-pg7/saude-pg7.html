@@ -1,9 +1,3 @@
-<!--
-  Generated template for the SaudePg7Page page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar color="cinza1">
@@ -14,50 +8,51 @@
 
 
 <ion-content padding>
-  <ion-list radio-group [(ngModel)]="autoManufacturers">
+
+  <ion-list radio-group [(ngModel)]="algumproblemaortopedico">
     <h2>Tem algum problema ortopédico</h2>
     <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
     <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
   </ion-list>
-  <ion-list>
+
     <ion-item>
-      <ion-label fixed>Qual?</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list><br>
-  <ion-list radio-group [(ngModel)]="autoManufacturers">
+      <ion-label stacked>Qual?</ion-label>
+      <ion-input type="text" [(ngModel)]="qualproblemaortopedico"></ion-input>
+    </ion-item><br>
+
+  <ion-list radio-group [(ngModel)]="tratamentoMedico">
     <h2>Faz algum tratamento médico</h2>
     <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
     <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
   </ion-list>
-  <ion-list>
+
     <ion-item>
-      <ion-label fixed>Qual?</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list><br>
-  <ion-list radio-group [(ngModel)]="autoManufacturers">
+      <ion-label stacked>Qual?</ion-label>
+      <ion-input type="text" [(ngModel)]="tratamentoMedicoQual"></ion-input>
+    </ion-item><br>
+
+  <ion-list radio-group [(ngModel)]="acidoPelo">
     <h2>Usa ou já usou ácidos na pele</h2>
     <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
     <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
   </ion-list>
-  <ion-list>
+
     <ion-item>
-      <ion-label fixed>Quais?</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list><br>
-  <ion-list radio-group [(ngModel)]="autoManufacturers">
+      <ion-label stacked>Quais?</ion-label>
+      <ion-input type="text" [(ngModel)]="acidoPeloQuais"></ion-input>
+    </ion-item><br>
+
+  <ion-list radio-group [(ngModel)]="ortomelecular">
     <h2>Já fez algum tratamento ortomelecular</h2>
     <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
     <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
   </ion-list>
-  <ion-list>
+
     <ion-item>
-      <ion-label fixed>Qual?</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list>
-  <br>
-  <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>
+      <ion-label stacked>Qual?</ion-label>
+      <ion-input type="text" [(ngModel)]="ortomelecularQual"></ion-input>
+    </ion-item><br>
+
+  <button ion-button block color="amarelo1" class="botao" (click)="continuar()">Continuar</button>
+
 </ion-content>

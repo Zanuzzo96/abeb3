@@ -84,7 +84,6 @@ import { SaudePg10Page } from '../pages/saude-pg10/saude-pg10';
 import { SaudePg11Page } from '../pages/saude-pg11/saude-pg11';
 import { SaudePg12Page } from '../pages/saude-pg12/saude-pg12';
 import { SaudePg13Page } from '../pages/saude-pg13/saude-pg13';
-import { SaudePg14Page } from '../pages/saude-pg14/saude-pg14';
 
 //Avaliacao de sedentarismo - SE
 import { SeInicioPage } from '../pages/se-inicio/se-inicio';
@@ -197,7 +196,6 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     SaudePg11Page,
     SaudePg12Page,
     SaudePg13Page,
-    SaudePg14Page,
 
     SeInicioPage,
     SeAtividadesdomesticasPage,
@@ -313,7 +311,6 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     SaudePg11Page,
     SaudePg12Page,
     SaudePg13Page,
-    SaudePg14Page,
 
     SeInicioPage,
     SeAtividadesdomesticasPage,
@@ -360,7 +357,7 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     AgendaPage,
     ImagemSessaoPage,
     IniciarTratamentoPage
-    
+
   ],
   providers: [
     StatusBar,

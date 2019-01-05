@@ -10,8 +10,6 @@ import { SaudePg4Page } from '../saude-pg4/saude-pg4';
 })
 export class SaudePg3Page {
 
-  antecendentesCirurgicos: any = 'não';
-
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -23,15 +21,29 @@ export class SaudePg3Page {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg3Page');
-    console.log(this.cliente);
-    console.log(this.sexo);
-    console.log(this.profissao);
-    console.log(this.muitotemposentado);
-    console.log(this.qualidadesono);
   }
 
+  antecendentesCirurgicos:any;
+  antecendentesCirurgicosQuais:any;
+  tratamentoAnterior:any;
+  tratamentoAnteriorQuais:any;
+  antecedenterAlergicos:any;
+  antecedenterAlergicosQuais:any;
+
   continuar(){
-    this.navCtrl.push(SaudePg4Page)
+    this.navCtrl.push(SaudePg4Page,{
+      cliente: this.cliente,
+      sexo: this.sexo,
+      profissao: this.profissao,
+      muitotemposentado: this.muitotemposentado,
+      qualidadesono: this.qualidadesono,
+      antecendentesCirurgicos: this.antecendentesCirurgicos,
+      antecendentesCirurgicosQuais: this.antecendentesCirurgicosQuais,
+      tratamentoAnterior: this.tratamentoAnterior,
+      tratamentoAnteriorQuais: this.tratamentoAnteriorQuais,
+      antecedenterAlergicos: this.antecedenterAlergicos,
+      antecedenterAlergicosQuais: this.antecedenterAlergicosQuais
+    })
   }
 
 }

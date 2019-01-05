@@ -60,9 +60,9 @@ export class PSessoesPage {
 
         //Inicio dos graficos de linha
         public lineChartData:Array<any> = [
-          {data: [85, 89, 84, 88, 86, 85, 84], label: 'Series A'}
+          {data: [], label: 'Series A'}
         ];
-        public lineChartLabels:Array<any> = ['10/12', '15/01', '05/02', '20/02', '01/03', '15/03', '21/03/2018'];
+        public lineChartLabels:Array<any> = [];
         public lineChartOptions:any = {
           responsive: true
         };

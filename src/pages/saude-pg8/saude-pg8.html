@@ -1,9 +1,4 @@
-<!--
-  Generated template for the SaudePg8Page page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar color="cinza1">
@@ -14,49 +9,50 @@
 
 
 <ion-content padding>
-  <ion-list radio-group [(ngModel)]="autoManufacturers">
+  <ion-list radio-group [(ngModel)]="cuidadosdiarios">
     <h2>Cuidados diários e produtos em uso</h2>
     <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
     <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
   </ion-list>
-  <ion-list>
+
     <ion-item>
-      <ion-label fixed>Qual?</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list><br>
-  <ion-list radio-group [(ngModel)]="autoManufacturers">
+      <ion-label stacked>Qual?</ion-label>
+      <ion-input type="text" [(ngModel)]="cuidadosdiariosQual"></ion-input>
+    </ion-item><br>
+
+  <ion-list radio-group [(ngModel)]="marcapasso">
     <h2>Portador de marcapasso</h2>
     <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
     <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
   </ion-list>
-  <ion-list>
+
     <ion-item>
-      <ion-label fixed>Qual?</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list><br>
-  <ion-list radio-group [(ngModel)]="autoManufacturers">
+      <ion-label stacked>Qual?</ion-label>
+      <ion-input type="text" [(ngModel)]="marcapassoQual"></ion-input>
+    </ion-item><br>
+
+  <ion-list radio-group [(ngModel)]="metais">
     <h2>Presença de metais</h2>
     <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
     <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
   </ion-list>
-  <ion-list>
+
     <ion-item>
-      <ion-label fixed>Local?</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list><br>
-  <ion-list radio-group [(ngModel)]="autoManufacturers">
+      <ion-label stacked>Local?</ion-label>
+      <ion-input type="text" [(ngModel)]="metaislocal"></ion-input>
+    </ion-item><br>
+
+  <ion-list radio-group [(ngModel)]="cancer">
     <h2>Antecedentes oncológicos (câncer)</h2>
     <ion-item><ion-label>Sim</ion-label><ion-radio value="sim"></ion-radio></ion-item>
     <ion-item><ion-label>Não</ion-label><ion-radio value="não"></ion-radio></ion-item>
   </ion-list>
-  <ion-list>
+
     <ion-item>
-      <ion-label fixed>Qual?</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list><br>
-  <button ion-button block color="amarelo1" (click)="continuar()">Continuar</button>
+      <ion-label stacked>Qual?</ion-label>
+      <ion-input type="text" [(ngModel)]="cancerQual"></ion-input>
+    </ion-item><br>
+
+  <button ion-button block color="amarelo1" class="botao" (click)="continuar()">Continuar</button>
+
 </ion-content>
