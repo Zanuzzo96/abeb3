@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PDiarioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -15,11 +11,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PDiarioPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  diario;
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public http: Http,
+              public storage: Storage) {  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PDiarioPage');
+
+    this.storage.get("id_login").then((value)=>{
+      let id_prof = value;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/diario.php?profissional=' + id_prof;
+
+        this.http.get(api).toPromise().then((resp)=>{
+          this.diario = resp.json();
+          console.log(this.diario)
+
+        }).catch((resp)=>{
+          console.log(resp);
+        });
+
+    });
   }
 
 }

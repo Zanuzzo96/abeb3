@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Storage } from '@ionic/storage';
-import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { AgendaPage } from '../agenda/agenda';
 
@@ -41,8 +41,6 @@ export class IniciarTratamentoPage {
           let loading = this.loadingCtrl.create({content : "Iniciando tratamento",});
           loading.present();
 
-            let ident = this.cliente;
-
             let tratamento = {
               "id_login": this.cliente,
               "id_profissional": profissional,
@@ -70,7 +68,7 @@ export class IniciarTratamentoPage {
                   let numeroTratamento = dadosTratamento[0].id_tratamento;
 
                     if(numeroTratamento){
-                      let alerta = this.alertCtrl.create({
+                      this.alertCtrl.create({
                         title: "Sucesso",
                         subTitle : "Tratamento iniciado com sucesso, agende a primeira sessão para concluir",
                         buttons : [{

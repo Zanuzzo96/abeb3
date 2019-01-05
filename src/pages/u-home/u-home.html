@@ -70,12 +70,20 @@
       </div>
     </ion-card-content>
   </ion-card>
-  <ion-card color="amarelo1" text-center>
+  <ion-card color="amarelo1" text-center *ngIf="agenda == ''">
     <ion-card-header>
       Sua proxima sessão
     </ion-card-header>
     <ion-card-content>
       <h1><strong>Você não tem nenhuma sessão agendada</strong></h1>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="amarelo1" text-center *ngIf="agenda != '' ">
+    <ion-card-header>
+      Sua próxima sessão
+    </ion-card-header>
+    <ion-card-content>
+      <h1><strong>{{agendaData}} - {{agendaHora}}</strong></h1>
     </ion-card-content>
   </ion-card>
 

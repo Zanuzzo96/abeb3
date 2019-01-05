@@ -1,9 +1,3 @@
-<!--
-  Generated template for the PDiarioPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar color="cinza1">
@@ -14,5 +8,22 @@
 
 
 <ion-content padding>
+  <ion-card *ngFor="let item of diario">
+    <ion-card-header text-center style="color:#ffffff;font-weight:bold;font-size:16px">
+      {{item.nome}}
+    </ion-card-header>
+    <ion-card-content>
+            <br>
+            <h3><strong>Dia do diario:</strong> Ontem</h3>
+            <h3><strong>Sentimento do dia:</strong> {{item.dia}}</h3>
+            <h3><strong>Qualidade do sono:</strong> {{item.sono}}</h3>
+            <h3><strong>Hidratação:</strong> {{item.agua}}</h3>
+            <h3><strong>Consumo de refrigerante e doces:</strong> {{item.refriedoce}}</h3>
+            <h3><strong>Se alimentou 4 vezes no dia:</strong> {{item.refeicoes}}</h3>
+            <h3><strong>Nivel de nutrição:</strong> {{item.nutricao}}</h3>
+            <h3><strong>Atividade do dia:</strong> {{item.atividade}}</h3>
+            <h3><strong>Fumante:</strong> {{item.fumante}}</h3>
+    </ion-card-content>
 
+  </ion-card>
 </ion-content>

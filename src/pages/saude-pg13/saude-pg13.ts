@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { ProfissionalPage } from '../profissional/profissional';
+
 
 @IonicPage()
 @Component({
@@ -162,10 +164,12 @@ export class SaudePg13Page {
       new RequestOptions({ headers: headers })
     ).subscribe(
         res => {
-          console.log(res.json())
+          console.log(res.json());
+          this.navCtrl.push(ProfissionalPage);
         },
         err => {
-          console.log(err.json())
+          console.log(err.json());
+          this.navCtrl.push(ProfissionalPage);
         }
       );
 

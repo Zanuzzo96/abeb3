@@ -10,7 +10,8 @@ import { PSugestoesPage } from '../p-sugestoes/p-sugestoes';
 import { PPerfilPage } from '../p-perfil/p-perfil';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
-
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 @IonicPage()
 @Component({
@@ -19,13 +20,28 @@ import { Storage } from '@ionic/storage';
 })
 export class ProfissionalPage {
 
+  dia:any;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private storage: Storage) {  }
+    private storage: Storage,
+    public http: Http) {  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfissionalPage');
+
+    this.storage.get("id_login").then((value)=>{
+      let id_prof = value;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/home.php?profissional=' + id_prof;
+
+        this.http.get(api).toPromise().then((resp)=>{
+          this.dia = resp.json();
+        }).catch((resp)=>{
+          console.log(resp);
+        });
+
+    });
   }
 
   sair(){

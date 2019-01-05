@@ -8,6 +8,8 @@ import { UDicasPage } from '../u-dicas/u-dicas';
 import { UPerfilPage } from '../u-perfil/u-perfil';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 
 @IonicPage()
@@ -18,15 +20,41 @@ import { Storage } from '@ionic/storage';
 export class UHomePage {
 
   teste: any = 1;
-   public nome : any = "felipe";
+  agenda;
+  agendaData;
+  agendaHora;
+
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private storage: Storage) {  }
+    private storage: Storage,
+    public http: Http) {
+
+
+
+
+    }//fim do construtor
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UHomePage');
+
+    this.storage.get("id_login").then((value)=>{
+      let usuario = value;
+      let api = 'https://lipolysis.grupoanx.com.br/usuario/agenda.php?usuario=' + usuario;
+
+        this.http.get(api).toPromise().then((resp)=>{
+          this.agenda = resp.json();
+          console.log(this.agenda)
+          this.agendaData = this.agenda[0].data;
+          this.agendaHora = this.agenda[0].hora;
+
+
+        }).catch((resp)=>{
+          console.log(resp);
+        });
+
+    });
   }
 
   //Navegação
