@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
@@ -73,7 +73,7 @@ export class MensagemPage {
             loading.dismiss();
 
             if( retorno == "sucesso"){
-              let alerta_sucesso = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Sucesso',
                 subTitle : "Mensagem enviada com sucesso, o mais breve possivel entraremos em contato",
                 buttons : [{
@@ -86,7 +86,7 @@ export class MensagemPage {
             }else if ( retorno == "erro"){
               loading.dismiss();
 
-              let alerta_erro = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Ops .. Algo deu errado',
                 subTitle : "Não conseguimos enviar sua mensagem, tente novamente.",
                 buttons : [{
@@ -101,7 +101,7 @@ export class MensagemPage {
             console.log(err.json());
             loading.dismiss();
 
-              let alerta_erro_resposta = this.alertCtrl.create({
+              this.alertCtrl.create({
                   title: 'Ops .. Algo deu errado',
                   subTitle : "Não foi possivel conectar com o banco de dados, tente novamente.",
                   buttons : [{

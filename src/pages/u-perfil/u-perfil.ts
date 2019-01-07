@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Storage } from '@ionic/storage';

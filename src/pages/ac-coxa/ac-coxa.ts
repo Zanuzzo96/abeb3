@@ -27,8 +27,6 @@ export class AcCoxaPage {
   lipoBiotipo = this.navParams.get('lipoBiotipo');
   ImcPeso = this.navParams.get('ImcPeso');
   Imcaltura = this.navParams.get('Imcaltura');
-  ImcPesoMin = this.navParams.get('ImcPesoMin');
-  ImcPesoMax = this.navParams.get('ImcPesoMax');
   ImcPesoObs = this.navParams.get('ImcPesoObs');
   resultadoImc = this.navParams.get('ImcResultado');
   flacidezTissular = this.navParams.get('flacidezTissular');
@@ -50,7 +48,6 @@ export class AcCoxaPage {
   abdomen = this.navParams.get('abdomen');
   cintura = this.navParams.get('cintura');
   quadril = this.navParams.get('quadril');
-  culote = this.navParams.get('culote');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -83,8 +80,6 @@ export class AcCoxaPage {
       lipoBiotipo: this.lipoBiotipo,
       ImcPeso: this.ImcPeso,
       Imcaltura: this.Imcaltura,
-      ImcPesoMin: this.ImcPesoMin,
-      ImcPesoMax: this.ImcPesoMax,
       ImcPesoObs: this.ImcPesoObs,
       ImcResultado: this.resultadoImc,
       flacidezTissular: this.flacidezTissular,
@@ -106,7 +101,6 @@ export class AcCoxaPage {
       abdomen: this.abdomen,
       cintura: this.cintura,
       quadril: this.quadril,
-      culote: this.culote,
       coxaEsq: this.coxa.coxaEsq,
       coxaDir: this.coxa.coxaDir
     })

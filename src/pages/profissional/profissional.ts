@@ -10,7 +10,7 @@ import { PSugestoesPage } from '../p-sugestoes/p-sugestoes';
 import { PPerfilPage } from '../p-perfil/p-perfil';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
-import { Headers, Http, Response, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @IonicPage()

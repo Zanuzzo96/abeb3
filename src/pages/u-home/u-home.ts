@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import {NgProgressService} from 'ng2-progressbar';
-
 import { UDiarioPage } from '../u-diario/u-diario';
 import { UDicasPage } from '../u-dicas/u-dicas';
 import { UPerfilPage } from '../u-perfil/u-perfil';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
-import { Headers, Http, Response, RequestOptions } from '@angular/http';
+import {  Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 
@@ -30,9 +28,6 @@ export class UHomePage {
     public navParams: NavParams,
     private storage: Storage,
     public http: Http) {
-
-
-
 
     }//fim do construtor
 
@@ -120,10 +115,10 @@ export class UHomePage {
 
 // Doughnut
 //public doughnutChartLabels:string[] = ['Perca de peso', 'Meta',];
-public doughnutChartData:number[] = [70, 30];
-public doughnutChartType:string = 'doughnut';
+//public doughnutChartData:number[] = [70, 30];
+//public doughnutChartType:string = 'doughnut';
 
-private doughnutChartColors: any[] = [{ backgroundColor: ["#f89e33", "#4e4940"] }];
+//private doughnutChartColors: any[] = [{ backgroundColor: ["#f89e33", "#4e4940"] }];
 
 
 }

@@ -59,13 +59,8 @@ import { UPerfilPage } from '../pages/u-perfil/u-perfil';
 
 //funcionalidades importadas
 import { ChartsModule } from 'ng2-charts';
-import { Network } from  '@ionic-native/network';
-import { NgProgressModule } from  'ng2-progressbar';
 import { HttpModule } from '@angular/http';
-import { Geolocation } from '@ionic-native/geolocation';
-import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
-import { Camera } from '@ionic-native/camera';
+
 //providers
 import { LoginProvider } from '../providers/login/login';
 import { RcProvider } from '../providers/rc/rc';
@@ -107,7 +102,6 @@ import { AcBustoPage } from '../pages/ac-busto/ac-busto';
 import { AcCinturaPage } from '../pages/ac-cintura/ac-cintura';
 import { AcConcluidoPage } from '../pages/ac-concluido/ac-concluido';
 import { AcCoxaPage } from '../pages/ac-coxa/ac-coxa';
-import { AcCulotePage } from '../pages/ac-culote/ac-culote';
 import { AcEdemaPage } from '../pages/ac-edema/ac-edema';
 import { AcEstriasPage } from '../pages/ac-estrias/ac-estrias';
 import { AcFlacidezPage } from '../pages/ac-flacidez/ac-flacidez';
@@ -217,7 +211,6 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     AcCinturaPage,
     AcConcluidoPage,
     AcCoxaPage,
-    AcCulotePage,
     AcEdemaPage,
     AcEstriasPage,
     AcFlacidezPage,
@@ -248,7 +241,6 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     BrowserModule,
     IonicModule.forRoot(MyApp),
     ChartsModule,
-    NgProgressModule,
     HttpModule,
     IonicStorageModule.forRoot()
   ],
@@ -332,7 +324,6 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     AcCinturaPage,
     AcConcluidoPage,
     AcCoxaPage,
-    AcCulotePage,
     AcEdemaPage,
     AcEstriasPage,
     AcFlacidezPage,
@@ -363,13 +354,8 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Network,
     LoginProvider,
     RcProvider,
-    FileTransfer,
-    FileTransferObject,
-    File,
-    Camera,
     DicaProvider,
     LocalizacaoProvider,
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AcCulotePage } from '../ac-culote/ac-culote';
+import { AcCoxaPage } from '../ac-coxa/ac-coxa';
 
 
 
@@ -28,8 +28,6 @@ export class AcQuadrilPage {
   lipoBiotipo = this.navParams.get('lipoBiotipo');
   ImcPeso = this.navParams.get('ImcPeso');
   Imcaltura = this.navParams.get('Imcaltura');
-  ImcPesoMin = this.navParams.get('ImcPesoMin');
-  ImcPesoMax = this.navParams.get('ImcPesoMax');
   ImcPesoObs = this.navParams.get('ImcPesoObs');
   resultadoImc = this.navParams.get('ImcResultado');
   flacidezTissular = this.navParams.get('flacidezTissular');
@@ -63,7 +61,7 @@ export class AcQuadrilPage {
   }
 
   continuar(){
-      this.navCtrl.push(AcCulotePage,{
+      this.navCtrl.push(AcCoxaPage,{
         sexo: this.sexo,
         cliente: this.cliente,
         hldgTipo: this.hldgTipo,
@@ -81,8 +79,6 @@ export class AcQuadrilPage {
         lipoBiotipo: this.lipoBiotipo,
         ImcPeso: this.ImcPeso,
         Imcaltura: this.Imcaltura,
-        ImcPesoMin: this.ImcPesoMin,
-        ImcPesoMax: this.ImcPesoMax,
         ImcPesoObs: this.ImcPesoObs,
         ImcResultado: this.resultadoImc,
         flacidezTissular: this.flacidezTissular,

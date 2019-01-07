@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { HomePage } from '../home/home';
@@ -78,7 +78,7 @@ export class RegistroClientePage {
             loading.dismiss();
 
             if( retorno == "sucesso"){
-              let alerta_sucesso = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Sucesso',
                 subTitle : "Cadastro gerado com sucesso",
                 buttons : [{
@@ -89,7 +89,7 @@ export class RegistroClientePage {
                 }]
               }).present();
             }else if ( retorno == "erro"){
-              let alerta_erro = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Ops .. Algo deu errado',
                 subTitle : "Você não preencheu todo o formulário.",
                 buttons : [{
@@ -97,7 +97,7 @@ export class RegistroClientePage {
                 }]
               }).present();
             }else if ( retorno == "erro0"){
-              let alerta_erro0 = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Ops .. Algo deu errado',
                 subTitle : "CPF ou Login já cadastrados.",
                 buttons : [{
@@ -107,11 +107,7 @@ export class RegistroClientePage {
             }
           },
           err => {
-
-            console.log(err.json());
-            let testeretorno = err.json();
-
-            let alerta_erro_resposta = this.alertCtrl.create({
+            this.alertCtrl.create({
               title: 'Ops .. Algo deu errado',
               subTitle : "Não foi possivel conectar com o banco de dados, tente novamente.",
               buttons : [{

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Headers, Http, Response, RequestOptions } from '@angular/http';
+import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
@@ -92,7 +92,7 @@ export class AgendaPage {
             loading.dismiss();
 
             if( retorno == "sucesso"){
-              let alerta_sucesso = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Sucesso',
                 subTitle : "Sessão agendada com sucesso",
                 buttons : [{
@@ -103,7 +103,7 @@ export class AgendaPage {
                 }]
               }).present();
             }else if ( retorno == "erro"){
-              let alerta_erro = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Ops .. Algo deu errado',
                 subTitle : "Você já está na ultima sessão do seu tratamento.",
                 buttons : [{
@@ -111,7 +111,7 @@ export class AgendaPage {
                 }]
               }).present();
             }else if ( retorno == "erro1"){
-              let alerta_erro0 = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Ops .. Algo deu errado',
                 subTitle : "Erro ao inserir sessão na sua agenda, tente novamente.",
                 buttons : [{

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PSessoesPage } from '../p-sessoes/p-sessoes';
-import { Headers, Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 

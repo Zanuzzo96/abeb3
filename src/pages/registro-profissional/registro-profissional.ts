@@ -78,7 +78,7 @@ export class RegistroProfissionalPage {
             let retorno = res.json();
 
             if(retorno == 'sucesso'){
-              let alerta_sucesso = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Sucesso',
                 subTitle : "Cadastro profissional gerado com sucesso",
                 buttons : [{
@@ -89,7 +89,7 @@ export class RegistroProfissionalPage {
                 }]
               }).present();
             }else if(retorno == 'erro'){
-              let alerta_erro = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Ops .. Algo deu errado',
                 subTitle : "Você não preencheu todo formulário.",
                 buttons : [{
@@ -97,7 +97,7 @@ export class RegistroProfissionalPage {
                 }]
               }).present();
             }else if(retorno == 'erro0'){
-              let alerta_erro = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Ops .. Algo deu errado',
                 subTitle : "CPF ou Login já cadastrados.",
                 buttons : [{
@@ -109,7 +109,7 @@ export class RegistroProfissionalPage {
           err => {
             console.log(err.json());
 
-            let alerta_err = this.alertCtrl.create({
+            this.alertCtrl.create({
               title: 'Ops .. Algo deu errado',
               subTitle : "Não foi possivel conectar com o banco de dados, tente novamente.",
               buttons : [{

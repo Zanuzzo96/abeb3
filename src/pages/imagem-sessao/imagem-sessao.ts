@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
@@ -84,7 +84,7 @@ export class ImagemSessaoPage {
 
             if( retorno == "sucesso"){
               loading.dismiss();
-              let alerta = this.alertCtrl.create({
+              this.alertCtrl.create({
                 subTitle : "Imagem inserida com sucesso",
                 buttons : [{
                   text: "OK",
@@ -96,7 +96,7 @@ export class ImagemSessaoPage {
             }else if ( retorno == "erro"){
               loading.dismiss();
 
-              let alerta_erro = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Ops .. Algo deu errado',
                 subTitle : "Tivemos um problema para inserir imagem.",
                 buttons : [{

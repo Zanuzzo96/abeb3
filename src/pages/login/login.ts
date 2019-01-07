@@ -72,7 +72,7 @@ export class LoginPage {
             this.navCtrl.push(UsuarioPage);
           }
           else if ( this.permissao > 3) {
-            let alerta = this.alertCtrl.create({
+            this.alertCtrl.create({
               subTitle : "Não encontramos nenhum cadastro",
               buttons : [{
                 text: "OK",

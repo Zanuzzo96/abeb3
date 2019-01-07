@@ -49,7 +49,7 @@ export class ValidacaoRegistroNivelProfCadastroPage {
               }); //passar junto com a pagina o parametro da registrar com o rc no cadastro do profissional
             }else{
               loading.dismiss();
-              let alerta = this.alertCtrl.create({
+            this.alertCtrl.create({
                 subTitle : "Registro não encontrado",
                 buttons : [{
                   text: "OK",

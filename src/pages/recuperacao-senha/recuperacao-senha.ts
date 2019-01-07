@@ -54,7 +54,7 @@ recuperar() {
 
                 loading.dismiss();
 
-                let alerta_erro = this.alertCtrl.create({
+                this.alertCtrl.create({
                   title: 'Ops .. Algo deu errado',
                   subTitle : "Não encontramos o cadastro.",
                   buttons : [{
@@ -66,7 +66,7 @@ recuperar() {
 
         }).catch((response) => {
           loading.dismiss();
-          let alerta_erro = this.alertCtrl.create({
+          this.alertCtrl.create({
             title: 'Ops .. Algo deu errado',
             subTitle : "Ocorreu um erro com a comunicação com a API.",
             buttons : [{

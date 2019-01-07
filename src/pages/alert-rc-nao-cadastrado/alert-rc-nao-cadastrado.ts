@@ -44,7 +44,7 @@ export class AlertRcNaoCadastradoPage {
             let retorno = res.json();
 
             if( retorno == "sucesso"){
-              let alerta = this.alertCtrl.create({
+              this.alertCtrl.create({
                 title: 'Sucesso',
                 subTitle : "Entraremos em contato o mais breve possivel",
                 buttons : [{

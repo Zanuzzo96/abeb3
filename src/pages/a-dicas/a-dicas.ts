@@ -4,7 +4,7 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 
 import { AAdicionardicaPage } from '../a-adicionardica/a-adicionardica';
 import { AdminPage } from '../admin/admin';
-import { Headers, Http, Response } from '@angular/http';
+import {  Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 

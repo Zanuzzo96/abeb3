@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { Headers, Http, Response } from '@angular/http';
+import {  Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @IonicPage()
@@ -27,14 +27,13 @@ export class ASorteiosPage {
     this.http.get(api).toPromise().then((response) => {
 
       console.log(response);
-      let retorno = response.json();
 
     }).catch((response)=>{
       console.log(response);
 
     });
 
-    let alerta1 = this.alertCtrl.create({
+   this.alertCtrl.create({
       subTitle : "Enviamos o Profissional contemplado para o seu email",
       buttons : [{
         text: "OK",
@@ -49,14 +48,13 @@ export class ASorteiosPage {
     this.http.get(api).toPromise().then((response) => {
 
       console.log(response);
-      let retorno = response.json();
 
     }).catch((response)=>{
       console.log(response);
 
     });
 
-    let alerta2 = this.alertCtrl.create({
+    this.alertCtrl.create({
       subTitle : "Enviamos o Usuário contemplado para o seu email",
       buttons : [{
         text: "OK",

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MensagemPage } from '../mensagem/mensagem';
-import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
@@ -83,7 +83,7 @@ export class PerfilProfissionalPage {
             loading.dismiss();
 
             if( retorno == "sucesso"){
-              let alerta_sucesso = this.alertCtrl.create({
+            this.alertCtrl.create({
                 title: 'Sucesso',
                 subTitle : "Profissional selecionado com sucesso",
                 buttons : [{
@@ -96,7 +96,7 @@ export class PerfilProfissionalPage {
             }else if ( retorno == "erro"){
               loading.dismiss();
 
-              let alerta_erro = this.alertCtrl.create({
+            this.alertCtrl.create({
                 title: 'Ops .. Algo deu errado',
                 subTitle : "Tente novamente.",
                 buttons : [{
@@ -111,7 +111,7 @@ export class PerfilProfissionalPage {
             console.log(err.json());
             loading.dismiss();
 
-              let alerta_erro_resposta = this.alertCtrl.create({
+              this.alertCtrl.create({
                   title: 'Ops .. Algo deu errado',
                   subTitle : "Não foi possivel conectar com o banco de dados, tente novamente.",
                   buttons : [{

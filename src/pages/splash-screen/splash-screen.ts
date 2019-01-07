@@ -17,7 +17,7 @@ export class SplashScreenPage {
     console.log('ionViewDidLoad SplashScreenPage');
 
     let TIME_IN_MS = 10000;
-    let hideFooterTimeout = setTimeout( () => {
+    setTimeout( () => {
          console.log('teste');
          this.navCtrl.push(HomePage);
     }, TIME_IN_MS);

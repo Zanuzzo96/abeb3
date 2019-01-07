@@ -27,8 +27,6 @@ export class AcAbdomenPage {
   lipoBiotipo = this.navParams.get('lipoBiotipo');
   ImcPeso = this.navParams.get('ImcPeso');
   Imcaltura = this.navParams.get('Imcaltura');
-  ImcPesoMin = this.navParams.get('ImcPesoMin');
-  ImcPesoMax = this.navParams.get('ImcPesoMax');
   ImcPesoObs = this.navParams.get('ImcPesoObs');
   resultadoImc = this.navParams.get('ImcResultado');
   flacidezTissular = this.navParams.get('flacidezTissular');
@@ -78,8 +76,6 @@ export class AcAbdomenPage {
       lipoBiotipo: this.lipoBiotipo,
       ImcPeso: this.ImcPeso,
       Imcaltura: this.Imcaltura,
-      ImcPesoMin: this.ImcPesoMin,
-      ImcPesoMax: this.ImcPesoMax,
       ImcPesoObs: this.ImcPesoObs,
       ImcResultado: this.resultadoImc,
       flacidezTissular: this.flacidezTissular,

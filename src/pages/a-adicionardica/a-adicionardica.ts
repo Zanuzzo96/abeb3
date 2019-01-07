@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
-import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { ADicasPage } from '../a-dicas/a-dicas';
 
@@ -87,7 +87,7 @@ export class AAdicionardicaPage {
             let retorno = res.json();
 
             if(retorno == "sucesso"){
-              let alerta = this.alertCtrl.create({
+              this.alertCtrl.create({
                 subTitle : "Dica inserida com sucesso",
                 buttons : [{
                   text: "OK",
@@ -98,7 +98,7 @@ export class AAdicionardicaPage {
               }).present();
               loading.dismiss();
             }else{
-              let alerta = this.alertCtrl.create({
+              this.alertCtrl.create({
                 subTitle : "Não conseguimos inserir a dica, tente novamente",
                 buttons : [{
                   text: "OK",

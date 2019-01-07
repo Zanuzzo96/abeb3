@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AcFlacidezPage } from '../ac-flacidez/ac-flacidez';
 import { AcResultadoImcPage } from '../ac-resultado-imc/ac-resultado-imc';
 
 AcResultadoImcPage
@@ -31,8 +30,6 @@ export class AcImcPage {
   public imc = {
     "peso":"",
     "altura":"",
-    "pesoMin":"",
-    "pesoMax":"",
     "resultado":"",
     "obs":""
   }
@@ -67,8 +64,6 @@ export class AcImcPage {
       lipoBiotipo: this.lipoBiotipo,
       ImcPeso: this.imc.peso,
       Imcaltura: this.imc.altura,
-      ImcPesoMin: this.imc.pesoMin,
-      ImcPesoMax: this.imc.pesoMax,
       ImcPesoObs: this.imc.obs,
       ImcResultado: imcCalc
     })

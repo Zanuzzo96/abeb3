@@ -25,17 +25,16 @@ export class AcResultadoImcPage {
   lipoBiotipo = this.navParams.get('lipoBiotipo');
   ImcPeso = this.navParams.get('ImcPeso');
   Imcaltura = this.navParams.get('Imcaltura');
-  ImcPesoMin = this.navParams.get('ImcPesoMin');
-  ImcPesoMax = this.navParams.get('ImcPesoMax');
   ImcPesoObs = this.navParams.get('ImcPesoObs');
-  resultadoImc = this.navParams.get('ImcResultado');
+  resultadoImc = this.navParams.get('ImcResultado').toFixed(2);
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcResultadoImcPage', this.cliente, this.cliente);
-
+    //console.log(this.resultadoImc1)
     console.log(this.resultadoImc);
 
   }
@@ -59,8 +58,6 @@ export class AcResultadoImcPage {
       lipoBiotipo: this.lipoBiotipo,
       ImcPeso: this.ImcPeso,
       Imcaltura: this.Imcaltura,
-      ImcPesoMin: this.ImcPesoMin,
-      ImcPesoMax: this.ImcPesoMax,
       ImcPesoObs: this.ImcPesoObs,
       ImcResultado: this.resultadoImc
     })

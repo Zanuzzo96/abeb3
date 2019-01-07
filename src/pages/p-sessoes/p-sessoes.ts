@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {NgProgressService} from 'ng2-progressbar';
 
 import { SaudePg1Page } from '../saude-pg1/saude-pg1';
 import { SeInicioPage } from '../se-inicio/se-inicio';
@@ -9,7 +8,7 @@ import { ProfissionalPage } from '../profissional/profissional';
 import { AgendaPage } from '../agenda/agenda';
 import { ImagemSessaoPage } from '../imagem-sessao/imagem-sessao';
 import { IniciarTratamentoPage } from '../iniciar-tratamento/iniciar-tratamento';
-import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
@@ -178,7 +177,7 @@ export class PSessoesPage {
                     if(retorno == "sucesso"){
                       loading.dismiss()
 
-                      let alerta = this.alertCtrl.create({
+                      this.alertCtrl.create({
                         subTitle : "Sessão concluida com sucesso",
                         buttons : [{
                           text: "OK",
@@ -190,7 +189,7 @@ export class PSessoesPage {
                     }else{
                       loading.dismiss()
 
-                      let alerta = this.alertCtrl.create({
+                      this.alertCtrl.create({
                         subTitle : "Não conseguimos concluir a sessão, tente novamente",
                         buttons : [{
                           text: "OK",

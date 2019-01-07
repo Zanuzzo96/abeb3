@@ -80,7 +80,7 @@ export class SeResultadoPage {
 
                   if( retorno == "sucesso"){
                     loading.dismiss();
-                    let alerta = this.alertCtrl.create({
+                    this.alertCtrl.create({
                       subTitle : "Avaliação já registrada no banco e enviada para o seu email, caso não encontre na caixa de entrada verifique no caixa de span",
                       buttons : [{
                         text: "OK",
@@ -92,7 +92,7 @@ export class SeResultadoPage {
                   }else if ( retorno == "erro"){
                     loading.dismiss();
 
-                    let alerta_erro = this.alertCtrl.create({
+                    this.alertCtrl.create({
                       title: 'Ops .. Algo deu errado',
                       subTitle : "Tivemos um problema para salvar seu teste.",
                       buttons : [{
@@ -108,7 +108,7 @@ export class SeResultadoPage {
                   loading.dismiss();
 
 
-                  let alerta_erro_resposta = this.alertCtrl.create({
+                  this.alertCtrl.create({
                     title: 'Ops .. Algo deu errado',
                     subTitle : "Ocorreu um erro ao salvar o resultado do teste no banco de dados.",
                     buttons : [{

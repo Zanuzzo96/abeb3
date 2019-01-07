@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
@@ -52,7 +52,7 @@ export class AIncluirrcPage {
             console.log(retorno);
 
             if(retorno == "sucesso"){
-              let alerta = this.alertCtrl.create({
+              this.alertCtrl.create({
                 subTitle : "RC inserido com sucesso",
                 buttons : [{
                   text: "OK",
@@ -63,7 +63,7 @@ export class AIncluirrcPage {
               }).present();
               loading.dismiss();
             }else if(retorno == "duplo"){
-              let alerta = this.alertCtrl.create({
+              this.alertCtrl.create({
                 subTitle : "RC já esta cadastrado no banco",
                 buttons : [{
                   text: "OK",
@@ -74,7 +74,7 @@ export class AIncluirrcPage {
               }).present();
               loading.dismiss();
             }else{
-              let alerta = this.alertCtrl.create({
+              this.alertCtrl.create({
                 subTitle : "Não conseguimos inserir o RC, tente novamente",
                 buttons : [{
                   text: "OK",

@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { AAdicionardicaPage } from '../a-adicionardica/a-adicionardica';
 import { AUsuariosPage } from '../a-usuarios/a-usuarios';
 import { AProfissionaisPage } from '../a-profissionais/a-profissionais';
-import { AProspectosPage } from '../a-prospectos/a-prospectos';
 import { ARelatoriosPage } from '../a-relatorios/a-relatorios';
 import { ASorteiosPage } from '../a-sorteios/a-sorteios';
 import { ADicasPage } from '../a-dicas/a-dicas';
