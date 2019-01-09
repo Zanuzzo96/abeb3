@@ -25,34 +25,34 @@
 
 <ion-content class="fundo" [ngSwitch]="cadastro">
 
-  <div *ngSwitchCase = "'perfil'" ngSelected="selected" text-center align-items-center>
+  <div *ngSwitchCase = "'perfil'" ngSelected="selected">
 
     <div class="dados">
       <ion-list>
 
         <ion-item>
           <ion-label floating>Nome Completo</ion-label>
-            <ion-input type="text" value="{{perfilUsuario.nome}}"></ion-input>
+            <ion-input type="text" value="{{perfilUsuario.nome}}" [(ngModel)]="perfilUsuario.nome"></ion-input>
           </ion-item>
         <ion-item>
           <ion-label floating>CPF</ion-label>
-            <ion-input type="text" value="{{perfilUsuario.cpf}}"></ion-input>
+            <ion-input type="number" value="{{perfilUsuario.cpf}}" [(ngModel)]="perfilUsuario.cpf"></ion-input>
           </ion-item>
         <ion-item>
           <ion-label floating>Data de nascimento</ion-label>
-            <ion-input type="text" value="{{perfilUsuario.nasc}}"></ion-input>
+            <ion-datetime displayFormat="DD/MM/YYYY" cancelText=Cancelar doneText=Ok [(ngModel)]="perfilUsuario.nasc"></ion-datetime>
           </ion-item>
         <ion-item>
           <ion-label floating>Sexo</ion-label>
-            <ion-input type="text" value="{{perfilUsuario.sexo}}"></ion-input>
+            <ion-input type="text" value="{{perfilUsuario.sexo}}" [(ngModel)]="perfilUsuario.sexo"></ion-input>
           </ion-item>
         <ion-item>
           <ion-label floating>Telefone</ion-label>
-            <ion-input type="text" value="{{perfilUsuario.telefone}}"></ion-input>
+            <ion-input type="number" value="{{perfilUsuario.telefone}}" [(ngModel)]="perfilUsuario.telefone"></ion-input>
           </ion-item>
         <ion-item>
           <ion-label floating>Email</ion-label>
-            <ion-input type="text" value="{{perfilUsuario.email}}"></ion-input>
+            <ion-input type="text" value="{{perfilUsuario.email}}" [(ngModel)]="perfilUsuario.email"></ion-input>
         </ion-item>
         <ion-item>
         </ion-item>
@@ -60,22 +60,29 @@
     </div>
   </div>
 
-  <div *ngSwitchCase = "'endereco'" text-center align-items-center>
+  <div *ngSwitchCase = "'endereco'">
     <div class="dados">
 
       <ion-list>
         <ion-item>
+          <ion-label floating>CEP</ion-label>
+          <ion-input type="number" value="{{perfilUsuario.cep}}" [(ngModel)]="perfilUsuario.cep"></ion-input>
+        </ion-item>
+        <ion-item style="border: 0px">
+            <span class="btnAtualizarCep" (click)="atualizarCep()">Atualizar endereço pelo cep</span>
+        </ion-item>
+        <ion-item>
           <ion-label floating>Rua, Numero e Bairro</ion-label>
-            <ion-input type="text" value="{{perfilUsuario.rua}}"></ion-input>
-          </ion-item>
+          <ion-input type="text" value="{{perfilUsuario.rua}}" [(ngModel)]="perfilUsuario.rua"></ion-input>
+        </ion-item>
 
         <ion-item>
           <ion-label floating>Cidade</ion-label>
-            <ion-input type="text" value="{{perfilUsuario.cidade}}"></ion-input>
+            <ion-input type="text" value="{{perfilUsuario.cidade}}" [(ngModel)]="perfilUsuario.cidade"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Estado</ion-label>
-            <ion-input type="text" value="{{perfilUsuario.estado}}"></ion-input>
+            <ion-input type="text" value="{{perfilUsuario.estado}}" [(ngModel)]="perfilUsuario.estado"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -86,3 +93,7 @@
   </div>
 
 </ion-content>
+
+<ion-footer>
+  <button ion-button block color="amarelo1" (click)="atualizar()">Atualizar perfil</button>
+</ion-footer>

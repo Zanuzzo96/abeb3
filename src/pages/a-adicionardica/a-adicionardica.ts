@@ -111,6 +111,16 @@ export class AAdicionardicaPage {
           err => {
 
             console.log(err.json());
+            
+            loading.dismiss();
+
+            this.alertCtrl.create({
+              title: 'Ops .. Algo deu errado',
+              subTitle : "Não foi possivel conectar com o banco de dados, tente novamente.",
+              buttons : [{
+                text: "OK",
+              }]
+            }).present();
 
           }
         );

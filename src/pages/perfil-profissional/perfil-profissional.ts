@@ -84,8 +84,8 @@ export class PerfilProfissionalPage {
 
             if( retorno == "sucesso"){
             this.alertCtrl.create({
-                title: 'Sucesso',
-                subTitle : "Profissional selecionado com sucesso",
+                title: 'Profissional selecionado com sucesso',
+                subTitle : "Em breve o profissional entrará em contato com você",
                 buttons : [{
                   text: "OK",
                   handler: () => {

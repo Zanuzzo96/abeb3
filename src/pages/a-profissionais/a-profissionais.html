@@ -8,12 +8,33 @@
     </ion-buttons>
     <ion-title>Profissionais</ion-title>
   </ion-toolbar>
+  <ion-segment [(ngModel)]="rc">
+    <ion-segment-button value="ativos">
+      RC Ativos
+    </ion-segment-button>
 
+     <ion-segment-button value="cadastrados">
+       RC Cadastrados
+     </ion-segment-button>
+
+   </ion-segment>
 </ion-header>
 
 
-<ion-content padding>
-  <button ion-button color="amarelo1" block (click)="adicionarrc()">Adicionar RC</button>
+<ion-content padding [ngSwitch]="rc">
 
-  <h6 text-center>RC ativos</h6>
+  <div *ngSwitchCase = "'ativos'" ngSelected="selected">
+    <h5 text-center>RC Ativos</h5>
+  </div>
+
+  <div *ngSwitchCase = "'cadastrados'">
+    <h5 text-center>RC Cadastrados</h5>
+  </div>
+
+
 </ion-content>
+
+
+<ion-footer>
+  <button ion-button color="amarelo1" block (click)="adicionarrc()">Adicionar RC</button>
+</ion-footer>

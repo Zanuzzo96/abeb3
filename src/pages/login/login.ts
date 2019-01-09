@@ -70,6 +70,8 @@ export class LoginPage {
           }
           else if ( this.permissao == 0){
             this.navCtrl.push(UsuarioPage);
+            console.log(this.id_login)
+            console.log(this.permissao)
           }
           else if ( this.permissao > 3) {
             this.alertCtrl.create({

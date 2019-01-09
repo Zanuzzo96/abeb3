@@ -15,6 +15,9 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 })
 export class AProfissionaisPage {
 
+  //dados da parte das abas o selecionado
+  rc = "ativos";
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
