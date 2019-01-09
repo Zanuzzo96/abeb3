@@ -32,7 +32,12 @@ export class LoginPage {
               public navCtrl: NavController,
               public navParams: NavParams,
               private loginProvider: LoginProvider,
-              private storage: Storage) {  }
+              private storage: Storage) {
+
+                storage.remove('id_login');
+                storage.remove('permissao');
+
+ }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');

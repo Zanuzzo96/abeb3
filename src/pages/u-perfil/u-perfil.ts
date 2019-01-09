@@ -178,6 +178,13 @@ export class UPerfilPage {
             err => {
               loading.dismiss();
               console.log(err.json());
+              this.alertCtrl.create({
+                title: 'Ops .. Algo deu errado',
+                subTitle : "Não conseguimos acessar o banco de dados.",
+                buttons : [{
+                  text: "OK",
+                }]
+              }).present();
             }
           );
 });

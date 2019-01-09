@@ -115,7 +115,7 @@ export class AcConcluidoPage {
     let api = 'https://lipolysis.grupoanx.com.br/formulario/corporal.php';
     let headers: Headers = new Headers();
       headers.append('Content-type','application/json');
-      console.log(this.ac)
+      console.log(this.ac.ImcResultado)
       return this.http.post(
         api,
         this.ac,

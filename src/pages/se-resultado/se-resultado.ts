@@ -33,7 +33,6 @@ export class SeResultadoPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeResultadoPage');
     console.log("cliente",this.cliente);
-
   }
 
   concluir(){
@@ -99,6 +98,8 @@ export class SeResultadoPage {
                         text: "OK",
                       }]
                     }).present();
+                  }else if ( retorno != "erro" && retorno != "sucesso"){
+                    loading.dismiss();
                   }
 
                 },
