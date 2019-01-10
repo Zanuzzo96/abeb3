@@ -17,6 +17,10 @@
        RC Cadastrados
      </ion-segment-button>
 
+     <ion-segment-button value="bloqueados">
+       RC Bloqueados
+     </ion-segment-button>
+
    </ion-segment>
 </ion-header>
 
@@ -25,12 +29,80 @@
 
   <div *ngSwitchCase = "'ativos'" ngSelected="selected">
     <h5 text-center>RC Ativos</h5>
+
+    <ion-card *ngFor="let dados of cadastros" class="box">
+      <ion-card-content>
+        <h3>RC: {{dados.rc}}</h3>
+        <h3>Nome: {{dados.nome}}</h3>
+        <h3>Telefone: {{dados.telefone}}</h3>
+        <h3>Email: {{dados.email}}</h3>
+
+        <ion-row>
+           <ion-col>
+             <button class="btnBox" ion-button icon-start clear small (click)="bloquear(dados.rc)">
+               <ion-icon name="ios-lock-outline"></ion-icon>
+               <div>Bloquear</div>
+             </button>
+           </ion-col>
+           <ion-col>
+             <button class="btnBox" ion-button icon-start clear small (click)="apagar(dados.rc)">
+               <ion-icon name="ios-backspace-outline"></ion-icon>
+               <div>Apagar</div>
+             </button>
+           </ion-col>
+         </ion-row>
+      </ion-card-content>
+
+    </ion-card>
   </div>
 
   <div *ngSwitchCase = "'cadastrados'">
     <h5 text-center>RC Cadastrados</h5>
+
+    <ion-card *ngFor="let dados of rcs" class="box">
+      <ion-card-content>
+        <ion-row>
+          <ion-col col-8>
+            <h2>RC: {{dados.rc}}</h2>
+          </ion-col>
+
+           <ion-col col-4>
+             <button class="btnBox" ion-button icon-start clear small (click)="apagar(dados.rc)">
+               <ion-icon name="ios-backspace-outline"></ion-icon>
+               <div>
+                 Apagar
+               </div>
+             </button>
+           </ion-col>
+         </ion-row>
+      </ion-card-content>
+
+    </ion-card>
+
   </div>
 
+  <div *ngSwitchCase = "'bloqueados'">
+    <h5 text-center>RC Bloqueados</h5>
+
+    <ion-card *ngFor="let dados of bloqs" class="box">
+      <ion-card-content>
+        <ion-row>
+          <ion-col col-6>
+            <h2>RC: {{dados.rc}}</h2>
+          </ion-col>
+
+           <ion-col col-6>
+             <button class="btnBox" ion-button icon-start clear small (click)="desbloquear(dados.rc)">
+               <ion-icon name="ios-backspace-outline"></ion-icon>
+               <div>
+                 desbloquear
+               </div>
+             </button>
+           </ion-col>
+         </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 </ion-content>
 

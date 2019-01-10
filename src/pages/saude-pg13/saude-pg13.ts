@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { ProfissionalPage } from '../profissional/profissional';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 
 @IonicPage()
@@ -12,7 +14,12 @@ import { ProfissionalPage } from '../profissional/profissional';
 })
 export class SaudePg13Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http) { }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController) { }
 
   cliente = this.navParams.get('cliente');
   sexo = this.navParams.get('sexo');
@@ -153,6 +160,12 @@ export class SaudePg13Page {
 
     console.log(saude);
 
+    let loading = this.loadingCtrl.create({
+      content : "Registrando a avaliação e enviando para o seu email",
+    });
+
+    loading.present();
+
   let api = 'https://lipolysis.grupoanx.com.br/formulario/saude.php';
 
   let headers: Headers = new Headers();
@@ -165,11 +178,52 @@ export class SaudePg13Page {
     ).subscribe(
         res => {
           console.log(res.json());
-          this.navCtrl.push(ProfissionalPage);
+
+          let retorno = res.json();
+
+          if( retorno == "sucesso"){
+            loading.dismiss();
+            this.alertCtrl.create({
+              subTitle : "Avaliação já registrada no banco e enviada para o seu email, caso não encontre na caixa de entrada verifique no caixa de span",
+              buttons : [{
+                text: "OK",
+                handler: () => {
+                   this.navCtrl.push(ProfissionalPage)
+                 }
+              }]
+            }).present();
+          }else if ( retorno == "erro"){
+            loading.dismiss();
+
+            this.alertCtrl.create({
+              title: 'Ops .. Algo deu errado',
+              subTitle : "Tivemos um problema para salvar seu teste.",
+              buttons : [{
+                text: "OK",
+              }]
+            }).present();
+          }else if ( retorno != "erro" && retorno != "sucesso"){
+            loading.dismiss();
+            this.alertCtrl.create({
+              title: 'Ops .. Algo deu errado',
+              subTitle : "Tivemos um problema para salvar seu teste.",
+              buttons : [{
+                text: "OK",
+              }]
+            }).present();
+          }
         },
         err => {
           console.log(err.json());
-          this.navCtrl.push(ProfissionalPage);
+          loading.dismiss();
+
+          this.alertCtrl.create({
+            title: 'Ops .. Algo deu errado',
+            subTitle : "Ocorreu um erro ao salvar o resultado do teste no banco de dados.",
+            buttons : [{
+              text: "OK",
+            }]
+          }).present();
         }
       );
 
