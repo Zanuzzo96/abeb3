@@ -45,6 +45,9 @@ export class AcAbdomenPage {
   busto = this.navParams.get('busto');
   bracoEsquerdo = this.navParams.get('bracoEsquerdo');
   bracoDireito = this.navParams.get('bracoDireito');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -55,6 +58,8 @@ export class AcAbdomenPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcAbdomenPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -95,6 +100,9 @@ export class AcAbdomenPage {
       bracoEsquerdo : this.bracoEsquerdo,
       bracoDireito : this.bracoDireito,
       abdomen: this.abdomen.abdomen,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

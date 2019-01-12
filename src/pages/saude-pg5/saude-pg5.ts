@@ -31,6 +31,9 @@ export class SaudePg5Page {
   fumante = this.navParams.get('fumante');
   alimentacao = this.navParams.get('alimentacao');
   alimentacaoTipo = this.navParams.get('alimentacaoTipo');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg5Page');
@@ -63,7 +66,11 @@ export class SaudePg5Page {
 
       ingereLiquidos: this.ingereLiquidos,
       ingereLiquidosObs: this.ingereLiquidosObs,
-      liquidosQuantos: this.liquidosQuantos
+      liquidosQuantos: this.liquidosQuantos,
+
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     });
   }
 

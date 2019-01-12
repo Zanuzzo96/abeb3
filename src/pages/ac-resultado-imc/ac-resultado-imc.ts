@@ -27,6 +27,9 @@ export class AcResultadoImcPage {
   Imcaltura = this.navParams.get('Imcaltura');
   ImcPesoObs = this.navParams.get('ImcPesoObs');
   resultadoImc = this.navParams.get('ImcResultado').toFixed(2);
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
@@ -36,6 +39,8 @@ export class AcResultadoImcPage {
     console.log('ionViewDidLoad AcResultadoImcPage', this.cliente, this.cliente);
     //console.log(this.resultadoImc1)
     console.log(this.resultadoImc);
+    console.log(this.data)
+    console.log(this.hora)
 
   }
 
@@ -59,7 +64,10 @@ export class AcResultadoImcPage {
       ImcPeso: this.ImcPeso,
       Imcaltura: this.Imcaltura,
       ImcPesoObs: this.ImcPesoObs,
-      ImcResultado: this.resultadoImc
+      ImcResultado: this.resultadoImc,
+      tratamento:this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

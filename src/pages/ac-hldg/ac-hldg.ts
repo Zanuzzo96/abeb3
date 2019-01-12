@@ -11,6 +11,9 @@ export class AcHldgPage {
 
   sexo = this.navParams.get('sexo');
   cliente = this.navParams.get('cliente');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   public hldg={
     "tipo":"",
@@ -26,6 +29,8 @@ export class AcHldgPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcHldgPage',this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -38,7 +43,10 @@ export class AcHldgPage {
       hldgLocal: this.hldg.local,
       hldgColoracao: this.hldg.coloracao,
       hldgTemp: this.hldg.temp,
-      hldgPalpacao: this.hldg.palpacao
+      hldgPalpacao: this.hldg.palpacao,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

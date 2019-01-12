@@ -45,6 +45,9 @@ export class AcCinturaPage {
   bracoEsquerdo = this.navParams.get('bracoEsquerdo');
   bracoDireito = this.navParams.get('bracoDireito');
   abdomen = this.navParams.get('abdomen');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -55,6 +58,8 @@ export class AcCinturaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcCinturaPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -95,7 +100,10 @@ export class AcCinturaPage {
       bracoEsquerdo : this.bracoEsquerdo,
       bracoDireito : this.bracoDireito,
       abdomen: this.abdomen,
-      cintura: this.cintura.cintura
+      cintura: this.cintura.cintura,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

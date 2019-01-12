@@ -48,6 +48,9 @@ export class AcCoxaPage {
   abdomen = this.navParams.get('abdomen');
   cintura = this.navParams.get('cintura');
   quadril = this.navParams.get('quadril');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -59,6 +62,8 @@ export class AcCoxaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcCoxaPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -102,7 +107,10 @@ export class AcCoxaPage {
       cintura: this.cintura,
       quadril: this.quadril,
       coxaEsq: this.coxa.coxaEsq,
-      coxaDir: this.coxa.coxaDir
+      coxaDir: this.coxa.coxaDir,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

@@ -17,6 +17,9 @@ export class AcEdemaPage {
   hldgColoracao = this.navParams.get('hldgColoracao');
   hldgTemp = this.navParams.get('hldgTemp');
   hldgPalpacao = this.navParams.get('hldgPalpacao');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
 
   public edema = {
@@ -30,6 +33,8 @@ export class AcEdemaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcEdemaPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -45,7 +50,10 @@ export class AcEdemaPage {
       hldgPalpacao: this.hldgPalpacao,
       edemaPressao: this.edema.pressao,
       edemaMmii: this.edema.mmii,
-      edemaObs: this.edema.obs
+      edemaObs: this.edema.obs,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

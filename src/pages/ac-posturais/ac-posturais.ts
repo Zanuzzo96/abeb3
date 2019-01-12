@@ -36,6 +36,9 @@ export class AcPosturaisPage {
   estriasTipo = this.navParams.get('estriasTipo');
   estriasQuantidade = this.navParams.get('estriasQuantidade');
   estriasRegiao = this.navParams.get('estriasRegiao');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -49,6 +52,8 @@ export class AcPosturaisPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcPosturaisPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -85,6 +90,9 @@ export class AcPosturaisPage {
       posturaisColuna : this.posturais.coluna,
       posturaisQuadril : this.posturais.quadril,
       posturaisJoelhos : this.posturais.joelhos,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

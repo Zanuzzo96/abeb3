@@ -51,7 +51,9 @@ export class SaudePg9Page {
   metaislocal = this.navParams.get('metaislocal');
   cancer = this.navParams.get('cancer');
   cancerQual = this.navParams.get('cancerQual');
-
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg9Page');
@@ -112,6 +114,9 @@ export class SaudePg9Page {
       anticoncepcional: this.anticoncepcional,
       anticoncepcionalQual: this.anticoncepcionalQual,
 
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

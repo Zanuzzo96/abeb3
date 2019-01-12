@@ -27,6 +27,9 @@ export class AcLipodistrofiaPage {
   edemaPressao = this.navParams.get('edemaPressao');
   edemaMmii = this.navParams.get('edemaMmii');
   edemaObs = this.navParams.get('edemaObs');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   public lipodistrofia = {
     "gordura":"",
@@ -40,6 +43,8 @@ export class AcLipodistrofiaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcLipodistrofiaPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
 
   }
 
@@ -60,6 +65,9 @@ export class AcLipodistrofiaPage {
       lipoDistribuicao: this.lipodistrofia.distribuicao,
       lipoLocalizacao: this.lipodistrofia.localizacao,
       lipoBiotipo: this.lipodistrofia.biotipo,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
 
 

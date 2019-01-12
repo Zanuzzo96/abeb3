@@ -144,32 +144,41 @@ export class PSessoesPage {
         corporal(){
           this.navCtrl.push(AcInicioPage,{
             "user":this.cliente,
-            "sexo":this.sexo
+            "sexo":this.sexo,
+            "tratamento":this.id_tratamento,
+            "data":this.data,
+            "hora":this.hora,
           })
         }
 
         saude(){
           this.navCtrl.push(SaudePg1Page,{
             "user":this.cliente,
-            "sexo":this.sexo
+            "sexo":this.sexo,
+            "tratamento":this.id_tratamento,
+            "data":this.data,
+            "hora":this.hora,
           })
         }
 
         sedentarismo(){
           this.navCtrl.push(SeInicioPage,{
-            "id_user":this.cliente
+            "id_user":this.cliente,
+            "tratamento":this.id_tratamento,
+            "sexo":this.sexo,
+            "data":this.data,
+            "hora":this.hora,
           })
         }
 
         imagem(){
           this.navCtrl.push(ImagemSessaoPage,{
             "id_user":this.cliente,
-            "id_tratamento":this.id_tratamento
+            "id_tratamento":this.id_tratamento,
+            "sexo":this.sexo,
+            "data":this.data,
+            "hora":this.hora,
           })
-
-          console.log("cliente",this.cliente)
-          console.log("tratamento", this.id_tratamento)
-
         }
 
         agendar(){

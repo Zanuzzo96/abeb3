@@ -48,6 +48,9 @@ export class AcQuadrilPage {
   bracoDireito = this.navParams.get('bracoDireito');
   abdomen = this.navParams.get('abdomen');
   cintura = this.navParams.get('cintura');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -58,6 +61,8 @@ export class AcQuadrilPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcQuadrilPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -99,7 +104,10 @@ export class AcQuadrilPage {
         bracoDireito : this.bracoDireito,
         abdomen: this.abdomen,
         cintura: this.cintura,
-        quadril: this.quadril.quadril
+        quadril: this.quadril.quadril,
+        tratamento: this.tratamento,
+        data:this.data,
+        hora:this.hora,
       })
   }
 

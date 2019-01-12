@@ -33,6 +33,9 @@ export class SaudePg6Page {
   ingereLiquidos = this.navParams.get('ingereLiquidos');
   ingereLiquidosObs = this.navParams.get('ingereLiquidosObs');
   liquidosQuantos = this.navParams.get('liquidosQuantos');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg6Page');
@@ -68,7 +71,10 @@ export class SaudePg6Page {
 
       gestante: this.gestante,
       filhos: this.filhos,
-      filhosQuantos: this.filhosQuantos
+      filhosQuantos: this.filhosQuantos,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

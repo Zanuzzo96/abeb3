@@ -2,14 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { ProfissionalPage } from '../profissional/profissional';
-
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { PSessoesPage } from '../p-sessoes/p-sessoes';
-
-
-
 
 @IonicPage()
 @Component({
@@ -60,6 +55,9 @@ export class AcConcluidoPage {
   coxaDir = this.navParams.get('coxaDir');
   panturilhaEsq = this.navParams.get('panturilhaEsq');
   panturilhaDir = this.navParams.get('panturilhaDir');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(
     public navCtrl: NavController,
@@ -117,6 +115,8 @@ export class AcConcluidoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcConcluidoPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -149,7 +149,11 @@ export class AcConcluidoPage {
                 text: "OK",
                 handler: () => {
                    this.navCtrl.push(PSessoesPage,{
-                     "id":this.cliente
+                     "id":this.cliente,
+                     "tratamento":this.tratamento,
+                     "sexo":this.sexo,
+                     "data":this.data,
+                     "hora":this.hora,
                    });
                  }
               }]

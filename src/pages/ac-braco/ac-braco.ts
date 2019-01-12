@@ -42,6 +42,9 @@ export class AcBracoPage {
   posturaisQuadril = this.navParams.get('posturaisQuadril');
   posturaisJoelhos = this.navParams.get('posturaisJoelhos');
   busto = this.navParams.get('busto');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -53,6 +56,8 @@ export class AcBracoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcBracoPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -92,7 +97,9 @@ export class AcBracoPage {
       busto : this.busto,
       bracoEsquerdo : this.braco.esquerdo,
       bracoDireito : this.braco.direito,
-
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

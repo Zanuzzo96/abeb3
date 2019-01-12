@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LocalizacaoProvider } from '../../providers/localizacao/localizacao';
 import { PerfilProfissionalPage } from '../perfil-profissional/perfil-profissional';
 import { MensagemPage } from '../mensagem/mensagem';
-MensagemPage
+
 
 @IonicPage()
 @Component({

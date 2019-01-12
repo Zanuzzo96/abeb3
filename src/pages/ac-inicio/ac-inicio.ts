@@ -12,20 +12,30 @@ export class AcInicioPage {
 
   sexo = this.navParams.get('sexo');
   cliente = this.navParams.get('user');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     console.log(this.sexo)
     console.log(this.cliente)
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcInicioPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
     this.navCtrl.push(AcHldgPage,{
       sexo: this.sexo,
-      cliente: this.cliente
+      cliente: this.cliente,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

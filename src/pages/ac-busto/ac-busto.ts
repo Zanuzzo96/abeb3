@@ -40,6 +40,9 @@ export class AcBustoPage {
   posturaisColuna = this.navParams.get('posturaisColuna');
   posturaisQuadril = this.navParams.get('posturaisQuadril');
   posturaisJoelhos = this.navParams.get('posturaisJoelhos');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -50,6 +53,8 @@ export class AcBustoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcBustoPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -86,7 +91,10 @@ export class AcBustoPage {
       posturaisColuna : this.posturaisColuna,
       posturaisQuadril : this.posturaisQuadril,
       posturaisJoelhos : this.posturaisJoelhos,
-      busto : this.busto.busto
+      busto : this.busto.busto,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

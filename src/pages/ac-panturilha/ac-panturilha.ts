@@ -49,6 +49,9 @@ export class AcPanturilhaPage {
   quadril = this.navParams.get('quadril');
   coxaEsq = this.navParams.get('coxaEsq');
   coxaDir = this.navParams.get('coxaDir');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -61,6 +64,8 @@ export class AcPanturilhaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcPanturilhaPage');
     console.log('cliente AcPanturilhaPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -107,6 +112,9 @@ export class AcPanturilhaPage {
       coxaDir: this.coxaDir,
       panturilhaEsq: this.panturilha.panturilhaEsq,
       panturilhaDir: this.panturilha.panturilhaDir,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

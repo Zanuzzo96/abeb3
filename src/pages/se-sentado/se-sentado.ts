@@ -19,17 +19,23 @@ export class SeSentadoPage {
   pontuacao : number = parseFloat(this.navParams.get('pontuacao'));
   sentado: any;
   cliente:any;
-  
+  tratamento:any;
+  sexo = this.navParams.get('sexo');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.cliente = this.navParams.get('cliente');
-
+    this.tratamento = this.navParams.get('tratamento');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeSentadoPage');
     console.log(this.pontuacao);
     console.log("cliente",this.cliente);
-
+    console.log(this.sexo);
+    console.log(this.data);
+    console.log(this.hora);
   }
 
   continuar(){
@@ -39,7 +45,11 @@ export class SeSentadoPage {
 
     this.navCtrl.push(SeTelevisaoPage,{
       pontuacao : this.pontuacao,
-      cliente: this.cliente
+      cliente: this.cliente,
+      tratamento: this.tratamento,
+      sexo:this.sexo,
+      data:this.data,
+      hora:this.hora,
     });
   }
 

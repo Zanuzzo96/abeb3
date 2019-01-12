@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { UsuarioPage } from '../usuario/usuario';
 import { ProfissionalPage } from '../profissional/profissional';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { PSessoesPage } from '../p-sessoes/p-sessoes';
 
 
 @IonicPage()
@@ -19,20 +20,31 @@ export class SeResultadoPage {
   usuario: any;
   nivel:any;
   resultadoFinal : number = parseFloat(this.navParams.get('pontuacao'));
-  cliente = this.navParams.get('cliente');
-
-
+  cliente:any;
+  tratamento:any;
+  sexo = this.navParams.get('sexo');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
               public alertCtrl: AlertController,
               public storage: Storage,
-              public loadingCtrl: LoadingController) {  }
+              public loadingCtrl: LoadingController) {
+
+                this.cliente = this.navParams.get('cliente');
+                this.tratamento = this.navParams.get('tratamento');
+
+
+   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeResultadoPage');
     console.log("cliente",this.cliente);
+    console.log(this.sexo);
+    console.log(this.data);
+    console.log(this.hora);
   }
 
   concluir(){
@@ -84,7 +96,13 @@ export class SeResultadoPage {
                       buttons : [{
                         text: "OK",
                         handler: () => {
-                           this.navCtrl.push(ProfissionalPage)
+                           this.navCtrl.push(PSessoesPage,{
+                             "id":this.cliente,
+                             "tratamento": this.tratamento,
+                             "sexo":this.sexo,
+                             "data":this.data,
+                             "hora":this.hora,
+                           })
                          }
                       }]
                     }).present();

@@ -18,6 +18,9 @@ export class SaudePg2Page {
   sexo = this.navParams.get('sexo');
   profissao = this.navParams.get('profissao');
   muitotemposentado = this.navParams.get('muitotemposentado');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg2Page');
@@ -31,7 +34,10 @@ export class SaudePg2Page {
       sexo: this.sexo,
       profissao: this.profissao,
       muitotemposentado: this.muitotemposentado,
-      qualidadesono: this.qualidadesono
+      qualidadesono: this.qualidadesono,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 }

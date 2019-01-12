@@ -18,6 +18,9 @@ export class SaudePg3Page {
   profissao = this.navParams.get('profissao');
   muitotemposentado = this.navParams.get('muitotemposentado');
   qualidadesono = this.navParams.get('qualidadesono');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg3Page');
@@ -42,7 +45,10 @@ export class SaudePg3Page {
       tratamentoAnterior: this.tratamentoAnterior,
       tratamentoAnteriorQuais: this.tratamentoAnteriorQuais,
       antecedenterAlergicos: this.antecedenterAlergicos,
-      antecedenterAlergicosQuais: this.antecedenterAlergicosQuais
+      antecedenterAlergicosQuais: this.antecedenterAlergicosQuais,
+      tratamento:this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

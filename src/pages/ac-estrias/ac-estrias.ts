@@ -32,6 +32,9 @@ export class AcEstriasPage {
   flacidezTlocalidade = this.navParams.get('flacidezTlocalidade');
   flacidezMuscular = this.navParams.get('flacidezMuscular');
   flacidezMlocalidade = this.navParams.get('flacidezMlocalidade');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -46,6 +49,8 @@ export class AcEstriasPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcEstriasPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -78,6 +83,9 @@ export class AcEstriasPage {
       estriasTipo: this.estrias.tipo,
       estriasQuantidade: this.estrias.quantidade,
       estriasRegiao: this.estrias.regiao,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

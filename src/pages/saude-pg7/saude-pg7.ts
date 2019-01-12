@@ -35,6 +35,9 @@ export class SaudePg7Page {
   gestante = this.navParams.get('gestante');
   filhos = this.navParams.get('filhos');
   filhosQuantos = this.navParams.get('filhosQuantos');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg7Page');
@@ -51,40 +54,6 @@ export class SaudePg7Page {
 
 
   continuar(){
-
-    console.log(this.cliente);
-    console.log(this.sexo);
-    console.log(this.profissao);
-    console.log(this.muitotemposentado);
-    console.log(this.qualidadesono);
-    console.log(this.antecendentesCirurgicos);
-    console.log(this.antecendentesCirurgicosQuais);
-    console.log(this.tratamentoAnterior);
-    console.log(this.tratamentoAnteriorQuais);
-    console.log(this.antecedenterAlergicos);
-    console.log(this.antecedenterAlergicosQuais);
-    console.log(this.funcionamentoIntestinal);
-    console.log(this.funcionamentoIntestinalObs);
-    console.log(this.atividadeFisica);
-    console.log(this.atividadeFisicaQuais);
-    console.log(this.fumante);
-    console.log(this.alimentacao);
-    console.log(this.alimentacaoTipo);
-    console.log(this.ingereLiquidos);
-    console.log(this.ingereLiquidosObs);
-    console.log(this.liquidosQuantos);
-    console.log(this.gestante);
-    console.log(this.filhos);
-    console.log(this.filhosQuantos);
-    console.log(this.algumproblemaortopedico);
-    console.log(this.qualproblemaortopedico);
-    console.log(this.tratamentoMedico);
-    console.log(this.tratamentoMedicoQual);
-    console.log(this.acidoPelo);
-    console.log(this.acidoPeloQuais);
-    console.log(this.ortomelecular);
-    console.log(this.ortomelecularQual);
-
 
     this.navCtrl.push(SaudePg8Page,{
       cliente: this.cliente,
@@ -120,6 +89,9 @@ export class SaudePg7Page {
       acidoPeloQuais: this.acidoPeloQuais,
       ortomelecular: this.ortomelecular,
       ortomelecularQual: this.ortomelecularQual,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

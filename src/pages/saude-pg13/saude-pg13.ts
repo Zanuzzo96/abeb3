@@ -85,6 +85,9 @@ export class SaudePg13Page {
   convenio = this.navParams.get('convenio');
   cart = this.navParams.get('cart');
   hospital = this.navParams.get('hospital');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg13Page');
@@ -188,7 +191,13 @@ export class SaudePg13Page {
               buttons : [{
                 text: "OK",
                 handler: () => {
-                   this.navCtrl.push(PSessoesPage)
+                   this.navCtrl.push(PSessoesPage,{
+                     "id": this.cliente,
+                     "tratamento":this.tratamento,
+                     "sexo":this.sexo,
+                     "data":this.data,
+                     "hora":this.hora,
+                   })
                  }
               }]
             }).present();

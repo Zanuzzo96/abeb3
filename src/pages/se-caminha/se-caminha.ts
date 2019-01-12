@@ -12,9 +12,14 @@ export class SeCaminhaPage {
   pontuacao : number = parseFloat(this.navParams.get('pontuacao'));
   caminha: any;
   cliente:any;
+  tratamento:any;
+  sexo = this.navParams.get('sexo');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.cliente = this.navParams.get('cliente');
+    this.tratamento = this.navParams.get('tratamento');
 
   }
 
@@ -32,8 +37,11 @@ export class SeCaminhaPage {
 
     this.navCtrl.push(SeCaminhadaPage,{
       pontuacao : this.pontuacao,
-      cliente: this.cliente
-      
+      cliente: this.cliente,
+      tratamento: this.tratamento,
+      sexo:this.sexo,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

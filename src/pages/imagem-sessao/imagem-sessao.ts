@@ -6,8 +6,9 @@ import 'rxjs/add/operator/toPromise';
 
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { ProfissionalPage } from '../profissional/profissional';
+
 import { PImagensSessaoPage } from '../p-imagens-sessao/p-imagens-sessao';
+import { PSessoesPage } from '../p-sessoes/p-sessoes';
 
 
 
@@ -22,6 +23,9 @@ export class ImagemSessaoPage {
   imagem:any;
   cliente = this.navParams.get('id_user');
   id_tratamento = this.navParams.get('id_tratamento');
+  sexo = this.navParams.get('sexo');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
 
   constructor(
@@ -98,7 +102,13 @@ export class ImagemSessaoPage {
                 buttons : [{
                   text: "OK",
                   handler: () => {
-                     this.navCtrl.push(ProfissionalPage)
+                     this.navCtrl.push(PSessoesPage,{
+                       "id":this.cliente,
+                       "tratamento":this.id_tratamento,
+                       "data":this.data,
+                       "hora":this.hora,
+                       "sexo":this.sexo,
+                     })
                    }
                 }]
               }).present();
@@ -118,6 +128,14 @@ export class ImagemSessaoPage {
 
             console.log(err.json());
             loading.dismiss();
+
+            this.alertCtrl.create({
+              title: 'Ops .. Algo deu errado',
+              subTitle : "Não conseguimos conectar com banco de dados.",
+              buttons : [{
+                text: "OK",
+              }]
+            }).present();
 
           }
         );

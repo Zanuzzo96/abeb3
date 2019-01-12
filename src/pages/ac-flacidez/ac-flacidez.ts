@@ -29,6 +29,9 @@ export class AcFlacidezPage {
   Imcaltura = this.navParams.get('Imcaltura');
   ImcPesoObs = this.navParams.get('ImcPesoObs');
   resultadoImc = this.navParams.get('ImcResultado');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
@@ -43,6 +46,8 @@ export class AcFlacidezPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcFlacidezPage', this.cliente);
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(){
@@ -70,7 +75,9 @@ export class AcFlacidezPage {
       flacidezTlocalidade: this.flacidez.tissularlocalidade,
       flacidezMuscular: this.flacidez.muscular,
       flacidezMlocalidade: this.flacidez.muscularlocalidade,
-
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

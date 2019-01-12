@@ -25,5 +25,20 @@
             <h3><strong>Fumante:</strong> {{item.fumante}}</h3>
     </ion-card-content>
 
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small (click)="email(item.id_diario)">
+          <ion-icon name="ios-mail-outline" class="btn-diario"></ion-icon>
+          <div class="btn-diario">Enviar por email</div>
+        </button>
+      </ion-col>
+      <ion-col >
+        <button ion-button icon-start clear small (click)="apagar(item.id_diario)">
+          <ion-icon name="ios-backspace-outline" class="btn-diario"></ion-icon>
+          <div class="btn-diario">Apagar</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
   </ion-card>
 </ion-content>

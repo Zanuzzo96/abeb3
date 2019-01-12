@@ -43,6 +43,9 @@ export class SaudePg8Page {
   acidoPeloQuais = this.navParams.get('acidoPeloQuais');
   ortomelecular = this.navParams.get('ortomelecular');
   ortomelecularQual = this.navParams.get('ortomelecularQual');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg8Page');
@@ -100,6 +103,10 @@ export class SaudePg8Page {
       metaislocal: this.metaislocal,
       cancer: this.cancer,
       cancerQual: this.cancerQual,
+
+      tratamento:this.tratamento,
+      data:this.data,
+      hora:this.hora,
 
     })
   }

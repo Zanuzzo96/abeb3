@@ -56,6 +56,9 @@ export class SaudePg10Page {
   menstrualFim = this.navParams.get('menstrualFim');
   anticoncepcional = this.navParams.get('anticoncepcional');
   anticoncepcionalQual = this.navParams.get('anticoncepcionalQual');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg10Page');
@@ -116,13 +119,16 @@ export class SaudePg10Page {
       anticoncepcional: this.anticoncepcional,
       anticoncepcionalQual: this.anticoncepcionalQual,
 
-
       varizes: this.varizes,
       varizesGrau: this.varizesGrau,
       lesoes: this.lesoes,
       lesoesQuais: this.lesoesQuais,
       hipertensao: this.hipertensao,
       hipotensao: this.hipotensao,
+
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
 
     })
   }

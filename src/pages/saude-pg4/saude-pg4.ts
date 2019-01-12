@@ -23,6 +23,9 @@ export class SaudePg4Page {
   tratamentoAnteriorQuais = this.navParams.get('tratamentoAnteriorQuais');
   antecedenterAlergicos = this.navParams.get('antecedenterAlergicos');
   antecedenterAlergicosQuais = this.navParams.get('antecedenterAlergicosQuais');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg4Page');
@@ -56,7 +59,11 @@ export class SaudePg4Page {
       atividadeFisicaQuais: this.atividadeFisicaQuais,
       fumante: this.fumante,
       alimentacao: this.alimentacao,
-      alimentacaoTipo: this.alimentacaoTipo
+      alimentacaoTipo: this.alimentacaoTipo,
+
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
 
     })
   }

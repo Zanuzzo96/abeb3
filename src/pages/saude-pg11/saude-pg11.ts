@@ -62,6 +62,9 @@ export class SaudePg11Page {
   lesoesQuais = this.navParams.get('lesoesQuais');
   hipertensao = this.navParams.get('hipertensao');
   hipotensao = this.navParams.get('hipotensao');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg11Page');
@@ -132,6 +135,10 @@ export class SaudePg11Page {
       diabetes: this.diabetes,
       autoimune: this.autoimune,
       autoimuneQual: this.autoimuneQual,
+
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

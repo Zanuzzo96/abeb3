@@ -26,6 +26,9 @@ export class AcImcPage {
   lipoDistribuicao = this.navParams.get('lipoDistribuicao');
   lipoLocalizacao = this.navParams.get('lipoLocalizacao');
   lipoBiotipo = this.navParams.get('lipoBiotipo');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   public imc = {
     "peso":"",
@@ -39,7 +42,8 @@ export class AcImcPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcImcPage', this.cliente);
-
+    console.log(this.data)
+    console.log(this.hora)
   }
 
   continuar(peso,altura){
@@ -65,7 +69,10 @@ export class AcImcPage {
       ImcPeso: this.imc.peso,
       Imcaltura: this.imc.altura,
       ImcPesoObs: this.imc.obs,
-      ImcResultado: imcCalc
+      ImcResultado: imcCalc,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
 
     console.log(imcCalc)

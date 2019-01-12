@@ -14,6 +14,9 @@ export class SaudePg1Page {
 
   cliente = this.navParams.get('user');
   sexo = this.navParams.get('sexo');
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg1Page', this.cliente + this.sexo);
@@ -27,7 +30,10 @@ export class SaudePg1Page {
       cliente: this.cliente,
       sexo: this.sexo,
       profissao: this.profissao,
-      muitotemposentado: this.muitotemposentado
+      muitotemposentado: this.muitotemposentado,
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
     })
   }
 

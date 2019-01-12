@@ -67,6 +67,10 @@ export class SaudePg12Page {
   autoimune = this.navParams.get('autoimune');
   autoimuneQual = this.navParams.get('autoimuneQual');
 
+  tratamento = this.navParams.get('tratamento');
+  data = this.navParams.get('data');
+  hora = this.navParams.get('hora');
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg12Page');
   }
@@ -145,7 +149,11 @@ export class SaudePg12Page {
       telefoneMedico: this.telefoneMedico,
       convenio: this.convenio,
       cart: this.cart,
-      hospital: this.hospital
+      hospital: this.hospital,
+
+      tratamento: this.tratamento,
+      data:this.data,
+      hora:this.hora,
 
     })
   }
