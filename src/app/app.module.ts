@@ -44,6 +44,7 @@ import { ARelatoriosPage } from '../pages/a-relatorios/a-relatorios';
 import { ASorteiosPage } from '../pages/a-sorteios/a-sorteios';
 import { ADicasPage } from '../pages/a-dicas/a-dicas';
 import { ASugestoesPage } from '../pages/a-sugestoes/a-sugestoes';
+import { AHistoricoSugestoesPage } from '../pages/a-historico-sugestoes/a-historico-sugestoes';
 
 //telas usuario free
 import { UsuarioPage } from '../pages/usuario/usuario';
@@ -172,6 +173,7 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     ASorteiosPage,
     ADicasPage,
     ASugestoesPage,
+    AHistoricoSugestoesPage,
 
     UHomePage,
     UDiarioPage,
@@ -275,6 +277,7 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     ASorteiosPage,
     ADicasPage,
     ASugestoesPage,
+    AHistoricoSugestoesPage,
 //usuario
     UHomePage,
     UDiarioPage,

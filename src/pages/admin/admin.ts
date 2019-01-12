@@ -8,6 +8,8 @@ import { ASorteiosPage } from '../a-sorteios/a-sorteios';
 import { ADicasPage } from '../a-dicas/a-dicas';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
+import { ASugestoesPage } from '../a-sugestoes/a-sugestoes';
+
 
 
 @IonicPage()
@@ -51,6 +53,10 @@ constructor(
 
   sorteios(){
     this.navCtrl.push(ASorteiosPage)
+  }
+
+  sugestoes(){
+    this.navCtrl.push(ASugestoesPage)
   }
 
   sair(){

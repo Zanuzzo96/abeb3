@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PSugestoesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 @IonicPage()
 @Component({
@@ -15,7 +12,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PSugestoesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  sugestoes;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController
+  ) {
+
+    let loading = this.loadingCtrl.create({
+      content : "Carregando sugestões e informações",
+    });
+
+    loading.present();
+
+    let api = 'https://lipolysis.grupoanx.com.br/profissional/sugestoes.php';
+
+    http.get(api).toPromise().then((resp)=>{
+      console.log(resp.json());
+      this.sugestoes = resp.json();
+      loading.dismiss();
+    }).catch((resp)=>{
+      loading.dismiss();
+      console.log(resp)
+    });
   }
 
   ionViewDidLoad() {
