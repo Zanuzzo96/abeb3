@@ -7,6 +7,8 @@ import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { ProfissionalPage } from '../profissional/profissional';
+import { PImagensSessaoPage } from '../p-imagens-sessao/p-imagens-sessao';
+
 
 
 @IonicPage()
@@ -51,6 +53,13 @@ export class ImagemSessaoPage {
       let fileList: FileList = event.target.files;
       let file: File = fileList[0];
       console.log(file);
+  }
+
+  historico(){
+    this.navCtrl.push(PImagensSessaoPage,{
+      "cliente":this.cliente,
+      "tratamento": this.id_tratamento
+    })
   }
 
   uploadImg(){

@@ -4,6 +4,12 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { ProfissionalPage } from '../profissional/profissional';
 
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { PSessoesPage } from '../p-sessoes/p-sessoes';
+
+
+
 
 @IonicPage()
 @Component({
@@ -58,7 +64,9 @@ export class AcConcluidoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public http: Http,) {
+    public http: Http,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController) {
 
       console.log(this.cliente);
   }
@@ -112,6 +120,13 @@ export class AcConcluidoPage {
   }
 
   continuar(){
+
+    let loading = this.loadingCtrl.create({
+      content : "Registrando a avaliação e enviando para o seu email",
+    });
+
+    loading.present();
+
     let api = 'https://lipolysis.grupoanx.com.br/formulario/corporal.php';
     let headers: Headers = new Headers();
       headers.append('Content-type','application/json');
@@ -127,13 +142,43 @@ export class AcConcluidoPage {
             let retorno = res.json()
 
           if(retorno == "sucesso"){
-            this.navCtrl.push(ProfissionalPage)
+            loading.dismiss();
+            this.alertCtrl.create({
+              subTitle : "Avaliação já registrada com sucesso e enviada para o seu email, caso não encontre na caixa de entrada verifique no caixa de span",
+              buttons : [{
+                text: "OK",
+                handler: () => {
+                   this.navCtrl.push(PSessoesPage,{
+                     "id":this.cliente
+                   });
+                 }
+              }]
+            }).present();
+
+          }else {
+            loading.dismiss();
+            this.alertCtrl.create({
+              title: 'Ops .. Algo deu errado',
+              subTitle : "Tivemos um problema para salvar seu teste.",
+              buttons : [{
+                text: "OK",
+              }]
+            }).present();
           }
 
           },
           err => {
+            loading.dismiss();
 
             console.log(err.json());
+
+            this.alertCtrl.create({
+              title: 'Ops .. Algo deu errado',
+              subTitle : "Ocorreu um erro ao salvar o resultado do teste no banco de dados.",
+              buttons : [{
+                text: "OK",
+              }]
+            }).present();
 
           }
 

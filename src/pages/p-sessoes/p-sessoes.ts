@@ -13,6 +13,7 @@ import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
+
 @IonicPage()
 @Component({
   selector: 'page-p-sessoes',
@@ -29,6 +30,12 @@ export class PSessoesPage {
   configuracao:any;
   orientacao: any;
   peso: any;
+  metaApi;
+  pesoApi;
+  sessoesApi;
+  contsessoesApi;
+
+  grafico:any;
 
   constructor(
     public navCtrl: NavController,
@@ -40,6 +47,25 @@ export class PSessoesPage {
 
     if(this.id_tratamento){
       this.configuracao = 0;
+
+      //busca das meta - sessoes - e peso atual
+          let loading = this.loadingCtrl.create({ content : "Carregando dados da sessão", })
+          loading.present();
+
+          let api1 = 'https://lipolysis.grupoanx.com.br/profissional/meta.php?cliente=' + this.cliente +'&tratamento=' + this.id_tratamento;
+            this.http.get(api1).toPromise().then((resp)=>{
+              loading.dismiss();
+              this.metaApi = resp.json()[0].meta;
+              this.pesoApi = resp.json()[0].peso;
+              this.sessoesApi = resp.json()[0].sessoes;
+              this.contsessoesApi = resp.json()[0].contsessoes;
+            }).catch((resp)=>{
+              loading.dismiss();
+              console.log(resp);
+            });
+
+
+
     }else{
       this.configuracao = 1;
     }
@@ -50,18 +76,31 @@ export class PSessoesPage {
     console.log("data", this.data)
     console.log("hora", this.hora)
 
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PSessoesPage');
+
+    //busca do valores para o grafico
+        let api2 = 'https://lipolysis.grupoanx.com.br/profissional/grafico.php?cliente=' + this.cliente +'&tratamento=' + this.id_tratamento;
+        this.http.get(api2).toPromise().then((resp1)=>{
+             this.grafico = resp1.json()
+             console.log(this.grafico)
+
+        }).catch((resp1)=>{
+            console.log(resp1);
+        });
+
   }
+
 
         //Inicio dos graficos de linha
         public lineChartData:Array<any> = [
-          {data: [], label: 'Series A'}
+          {
+            data: [this.grafico],
+            label: 'Series A'}
         ];
-        public lineChartLabels:Array<any> = [];
+        public lineChartLabels:Array<any> = [this.grafico];
         public lineChartOptions:any = {
           responsive: true
         };

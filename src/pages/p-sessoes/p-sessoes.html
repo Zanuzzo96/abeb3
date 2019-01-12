@@ -36,15 +36,15 @@
           <ion-row>
             <ion-col col-5>
               <span>Meta de perda</span>
-              <h2 text-center>10 Kg</h2>
+              <h2 text-center>{{metaApi}} Kg</h2>
             </ion-col>
             <ion-col col-4>
               <span>Peso atual</span>
-              <h2 text-center>80 kg</h2>
+              <h2 text-center>{{pesoApi}} kg</h2>
             </ion-col>
             <ion-col col-3>
               <span>Sessões</span>
-              <h2 text-center>3/6</h2>
+              <h2 text-center>{{contsessoesApi}} / {{sessoesApi}}</h2>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -67,7 +67,7 @@
   </button>
   <button icon-only class="btn" (click)="imagem()" *ngIf="configuracao == 0">
     <ion-icon name="ios-image-outline"></ion-icon>
-    Adicionar imagem
+    Imagens das sessões
   </button>
 
   <div class="receita" *ngIf="configuracao == 0">

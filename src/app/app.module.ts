@@ -31,7 +31,7 @@ import { PHistoricoPage } from '../pages/p-historico/p-historico';
 import { PSessoesPage } from '../pages/p-sessoes/p-sessoes';
 import { PSugestoesPage } from '../pages/p-sugestoes/p-sugestoes';
 import { PPerfilPage } from '../pages/p-perfil/p-perfil';
-import { AcResultadoImcPage } from '../pages/ac-resultado-imc/ac-resultado-imc';
+import { PImagensSessaoPage } from '../pages/p-imagens-sessao/p-imagens-sessao';
 
 //telas Administracao
 import { AdminPage } from '../pages/admin/admin';
@@ -43,6 +43,7 @@ import { AProspectosPage } from '../pages/a-prospectos/a-prospectos';
 import { ARelatoriosPage } from '../pages/a-relatorios/a-relatorios';
 import { ASorteiosPage } from '../pages/a-sorteios/a-sorteios';
 import { ADicasPage } from '../pages/a-dicas/a-dicas';
+import { ASugestoesPage } from '../pages/a-sugestoes/a-sugestoes';
 
 //telas usuario free
 import { UsuarioPage } from '../pages/usuario/usuario';
@@ -111,6 +112,7 @@ import { AcLipodistrofiaPage } from '../pages/ac-lipodistrofia/ac-lipodistrofia'
 import { AcPanturilhaPage } from '../pages/ac-panturilha/ac-panturilha';
 import { AcPosturaisPage } from '../pages/ac-posturais/ac-posturais';
 import { AcQuadrilPage } from '../pages/ac-quadril/ac-quadril';
+import { AcResultadoImcPage } from '../pages/ac-resultado-imc/ac-resultado-imc';
 
 //Diario da vida Saudavel
 import { DiarioAguaPage } from '../pages/diario-agua/diario-agua';
@@ -158,6 +160,7 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     PSessoesPage,
     PSugestoesPage,
     PPerfilPage,
+    PImagensSessaoPage,
     AcResultadoImcPage,
 
     AAdicionardicaPage,
@@ -168,6 +171,7 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     ARelatoriosPage,
     ASorteiosPage,
     ADicasPage,
+    ASugestoesPage,
 
     UHomePage,
     UDiarioPage,
@@ -270,6 +274,7 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     ARelatoriosPage,
     ASorteiosPage,
     ADicasPage,
+    ASugestoesPage,
 //usuario
     UHomePage,
     UDiarioPage,
@@ -288,6 +293,7 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     PSessoesPage,
     PSugestoesPage,
     PPerfilPage,
+    PImagensSessaoPage,
     AcResultadoImcPage,
 
     SaudePg1Page,

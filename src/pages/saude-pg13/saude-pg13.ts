@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { ProfissionalPage } from '../profissional/profissional';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
-
+import { PSessoesPage } from '../p-sessoes/p-sessoes';
 
 @IonicPage()
 @Component({
@@ -188,7 +188,7 @@ export class SaudePg13Page {
               buttons : [{
                 text: "OK",
                 handler: () => {
-                   this.navCtrl.push(ProfissionalPage)
+                   this.navCtrl.push(PSessoesPage)
                  }
               }]
             }).present();
