@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @IonicPage()

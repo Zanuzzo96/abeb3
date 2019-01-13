@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { ProfissionalPage } from '../profissional/profissional';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { PSessoesPage } from '../p-sessoes/p-sessoes';

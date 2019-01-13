@@ -1,0 +1,37 @@
+<!--
+  Generated template for the PContatosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="cinza1">
+    <ion-title>Contatos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let item of contato">
+    <h3><strong>Cliente:</strong> {{item.nome}}</h3>
+    <h3><strong>Email:</strong> {{item.email}}</h3>
+    <h3><strong>Telefone:</strong> {{item.telefone}}</h3>
+    <h3><strong>Mensagem:</strong> {{item.mensagem}}</h3>
+    <br>
+    <h3 *ngIf="item.retorno == 1" style="color: #f89e33">Cliente informou que gostaria de receber seu contato</h3>
+    <h3 *ngIf="item.retorno == 0">Cliente não informou se gostaria de receber seu contato</h3>
+
+
+    <ion-row>
+      <ion-col >
+        <button ion-button icon-start block clear small (click)="apagar(item.id_msg)">
+          <ion-icon name="ios-backspace-outline" class="btn-diario"></ion-icon>
+          <div class="btn-diario">Apagar</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+</ion-content>

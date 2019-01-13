@@ -32,6 +32,7 @@ import { PSessoesPage } from '../pages/p-sessoes/p-sessoes';
 import { PSugestoesPage } from '../pages/p-sugestoes/p-sugestoes';
 import { PPerfilPage } from '../pages/p-perfil/p-perfil';
 import { PImagensSessaoPage } from '../pages/p-imagens-sessao/p-imagens-sessao';
+import { PContatosPage } from '../pages/p-contatos/p-contatos';
 
 //telas Administracao
 import { AdminPage } from '../pages/admin/admin';
@@ -162,6 +163,7 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     PSugestoesPage,
     PPerfilPage,
     PImagensSessaoPage,
+    PContatosPage,
     AcResultadoImcPage,
 
     AAdicionardicaPage,
@@ -297,6 +299,7 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     PSugestoesPage,
     PPerfilPage,
     PImagensSessaoPage,
+    PContatosPage,
     AcResultadoImcPage,
 
     SaudePg1Page,

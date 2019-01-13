@@ -5,7 +5,6 @@ import 'rxjs/add/operator/toPromise';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Storage } from '@ionic/storage';
 import { UsuarioPage } from '../usuario/usuario';
-import { ProfissionalPage } from '../profissional/profissional';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { PSessoesPage } from '../p-sessoes/p-sessoes';
 

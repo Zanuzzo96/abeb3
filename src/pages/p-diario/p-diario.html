@@ -14,7 +14,7 @@
     </ion-card-header>
     <ion-card-content>
             <br>
-            <h3><strong>Dia do diario:</strong> Ontem</h3>
+            <h3><strong>Dia do diario:</strong> {{item.data | date: 'dd/MM/yyyy'}}</h3>
             <h3><strong>Sentimento do dia:</strong> {{item.dia}}</h3>
             <h3><strong>Qualidade do sono:</strong> {{item.sono}}</h3>
             <h3><strong>Hidratação:</strong> {{item.agua}}</h3>

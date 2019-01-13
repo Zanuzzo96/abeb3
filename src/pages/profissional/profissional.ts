@@ -12,6 +12,8 @@ import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { PContatosPage } from '../p-contatos/p-contatos';
+
 
 @IonicPage()
 @Component({
@@ -60,6 +62,10 @@ export class ProfissionalPage {
 
   diario(){
     this.navCtrl.push(PDiarioPage)
+  }
+
+  contato(){
+    this.navCtrl.push(PContatosPage)
   }
 
   clientes(){

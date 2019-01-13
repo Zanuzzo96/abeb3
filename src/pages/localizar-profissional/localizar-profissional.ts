@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LocalizacaoProvider } from '../../providers/localizacao/localizacao';
 import { PerfilProfissionalPage } from '../perfil-profissional/perfil-profissional';
-import { MensagemPage } from '../mensagem/mensagem';
-
 
 @IonicPage()
 @Component({
@@ -66,14 +64,6 @@ export class LocalizarProfissionalPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocalizarProfissionalPage');
-
-  }
-
-  mensagem(id_prof){
-    console.log(id_prof)
-    this.navCtrl.push(MensagemPage,{
-      "id":id_prof
-    })
 
   }
 
