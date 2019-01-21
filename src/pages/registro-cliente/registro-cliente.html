@@ -46,7 +46,7 @@
 
     <ion-item class="item">
       <ion-label stacked>CEP</ion-label>
-      <ion-input type="number" [(ngModel)]="cadastro.cep" required></ion-input>
+      <ion-input type="text" [(ngModel)]="cadastro.cep"  maxlength="10" required></ion-input>
     </ion-item>
 
     <span (click)="preencher()" class="preencher">Preencher endereço</span>

@@ -41,17 +41,21 @@ export class RegistroClientePage {
   }
 
   preencher(){
-    console.log("preencher clicado");
-    let viacep = 'https://viacep.com.br/ws/'+ this.cadastro.cep +'/json/';
+    let cep = this.cadastro.cep;
+    console.log(cep);
+    let viacep = 'https://viacep.com.br/ws/'+ cep +'/json/';
     this.http.get(viacep).toPromise().then((response) => {
       console.log(response.json())
       let endereco = response.json();
-
       this.cadastro.endereco = endereco.logradouro + ' - ' + endereco.bairro;
       this.cadastro.cidade = endereco.localidade;
       this.cadastro.estado = endereco.uf;
-
-    }).catch((response)=>{console.log(response)});
+    }).catch((response)=>{
+      this.alertCtrl.create({
+        subTitle : "Não conseguimos encontrar seu cep",
+        buttons : [{ text: "OK" }]
+      }).present();
+    });
   }
 
   criarConta(){

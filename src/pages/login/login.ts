@@ -78,7 +78,7 @@ export class LoginPage {
             console.log(this.id_login)
             console.log(this.permissao)
           }
-          else if ( this.permissao > 3) {
+          else{
             this.alertCtrl.create({
               subTitle : "Não encontramos nenhum cadastro",
               buttons : [{
@@ -89,7 +89,13 @@ export class LoginPage {
           }
 
     }).catch((response) => {
-      loading.dismiss()
+      loading.dismiss();
+      this.alertCtrl.create({
+        subTitle : "Não encontramos nenhum cadastro",
+        buttons : [{
+          text: "OK",
+        }]
+      }).present();
     });
   }
 

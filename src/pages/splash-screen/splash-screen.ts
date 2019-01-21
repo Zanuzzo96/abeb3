@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 
@@ -10,18 +10,11 @@ import { HomePage } from '../home/home';
 })
 export class SplashScreenPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController){}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SplashScreenPage');
-
-    let TIME_IN_MS = 10000;
-    setTimeout( () => {
-         console.log('teste');
-         this.navCtrl.push(HomePage);
-    }, TIME_IN_MS);
-
+  ionViewDidLoad(){
+    let tempoSplashScreen = 10000;
+    setTimeout(() => {this.navCtrl.push(HomePage)}, tempoSplashScreen);
   }
 
 }
