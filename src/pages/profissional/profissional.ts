@@ -33,7 +33,7 @@ export class ProfissionalPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfissionalPage');
 
-    this.storage.get("id_login").then((value)=>{
+    this.storage.get("id_cadastro").then((value)=>{
       let id_prof = value;
       let api = 'https://lipolysis.grupoanx.com.br/profissional/home.php?profissional=' + id_prof;
 
@@ -47,7 +47,7 @@ export class ProfissionalPage {
   }
 
   sair(){
-    this.storage.remove('id_login');
+    this.storage.remove('id_cadastro');
     this.storage.remove('permissao');
     this.navCtrl.push(HomePage)
   }

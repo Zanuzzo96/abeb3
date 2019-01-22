@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 //telas de inicio e login
 import { MyApp } from './app.component';
@@ -134,6 +135,7 @@ import { MensagemPage } from '../pages/mensagem/mensagem';
 import { AgendaPage } from '../pages/agenda/agenda';
 import { ImagemSessaoPage } from '../pages/imagem-sessao/imagem-sessao';
 import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-tratamento';
+import { ChartsProvider } from '../providers/charts/charts';
 
 @NgModule({
   declarations: [
@@ -370,7 +372,8 @@ import { IniciarTratamentoPage } from '../pages/iniciar-tratamento/iniciar-trata
     RcProvider,
     DicaProvider,
     LocalizacaoProvider,
-
+    LocalNotifications,
+    ChartsProvider
   ]
 })
 export class AppModule {}

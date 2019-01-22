@@ -30,7 +30,7 @@ export class AlertRcNaoCadastradoPage {
 
   enviarContato() {
     console.log(this.prospecto);
-    let api = 'https://lipolysis.grupoanx.com.br/cadastro/prospecto.php';
+    let api = 'https://lipolysis.grupoanx.com.br/profissional/perfil/prospecto.php';
 
     let headers: Headers = new Headers();
       headers.append('Content-type','application/json');

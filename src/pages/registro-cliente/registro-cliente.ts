@@ -16,7 +16,7 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 export class RegistroClientePage {
 
   cadastro = {
-    "nome_cliente" : "",
+    "nome" : "",
     "cpf" : "",
     "nasc" : "",
     "sexo" : "",
@@ -42,8 +42,13 @@ export class RegistroClientePage {
 
   preencher(){
     let cep = this.cadastro.cep;
-    console.log(cep);
-    let viacep = 'https://viacep.com.br/ws/'+ cep +'/json/';
+    let cepTratado =  cep.replace(/\.|\-/g, '') ;
+
+    console.log(cepTratado);
+
+    this.cadastro.cep = cepTratado;
+
+    let viacep = 'https://viacep.com.br/ws/'+ cepTratado +'/json/';
     this.http.get(viacep).toPromise().then((response) => {
       console.log(response.json())
       let endereco = response.json();
@@ -60,6 +65,13 @@ export class RegistroClientePage {
 
   criarConta(){
 
+    let cpf = this.cadastro.cpf;
+    let cpfTratado =  cpf.replace(/\.|\-/g, '') ;
+
+    this.cadastro.cpf = cpfTratado;
+
+    console.log(this.cadastro);
+
     let loading = this.loadingCtrl.create({
       content : "procedendo seu Registro",
     });
@@ -70,7 +82,7 @@ export class RegistroClientePage {
     headers.append('Content-type','application/json');
 
       this.http.post(
-        'https://lipolysis.grupoanx.com.br/cadastro/cliente.php',
+        'https://lipolysis.grupoanx.com.br/usuario/perfil/cadastrar.php',
         this.cadastro,
         new RequestOptions({ headers: headers })
       ).subscribe(
@@ -108,9 +120,19 @@ export class RegistroClientePage {
                   text: "OK",
                 }]
               }).present();
+            }else if ( retorno == "erro1"){
+              this.alertCtrl.create({
+                title: 'Ops .. Algo deu errado',
+                subTitle : "Ocorreu um erro ao inserir os dados, tente novamente.",
+                buttons : [{
+                  text: "OK",
+                }]
+              }).present();
             }
           },
           err => {
+            loading.dismiss();
+
             this.alertCtrl.create({
               title: 'Ops .. Algo deu errado',
               subTitle : "Não foi possivel conectar com o banco de dados, tente novamente.",

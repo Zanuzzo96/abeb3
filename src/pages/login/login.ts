@@ -25,7 +25,7 @@ export class LoginPage {
   public permissao : any;
   public login : string;
   public senha : string;
-  public id_login: any;
+  public id_cadastro: any;
 
   constructor(public loadingCtrl: LoadingController,
               public alertCtrl: AlertController,
@@ -58,27 +58,35 @@ export class LoginPage {
       let retorno = response.json();
 
       this.permissao = retorno[0].permissao;
-      this.id_login = retorno[0].id_login;
+      this.id_cadastro = retorno[0].id_cadastro;
 
-      this.storage.set('id_login', this.id_login);
+      this.storage.set('id_cadastro', this.id_cadastro);
       this.storage.set('permissao', this.permissao);
 
       loading.dismiss();
           if( this.permissao == 3){
             this.navCtrl.push(AdminPage);
+            console.log(this.id_cadastro)
+            console.log(this.permissao)
           }
           else if ( this.permissao == 2 ){
             this.navCtrl.push(ProfissionalPage);
+            console.log(this.id_cadastro)
+            console.log(this.permissao)
           }
           else if ( this.permissao == 1){
             this.navCtrl.push(UHomePage);
+            console.log(this.id_cadastro)
+            console.log(this.permissao)
           }
           else if ( this.permissao == 0){
             this.navCtrl.push(UsuarioPage);
-            console.log(this.id_login)
+            console.log(this.id_cadastro)
             console.log(this.permissao)
           }
           else{
+            console.log(this.id_cadastro)
+            console.log(this.permissao)
             this.alertCtrl.create({
               subTitle : "Não encontramos nenhum cadastro",
               buttons : [{

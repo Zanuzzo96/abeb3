@@ -5,7 +5,6 @@ import 'rxjs/add/operator/toPromise';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
-import { UHomePage } from '../u-home/u-home';
 
 @IonicPage()
 @Component({
@@ -44,9 +43,9 @@ export class UPerfilPage {
 
                 loading.present();
 
-                this.usuario = storage.get("id_login").then((value)=>{
-                  let teste = value;
-                  let api = 'https://lipolysis.grupoanx.com.br/perfil/usuario.php?user='+teste;
+                this.usuario = storage.get("id_cadastro").then((value)=>{
+                  let id = value;
+                  let api = 'https://lipolysis.grupoanx.com.br/usuario/perfil/usuario.php?user='+ id;
                   this.http.get(api).toPromise().then((resp)=>{
 
                     loading.dismiss();
@@ -71,7 +70,7 @@ export class UPerfilPage {
                     this.perfilUsuario.cep = perfilRetorno[0].cep;
                     this.perfilUsuario.rua = perfilRetorno[0].endereco;
                     this.perfilUsuario.cidade = perfilRetorno[0].cidade;
-                    this.perfilUsuario.estado = perfilRetorno[0].estado;
+                    this.perfilUsuario.estado = perfilRetorno[0].uf;
 
                   }).catch((erro)=>{
                     console.log(erro.json())
@@ -160,10 +159,7 @@ export class UPerfilPage {
                   title: 'Sucesso',
                   subTitle : "Perfil atualizado com sucesso",
                   buttons : [{
-                    text: "OK",
-                    handler: () => {
-                      this.navCtrl.push(UHomePage)
-                    }
+                    text: "OK"
                   }]
                 }).present();
               }else if ( retorno == "erro"){

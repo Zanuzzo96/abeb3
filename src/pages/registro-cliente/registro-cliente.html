@@ -13,12 +13,12 @@
 
     <ion-item class="item">
       <ion-label stacked>Nome Completo</ion-label>
-      <ion-input type="text" [(ngModel)]="cadastro.nome_cliente" required></ion-input>
+      <ion-input type="text" [(ngModel)]="cadastro.nome" maxlength="125"></ion-input>
     </ion-item>
 
     <ion-item class="item">
       <ion-label stacked>CPF</ion-label>
-      <ion-input type="number" [(ngModel)]="cadastro.cpf" required></ion-input>
+      <ion-input type="text" [(ngModel)]="cadastro.cpf" maxlength="15"></ion-input>
     </ion-item>
 
     <ion-item class="item">
@@ -36,17 +36,17 @@
 
     <ion-item class="item">
       <ion-label stacked>Telefone</ion-label>
-      <ion-input type="number" [(ngModel)]="cadastro.telefone" required></ion-input>
+      <ion-input type="number" [(ngModel)]="cadastro.telefone" maxlength="15"></ion-input>
     </ion-item>
 
     <ion-item class="item">
       <ion-label stacked>Email</ion-label>
-      <ion-input type="email" [(ngModel)]="cadastro.email" required></ion-input>
+      <ion-input type="email" [(ngModel)]="cadastro.email" maxlength="125"></ion-input>
     </ion-item>
 
     <ion-item class="item">
       <ion-label stacked>CEP</ion-label>
-      <ion-input type="text" [(ngModel)]="cadastro.cep"  maxlength="10" required></ion-input>
+      <ion-input type="text" [(ngModel)]="cadastro.cep" maxlength="10"></ion-input>
     </ion-item>
 
     <span (click)="preencher()" class="preencher">Preencher endereço</span>
@@ -58,23 +58,23 @@
 
     <ion-item class="item">
       <ion-label stacked>Cidade</ion-label>
-      <ion-input type="text" [(ngModel)]="cadastro.cidade" required></ion-input>
+      <ion-input type="text" [(ngModel)]="cadastro.cidade" maxlength="225"></ion-input>
     </ion-item>
 
     <ion-item class="item">
-      <ion-label stacked>Estado</ion-label>
-      <ion-input type="text" [(ngModel)]="cadastro.estado" required></ion-input>
+      <ion-label stacked>UF</ion-label>
+      <ion-input type="text" [(ngModel)]="cadastro.estado" maxlength="2" required></ion-input>
     </ion-item>
 
     <h6>Dados de acesso</h6>
     <ion-item class="item">
       <ion-label stacked>Login</ion-label>
-      <ion-input type="text" [(ngModel)]="cadastro.login" required></ion-input>
+      <ion-input type="text" [(ngModel)]="cadastro.login" maxlength="225"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="cadastro.senha" required></ion-input>
+      <ion-input type="password" [(ngModel)]="cadastro.senha" maxlength="225"></ion-input>
     </ion-item>
 
     <button ion-button block color="amarelo1" class="btn" (click)="criarConta()">Criar conta</button>

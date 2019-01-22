@@ -20,7 +20,7 @@ export class PAgendaPage {
               public http: Http,
               public storage: Storage) {
 
-                this.dadosClientes = storage.get("id_login").then((value)=>{
+                this.dadosClientes = storage.get("id_cadastro").then((value)=>{
                   let id_prof = value;
                   let api = 'https://lipolysis.grupoanx.com.br/profissional/agenda.php?profissional=' + id_prof;
 

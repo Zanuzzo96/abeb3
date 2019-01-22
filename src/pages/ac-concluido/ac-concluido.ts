@@ -138,9 +138,7 @@ export class AcConcluidoPage {
       ).subscribe(
           res => {
             console.log(res.json());
-
             let retorno = res.json()
-
           if(retorno == "sucesso"){
             loading.dismiss();
             this.alertCtrl.create({

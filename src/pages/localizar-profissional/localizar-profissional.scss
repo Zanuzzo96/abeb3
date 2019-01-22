@@ -84,4 +84,45 @@ page-localizar-profissional {
 
     }
   }
+
+  .busca{
+    background-color: #f89e33;
+
+    .campoBusca{
+      border-bottom: 1px solid #fff;
+      color: #fff
+    }
+    .campoBusca ::placeholder{
+      color:#fff;
+    }
+  }
+
+  .retorno{
+    background-color:#f4f4f4;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+
+    h4{
+      font-size: 18px;
+      margin-top: 10px;
+      color: #4e4940;
+    }
+
+    ion-icon{
+      font-size: 2.5em;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 15px;
+      color: #4e4940;
+    }
+
+    h6{
+      font-size: 14px;
+      color: #4e4940;
+    }
+  }
+
 }

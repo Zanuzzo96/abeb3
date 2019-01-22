@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { RegistroClientePage } from '../registro-cliente/registro-cliente';
 import { ValidacaoRegistroNivelProfCadastroPage } from '../validacao-registro-nivel-prof-cadastro/validacao-registro-nivel-prof-cadastro';
@@ -12,19 +12,12 @@ import { ValidacaoRegistroNivelProfCadastroPage } from '../validacao-registro-ni
 })
 export class NivelContaRegistroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController) { }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NivelContaRegistroPage');
-  }
+  ionViewDidLoad(){}
 
-  usuario() {
-    this.navCtrl.push(RegistroClientePage);
-  }
+  usuario(){this.navCtrl.push(RegistroClientePage)}
 
-  profissional() {
-    this.navCtrl.push(ValidacaoRegistroNivelProfCadastroPage);
-  }
+  profissional(){this.navCtrl.push(ValidacaoRegistroNivelProfCadastroPage)}
 
 }

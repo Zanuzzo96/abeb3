@@ -20,6 +20,7 @@ export class AAdicionardicaPage {
   mensagem:any;
   emtratamento:any;
   semtratamento:any;
+  profissional:any;
   nivel: any;
 
   constructor(
@@ -56,7 +57,9 @@ export class AAdicionardicaPage {
 
     loading.present();
 
-    if(this.emtratamento == true && this.semtratamento == true){
+    if(this.emtratamento == true && this.semtratamento == true && this.profissional == true){
+      this.nivel = 4;
+    }else if(this.profissional == true){
       this.nivel = 3;
     }else if(this.emtratamento == true){
       this.nivel = 2;
@@ -111,7 +114,7 @@ export class AAdicionardicaPage {
           err => {
 
             console.log(err.json());
-            
+
             loading.dismiss();
 
             this.alertCtrl.create({

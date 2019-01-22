@@ -12,7 +12,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-
+import { ChartsProvider } from '../../providers/charts/charts';
+import { ChartsModule } from 'ng2-charts';
 
 @IonicPage()
 @Component({
@@ -21,7 +22,6 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 })
 export class PSessoesPage {
 
-  nome = "teste";
   cliente = this.navParams.get('id');
   id_tratamento = this.navParams.get('tratamento');
   sexo = this.navParams.get('sexo');
@@ -42,7 +42,8 @@ export class PSessoesPage {
     public navParams: NavParams,
     public http: Http,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private charts: ChartsProvider,
   ) {
 
     if(this.id_tratamento){
@@ -82,60 +83,23 @@ export class PSessoesPage {
     console.log('ionViewDidLoad PSessoesPage');
 
     //busca do valores para o grafico
-        let api2 = 'https://lipolysis.grupoanx.com.br/profissional/grafico.php?cliente=' + this.cliente +'&tratamento=' + this.id_tratamento;
-        this.http.get(api2).toPromise().then((resp1)=>{
-             this.grafico = resp1.json()
-             console.log(this.grafico)
+        //let api2 = 'https://lipolysis.grupoanx.com.br/profissional/grafico.php?cliente=' + this.cliente +'&tratamento=' + this.id_tratamento;
+      //  this.http.get(api2).toPromise().then((resp1)=>{
+      //       this.grafico = resp1.json()
+        //     console.log(this.grafico)
 
-        }).catch((resp1)=>{
-            console.log(resp1);
-        });
+      //  }).catch((resp1)=>{
+      //      console.log(resp1);
+      //  });
+
+
+      this.charts.buscarDados().then(res => {
+        console.log(res)
+      }).catch((res) => {
+        console.log(res)
+      });
 
   }
-
-
-        //Inicio dos graficos de linha
-        public lineChartData:Array<any> = [
-          {
-            data: [this.grafico],
-            label: 'Series A'}
-        ];
-        public lineChartLabels:Array<any> = [this.grafico];
-        public lineChartOptions:any = {
-          responsive: true
-        };
-        public lineChartColors:Array<any> = [
-          { // grey
-            backgroundColor: 'rgba(248,158,51,0.2)',
-            borderColor: 'rgba(248,158,51,1)',
-            pointBackgroundColor: 'rgba(248,158,51,1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(248,158,51,0.8)'
-          }
-        ];
-        public lineChartLegend:boolean = false;
-        public lineChartType:string = 'line';
-
-        public randomize():void {
-        let _lineChartData:Array<any> = new Array(this.lineChartData.length);
-        for (let i = 0; i < this.lineChartData.length; i++) {
-          _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
-          for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-            _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-          }
-        }
-        this.lineChartData = _lineChartData;
-      }
-
-        // events
-        public chartClicked(e:any):void {
-          console.log(e);
-        }
-
-        public chartHovered(e:any):void {
-          console.log(e);
-        }
 
         sair(){
           this.navCtrl.push(ProfissionalPage)

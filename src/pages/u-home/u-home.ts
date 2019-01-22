@@ -29,7 +29,7 @@ export class UHomePage {
     private storage: Storage,
     public http: Http) {
 
-    }//fim do construtor
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UHomePage');

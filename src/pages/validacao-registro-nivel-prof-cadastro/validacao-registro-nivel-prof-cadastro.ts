@@ -46,7 +46,7 @@ export class ValidacaoRegistroNivelProfCadastroPage {
               loading.dismiss();
               this.navCtrl.push(RegistroProfissionalPage, {
                 rc: this.registro
-              }); //passar junto com a pagina o parametro da registrar com o rc no cadastro do profissional
+              });
             }else{
               loading.dismiss();
             this.alertCtrl.create({
@@ -62,13 +62,12 @@ export class ValidacaoRegistroNivelProfCadastroPage {
                     this.contador = 0;
                     this.navCtrl.push(AlertRcNaoCadastradoPage)
                   }
-
             }
 
         }).catch((response) => {
           console.log(response)
         })
-    //
+
   }
 
 }

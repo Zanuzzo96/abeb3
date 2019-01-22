@@ -6,6 +6,7 @@ import { DicasUsuarioFreePage } from '../dicas-usuario-free/dicas-usuario-free';
 import { LocalizarProfissionalPage } from '../localizar-profissional/localizar-profissional';
 import { SeInicioPage } from '../se-inicio/se-inicio';
 import { Storage } from '@ionic/storage';
+import { UPerfilPage } from '../u-perfil/u-perfil';
 
 
 @IonicPage()
@@ -41,6 +42,10 @@ export class UsuarioPage {
 
   dicas(){
     this.navCtrl.push(DicasUsuarioFreePage);
+  }
+
+  perfil(){
+    this.navCtrl.push(UPerfilPage);
   }
 
   sair(){

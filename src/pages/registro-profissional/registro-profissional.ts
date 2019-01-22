@@ -49,8 +49,14 @@ export class RegistroProfissionalPage {
   }
 
   preencher(){
-    console.log("preencher clicado");
-    let viacep = 'https://viacep.com.br/ws/'+ this.cadastro.cep +'/json/';
+    let cep = this.cadastro.cep;
+    let cepTratado =  cep.replace(/\.|\-/g, '') ;
+
+    console.log(cepTratado);
+
+    this.cadastro.cep = cepTratado;
+
+    let viacep = 'https://viacep.com.br/ws/'+ cepTratado +'/json/';
     this.http.get(viacep).toPromise().then((response) => {
       console.log(response.json())
       let endereco = response.json();
@@ -64,18 +70,23 @@ export class RegistroProfissionalPage {
 
   criarConta(){
 
-    console.log(this.cadastro);
+    let cpf = this.cadastro.cpf;
+    let cpfTratado =  cpf.replace(/\.|\-/g, '') ;
 
+    this.cadastro.cpf = cpfTratado;
+
+    console.log(this.cadastro);
     let headers: Headers = new Headers();
     headers.append('Content-type','application/json');
 
       this.http.post(
-        'https://lipolysis.grupoanx.com.br/cadastro/profissional.php',
+        'https://lipolysis.grupoanx.com.br/profissional/perfil/cadastrar.php',
         this.cadastro,
         new RequestOptions({ headers: headers })
       ).subscribe(
           res => {
-            let retorno = res.json();
+          let retorno = res.json();
+            console.log(retorno);
 
             if(retorno == 'sucesso'){
               this.alertCtrl.create({
