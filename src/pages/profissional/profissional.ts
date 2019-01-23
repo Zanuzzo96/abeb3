@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { PContatosPage } from '../p-contatos/p-contatos';
-
+import { PComunicadoPage } from '../p-comunicado/p-comunicado';
 
 @IonicPage()
 @Component({
@@ -23,12 +23,28 @@ import { PContatosPage } from '../p-contatos/p-contatos';
 export class ProfissionalPage {
 
   dia:any;
+  nomeProfissional:any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private storage: Storage,
-    public http: Http) {  }
+    public http: Http) {
+
+      this.storage.get("id_cadastro").then((value)=>{
+        let id_prof = value;
+        let api = 'https://lipolysis.grupoanx.com.br/profissional/home/nomeProfissional.php?profissional=' + id_prof;
+
+        this.http.get(api).toPromise().then((resp)=>{
+            let nome = resp.json();
+
+            this.nomeProfissional = nome[0].nome;
+          }).catch((resp)=>{
+            console.log(resp);
+          });
+        });
+
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfissionalPage');
@@ -37,13 +53,12 @@ export class ProfissionalPage {
       let id_prof = value;
       let api = 'https://lipolysis.grupoanx.com.br/profissional/home.php?profissional=' + id_prof;
 
-        this.http.get(api).toPromise().then((resp)=>{
+      this.http.get(api).toPromise().then((resp)=>{
           this.dia = resp.json();
         }).catch((resp)=>{
           console.log(resp);
         });
-
-    });
+      });
   }
 
   sair(){
@@ -66,6 +81,10 @@ export class ProfissionalPage {
 
   contato(){
     this.navCtrl.push(PContatosPage)
+  }
+
+  comunicado(){
+    this.navCtrl.push(PComunicadoPage)
   }
 
   clientes(){

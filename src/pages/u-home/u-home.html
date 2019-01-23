@@ -1,22 +1,8 @@
-<!--
-  Generated template for the UHomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-toolbar color="cinza1">
-    <ion-title>Olá {{nome}}</ion-title>
-    <ion-buttons end (click)="sair()">
-      <button ion-button icon-only>
-        <ion-icon name="ios-log-out-outline"></ion-icon>
-      </button>
-    </ion-buttons>
+    <ion-title></ion-title>
   </ion-toolbar>
-
 </ion-header>
-
 
 <ion-content>
   <ion-card *ngIf="teste != '1'">
@@ -103,17 +89,21 @@
 <ion-footer text-center>
   <ion-grid>
     <ion-row>
-      <ion-col col-4 (click)="diario()">
+      <ion-col col-3 (click)="diario()">
         <ion-icon name="ios-bookmarks-outline"></ion-icon>
         <h6>Diário</h6>
       </ion-col>
-      <ion-col col-4 (click)="perfil()">
+      <ion-col col-3 (click)="perfil()">
         <ion-icon name="ios-person-outline"></ion-icon>
         <h6>Perfil</h6>
       </ion-col>
-      <ion-col col-4 (click)="dicas()">
+      <ion-col col-3 (click)="dicas()">
         <ion-icon name="ios-thumbs-up-outline"></ion-icon>
         <h6>Dicas</h6>
+      </ion-col>
+      <ion-col col-3 (click)="sair()">
+        <ion-icon name="ios-log-out-outline"></ion-icon>
+        <h6>Sair</h6>
       </ion-col>
 
     </ion-row>

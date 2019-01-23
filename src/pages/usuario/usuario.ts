@@ -5,7 +5,6 @@ import { MetodoPage } from '../metodo/metodo';
 import { DicasUsuarioFreePage } from '../dicas-usuario-free/dicas-usuario-free';
 import { LocalizarProfissionalPage } from '../localizar-profissional/localizar-profissional';
 import { SeInicioPage } from '../se-inicio/se-inicio';
-import { Storage } from '@ionic/storage';
 import { UPerfilPage } from '../u-perfil/u-perfil';
 
 
@@ -17,15 +16,16 @@ import { UPerfilPage } from '../u-perfil/u-perfil';
 export class UsuarioPage {
 
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private storage: Storage) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams ) { }
 
-
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UsuarioPage');
+    console.log("id usuario", this.id_cadastro);
+    console.log("permissao", this.permissao);
+
   }
 
   metodo(){
@@ -33,24 +33,34 @@ export class UsuarioPage {
   }
 
   localizar(){
-    this.navCtrl.push(LocalizarProfissionalPage);
+    this.navCtrl.push(LocalizarProfissionalPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    });
   }
 
   sedentarismo(){
-    this.navCtrl.push(SeInicioPage);
+    this.navCtrl.push(SeInicioPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    });
   }
 
   dicas(){
-    this.navCtrl.push(DicasUsuarioFreePage);
+    this.navCtrl.push(DicasUsuarioFreePage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    });
   }
 
   perfil(){
-    this.navCtrl.push(UPerfilPage);
+    this.navCtrl.push(UPerfilPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    });
   }
 
   sair(){
-    this.storage.remove('id_login');
-    this.storage.remove('permissao');
     this.navCtrl.push(HomePage);
   }
 }

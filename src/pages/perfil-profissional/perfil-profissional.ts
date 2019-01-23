@@ -50,9 +50,9 @@ export class PerfilProfissionalPage {
     });
   }
 
-  adicinar(){
+  adicionar(){
     console.log(this.id)
-    this.usuario = this.storage.get("id_login").then((value)=>{
+    this.usuario = this.storage.get("id_cadastro").then((value)=>{
       let usuario = value;
 
       let atualizacao = {
@@ -63,7 +63,7 @@ export class PerfilProfissionalPage {
       console.log(atualizacao);
 
         let loading = this.loadingCtrl.create({
-          content : "procedendo seu Registro",
+          content : "Registrando o profissional escolhido",
         });
 
         loading.present();
@@ -72,7 +72,7 @@ export class PerfilProfissionalPage {
         headers.append('Content-type','application/json');
 
       this.http.post(
-        'https://lipolysis.grupoanx.com.br/cadastro/updatecliente.php',
+        'https://lipolysis.grupoanx.com.br/usuario/perfil/registrarProfissionalEscolhido.php',
         atualizacao,
         new RequestOptions({ headers: headers })
       ).subscribe(

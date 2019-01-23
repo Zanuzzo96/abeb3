@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Storage } from '@ionic/storage';
+import { ProfissionalPage } from '../profissional/profissional';
 
 @IonicPage()
 @Component({
@@ -27,9 +28,9 @@ export class PContatosPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PContatosPage');
 
-    this.storage.get("id_login").then((value)=>{
+    this.storage.get("id_cadastro").then((value)=>{
       let id_prof = value;
-      let api = 'https://lipolysis.grupoanx.com.br/profissional/contato.php?profissional=' + id_prof;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/contato/contato.php?profissional=' + id_prof;
 
         this.http.get(api).toPromise().then((resp)=>{
           this.contato = resp.json();
@@ -50,7 +51,7 @@ export class PContatosPage {
 
     loading.present();
 
-      let api = 'https://lipolysis.grupoanx.com.br/profissional/contatodelete.php?id=' + id;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/contato/contatodelete.php?id=' + id;
 
       this.http.get(api).toPromise().then((resp)=>{
         let retorno = resp.json();
@@ -87,6 +88,10 @@ export class PContatosPage {
         }).present();
 
       });
+  }
+
+  voltar(){
+    this.navCtrl.push(ProfissionalPage)
   }
 
 }

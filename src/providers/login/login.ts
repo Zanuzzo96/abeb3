@@ -18,7 +18,7 @@ export class LoginProvider {
     }
 
     recuperarSenha(cpf: number, nasc: any){
-      let api = 'https://lipolysis.grupoanx.com.br/login.php?cpf=' + cpf + '&nasc=' + nasc;
+      let api = 'https://lipolysis.grupoanx.com.br/recuperarSenha.php?cpf=' + cpf + '&nasc=' + nasc;
       return this.http.get(api).toPromise();
     }
 

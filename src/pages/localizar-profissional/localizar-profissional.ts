@@ -12,18 +12,21 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 })
 export class LocalizarProfissionalPage {
 
-  public id: any;
-  public valor:any;
+  id: any;
+  valor:any;
 
-  public endereco: any
-  public local:any
+  endereco: any
+  local:any
 
-  public retornoProfissional: number;
-  public dadosRetorno: any;
+  retornoProfissional: number;
+  dadosRetorno: any;
 
-  public retornoBusca = 0;
-  public busca: any;
-  public dadosBusca:any;
+  retornoBusca = 0;
+  busca: any;
+  dadosBusca:any;
+
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -31,26 +34,22 @@ export class LocalizarProfissionalPage {
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController,) {
 
-              let loading = this.loadingCtrl.create({
+              let loading = loadingCtrl.create({
                 content : "Localizando profissionais habilitados",
               });
 
               loading.present();
 
-              localizacao.getStorage().then(id => {
-                this.id = id;
-                if(id){
-                  localizacao.userlocation(id).then((response) => {
+                localizacao.userlocation(this.id_cadastro).then((response) => {
 
                     let retorno = response.json();
                     this.endereco = retorno[0].endereco;
                     this.local = retorno[0].cidade;
 
                     console.log("local",this.local);
-                    console.log("id",id);
+                    console.log("id",this.id_cadastro);
 
-
-                    localizacao.profissionallocation(this.local,this.id).then((response) => {
+                    localizacao.profissionallocation(this.local,this.id_cadastro).then((response) => {
 
                         let retorno = response.json();
                         console.log(retorno);
@@ -58,7 +57,7 @@ export class LocalizarProfissionalPage {
                         if(retorno == ""){
                           console.log('nao tem nenhum cadastro');
                           this.retornoProfissional = 1;
-                          loading.dismiss();                          
+                          loading.dismiss();
                         }else{
                           this.retornoProfissional = 2;
                           console.log(response);
@@ -67,26 +66,15 @@ export class LocalizarProfissionalPage {
                         }
 
                     }).catch((response) => {
-                      console.log('deu um erro 2 ');
+                      console.log('deu um erro');
                       loading.dismiss();
                     });
-
-                  }).catch((response) => {
-                    console.log('deu um erro');
-                    loading.dismiss();
-                  });
-                }
-              });
-
-
-
-
+                });
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocalizarProfissionalPage');
-
-
   }
 
   perfil(perfil_prof,estabelecimento,telefone,endereco,cidade,estado){
@@ -97,7 +85,9 @@ export class LocalizarProfissionalPage {
       "telefone":telefone,
       "endereco":endereco,
       "cidade":cidade,
-      "estado":estado
+      "estado":estado,
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
     });
   }
 
@@ -113,6 +103,8 @@ export class LocalizarProfissionalPage {
             text: "OK"
           }]
         }).present();
+        this.retornoBusca = 0;
+        
     }else{
         this.localizacao.buscaProfissional(this.busca).then((response) => {
 

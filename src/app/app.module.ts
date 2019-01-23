@@ -34,6 +34,7 @@ import { PSugestoesPage } from '../pages/p-sugestoes/p-sugestoes';
 import { PPerfilPage } from '../pages/p-perfil/p-perfil';
 import { PImagensSessaoPage } from '../pages/p-imagens-sessao/p-imagens-sessao';
 import { PContatosPage } from '../pages/p-contatos/p-contatos';
+import { PComunicadoPage } from '../pages/p-comunicado/p-comunicado';
 
 //telas Administracao
 import { AdminPage } from '../pages/admin/admin';
@@ -155,7 +156,7 @@ import { ChartsProvider } from '../providers/charts/charts';
     MensagemPage,
     MetodoPage,
 
-
+    PComunicadoPage,
     ProfissionalPage,
     PAgendaPage,
     PClientesPage,
@@ -292,6 +293,7 @@ import { ChartsProvider } from '../providers/charts/charts';
     UsuarioPage,
     MensagemPage,
 //profissional
+    PComunicadoPage,
     ProfissionalPage,
     PAgendaPage,
     PClientesPage,

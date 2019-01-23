@@ -26,8 +26,8 @@ export class DiarioConcluidoPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http,  public storage: Storage) {
-    this.usuario = storage.get("id_login").then((value)=>{
-      let teste = value;
+    this.usuario = storage.get("id_cadastro").then((value)=>{
+      let ident = value;
 
       let diario = {
         "dia":this.dia,
@@ -38,12 +38,12 @@ export class DiarioConcluidoPage {
         "nutricao":this.nutricao,
         "fisico":this.fisico,
         "fumante":this.fumante,
-        "id": teste,
+        "id": ident,
       }
 
       console.log(diario);
 
-      let api = 'https://lipolysis.grupoanx.com.br/diario/index.php';
+      let api = 'https://lipolysis.grupoanx.com.br/usuario/diario.php';
 
       let headers: Headers = new Headers();
         headers.append('Content-type','application/json');
@@ -54,9 +54,7 @@ export class DiarioConcluidoPage {
           new RequestOptions({ headers: headers })
         ).subscribe(
             res => {
-
               console.log(res.json())
-
             },
             err => {
               console.log(err.json())
@@ -67,10 +65,7 @@ export class DiarioConcluidoPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DiarioConcluidoPage');
-
-  }
+  ionViewDidLoad() { console.log('ionViewDidLoad DiarioConcluidoPage'); }
 
   proximo(){
     this.navCtrl.push(UHomePage)

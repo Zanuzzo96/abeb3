@@ -39,7 +39,7 @@ export class MensagemPage {
 
   enviarMensagem(){
 
-    this.usuario = this.storage.get("id_login").then((value)=>{
+    this.usuario = this.storage.get("id_cadastro").then((value)=>{
       let usuario = value;
 
       let email = {
@@ -62,7 +62,7 @@ export class MensagemPage {
         headers.append('Content-type','application/json');
 
       this.http.post(
-        'https://lipolysis.grupoanx.com.br/mensagem/index.php',
+        'https://lipolysis.grupoanx.com.br/usuario/mensagem.php',
         email,
         new RequestOptions({ headers: headers })
       ).subscribe(

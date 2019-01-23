@@ -25,14 +25,12 @@ export class PDiarioPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PDiarioPage');
 
-    this.storage.get("id_login").then((value)=>{
+    this.storage.get("id_cadastro").then((value)=>{
       let id_prof = value;
-      let api = 'https://lipolysis.grupoanx.com.br/profissional/diario.php?profissional=' + id_prof;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/diario/diario.php?profissional=' + id_prof;
 
         this.http.get(api).toPromise().then((resp)=>{
           this.diario = resp.json();
-          console.log(this.diario)
-
         }).catch((resp)=>{
           console.log(resp);
         });
@@ -50,12 +48,11 @@ export class PDiarioPage {
     loading.present();
 
 
-        let api = 'https://lipolysis.grupoanx.com.br/profissional/diarioporemail.php?diario=' + id;
+        let api = 'https://lipolysis.grupoanx.com.br/profissional/diario/diarioporemail.php?diario=' + id;
 
         this.http.get(api).toPromise().then((resp)=>{
 
-          loading.dismiss();
-
+          console.log(resp.json());
           let retorno = resp.json();
           if(retorno == "sucesso"){
               this.alertCtrl.create({
@@ -99,7 +96,7 @@ export class PDiarioPage {
 
     loading.present();
 
-        let api = 'https://lipolysis.grupoanx.com.br/profissional/diariodelete.php?&diario=' + id;
+        let api = 'https://lipolysis.grupoanx.com.br/profissional/diario/diariodelete.php?&diario=' + id;
 
         this.http.get(api).toPromise().then((resp)=>{
           let retorno = resp.json();

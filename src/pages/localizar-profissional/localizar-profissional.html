@@ -76,11 +76,11 @@
           <ion-col col-10>
             <h5>{{item.estabelecimento}}</h5>
             <h6>{{item.telefone}}</h6>
-            <h6>{{item.endereco}} - {{item.cidade}} - {{item.estado}}</h6>
+            <h6>{{item.endereco}} - {{item.cidade}} - {{item.uf}}</h6>
           </ion-col>
 
           <ion-col col-2>
-            <ion-icon text-center name="ios-arrow-dropright-circle" (click)="perfil(item.id_cadastro,item.estabelecimento,item.telefone,item.endereco,item.cidade,item.estado)"></ion-icon>
+            <ion-icon text-center name="ios-arrow-dropright-circle" (click)="perfil(item.id_cadastro,item.estabelecimento,item.telefone,item.endereco,item.cidade,item.uf)"></ion-icon>
           </ion-col>
 
         </ion-row>

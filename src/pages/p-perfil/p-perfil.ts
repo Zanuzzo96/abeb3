@@ -46,9 +46,9 @@ export class PPerfilPage {
 
                   loading.present();
 
-                  this.usuario = storage.get("id_login").then((value)=>{
+                  this.usuario = storage.get("id_cadastro").then((value)=>{
                     let prof = value;
-                    let api = 'https://lipolysis.grupoanx.com.br/profissional/atualizar.php?prof='+ prof;
+                    let api = 'https://lipolysis.grupoanx.com.br/profissional/perfil/atualizar.php?prof='+ prof;
                     this.http.get(api).toPromise().then((resp)=>{
                       loading.dismiss();
                       console.log(resp.json())
@@ -73,10 +73,8 @@ export class PPerfilPage {
                       this.perfilProf.formacao = dadosperfil[0].formacao;
                       this.perfilProf.rua = dadosperfil[0].endereco;
                       this.perfilProf.cidade = dadosperfil[0].cidade;
-                      this.perfilProf.estado = dadosperfil[0].estado;
+                      this.perfilProf.estado = dadosperfil[0].uf;
                       this.perfilProf.cep = dadosperfil[0].cep;
-
-
 
                     }).catch( (err) =>{
                       console.log(err.json())
@@ -128,7 +126,7 @@ export class PPerfilPage {
 
         loading.present();
 
-        this.storage.get("id_login").then((value)=>{
+        this.storage.get("id_cadastro").then((value)=>{
           let usuario = value;
 
           console.log('Usario do perfil', usuario)
@@ -150,7 +148,7 @@ export class PPerfilPage {
 
           console.log('isso aqui é os dados', this.atualizacao)
 
-          let api = 'https://lipolysis.grupoanx.com.br/profissional/atualizar.php';
+          let api = 'https://lipolysis.grupoanx.com.br/profissional/perfil/atualizar.php';
           let headers: Headers = new Headers();
             headers.append('Content-type','application/json');
 

@@ -121,7 +121,7 @@ export class UPerfilPage {
 
     loading.present();
 
-    this.storage.get("id_login").then((value)=>{
+    this.storage.get("id_cadastro").then((value)=>{
       let usuario = value;
 
       console.log('Usario do perfil', usuario)
@@ -141,7 +141,7 @@ export class UPerfilPage {
 
       console.log('isso aqui é os dados', this.atualizacao)
 
-      let api = 'https://lipolysis.grupoanx.com.br/usuario/atualizarperfil.php';
+      let api = 'https://lipolysis.grupoanx.com.br/usuario/perfil/atualizar.php';
       let headers: Headers = new Headers();
         headers.append('Content-type','application/json');
 

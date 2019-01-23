@@ -4,6 +4,8 @@ import { PSessoesPage } from '../p-sessoes/p-sessoes';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+
 
 @IonicPage()
 @Component({
@@ -13,33 +15,40 @@ import { Storage } from '@ionic/storage';
 export class PClientesPage {
 
   dadosClientes:any;
-  emtratamento: any;
-  semtratamento:any;
+  clientes:any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
-              public storage: Storage) {
+              public storage: Storage,
+              public loadingCtrl: LoadingController) {
 
-    this.dadosClientes = storage.get("id_login").then((value)=>{
-      let id_prof = value;
-      let api = 'https://lipolysis.grupoanx.com.br/profissional/clientes.php?profissional=' + id_prof;
+                let loading = this.loadingCtrl.create({
+                  content : "Carregando dados do perfil",
+                });
 
-        this.http.get(api).toPromise().then((resp)=>{
-          let perfilRetorno = resp.json();
-          this.emtratamento = perfilRetorno[1];
-          this.semtratamento = perfilRetorno[2];
-          console.log(this.emtratamento);
-          console.log(this.semtratamento);
-        }).catch((resp)=>{
-          console.log(resp);
-        });
+                loading.present();
 
-    });
+                this.dadosClientes = storage.get("id_cadastro").then((value)=>{
+                  let id_prof = value;
+                  let api = 'https://lipolysis.grupoanx.com.br/profissional/clientes.php?profissional=' + id_prof;
+
+                    this.http.get(api).toPromise().then((resp)=>{
+
+                      this.clientes = resp.json();
+                      console.log(this.clientes);
+                      loading.dismiss();
+
+                    }).catch((resp)=>{
+                      
+                      console.log(resp);
+                      loading.dismiss();
+
+                    });
+
+                });
 
   }//fim do constructor
-
-  cliente = 'emtratamento';
 
   ionViewDidLoad() {
     console.log('ionViewDiddLoad PClientesPage');

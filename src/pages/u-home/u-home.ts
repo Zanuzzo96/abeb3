@@ -34,8 +34,9 @@ export class UHomePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad UHomePage');
 
-    this.storage.get("id_login").then((value)=>{
+    this.storage.get("id_cadastro").then((value)=>{
       let usuario = value;
+      console.log(usuario);
       let api = 'https://lipolysis.grupoanx.com.br/usuario/agenda.php?usuario=' + usuario;
 
         this.http.get(api).toPromise().then((resp)=>{

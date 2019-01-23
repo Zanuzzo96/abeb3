@@ -22,22 +22,17 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage {
 
-  public permissao : any;
   public login : string;
   public senha : string;
   public id_cadastro: any;
+  public permissao : any;
 
   constructor(public loadingCtrl: LoadingController,
               public alertCtrl: AlertController,
               public navCtrl: NavController,
               public navParams: NavParams,
               private loginProvider: LoginProvider,
-              private storage: Storage) {
-
-                storage.remove('id_login');
-                storage.remove('permissao');
-
- }
+            ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -60,27 +55,39 @@ export class LoginPage {
       this.permissao = retorno[0].permissao;
       this.id_cadastro = retorno[0].id_cadastro;
 
-      this.storage.set('id_cadastro', this.id_cadastro);
-      this.storage.set('permissao', this.permissao);
+      console.log("id usuario", this.id_cadastro);
+      console.log("permissao", this.permissao);
 
       loading.dismiss();
           if( this.permissao == 3){
-            this.navCtrl.push(AdminPage);
+            this.navCtrl.push(AdminPage,{
+              'id_cadastro':this.id_cadastro,
+              'permissao':this.permissao
+            });
             console.log(this.id_cadastro)
             console.log(this.permissao)
           }
           else if ( this.permissao == 2 ){
-            this.navCtrl.push(ProfissionalPage);
+            this.navCtrl.push(ProfissionalPage,{
+              'id_cadastro':this.id_cadastro,
+              'permissao':this.permissao
+            });
             console.log(this.id_cadastro)
             console.log(this.permissao)
           }
           else if ( this.permissao == 1){
-            this.navCtrl.push(UHomePage);
+            this.navCtrl.push(UHomePage,{
+              'id_cadastro':this.id_cadastro,
+              'permissao':this.permissao
+            });
             console.log(this.id_cadastro)
             console.log(this.permissao)
           }
           else if ( this.permissao == 0){
-            this.navCtrl.push(UsuarioPage);
+            this.navCtrl.push(UsuarioPage,{
+              'id_cadastro':this.id_cadastro,
+              'permissao':this.permissao
+            });
             console.log(this.id_cadastro)
             console.log(this.permissao)
           }
