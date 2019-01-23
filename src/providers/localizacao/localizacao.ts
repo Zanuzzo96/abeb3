@@ -20,8 +20,8 @@ export class LocalizacaoProvider {
     return this.http.get(api).toPromise();
   }
 
-  profissionallocation(cidade){
-    let api = 'https://lipolysis.grupoanx.com.br/usuario/localizarProfissional.php?cidade='+ cidade;
+  profissionallocation(cidade,id){
+    let api = 'https://lipolysis.grupoanx.com.br/usuario/localizarProfissional.php?cidade=' + cidade + '&cliente=' + id;
     return this.http.get(api).toPromise();
   }
 

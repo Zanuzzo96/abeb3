@@ -31,6 +31,11 @@ export class LocalizarProfissionalPage {
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController,) {
 
+              let loading = this.loadingCtrl.create({
+                content : "Localizando profissionais habilitados",
+              });
+
+              loading.present();
 
               localizacao.getStorage().then(id => {
                 this.id = id;
@@ -45,7 +50,7 @@ export class LocalizarProfissionalPage {
                     console.log("id",id);
 
 
-                    localizacao.profissionallocation(this.local).then((response) => {
+                    localizacao.profissionallocation(this.local,this.id).then((response) => {
 
                         let retorno = response.json();
                         console.log(retorno);
@@ -53,18 +58,22 @@ export class LocalizarProfissionalPage {
                         if(retorno == ""){
                           console.log('nao tem nenhum cadastro');
                           this.retornoProfissional = 1;
+                          loading.dismiss();                          
                         }else{
                           this.retornoProfissional = 2;
                           console.log(response);
                           this.dadosRetorno = response.json();
+                          loading.dismiss();
                         }
 
                     }).catch((response) => {
                       console.log('deu um erro 2 ');
+                      loading.dismiss();
                     });
 
                   }).catch((response) => {
                     console.log('deu um erro');
+                    loading.dismiss();
                   });
                 }
               });

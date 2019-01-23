@@ -12,8 +12,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { ChartsProvider } from '../../providers/charts/charts';
-import { ChartsModule } from 'ng2-charts';
+//import { ChartsProvider } from '../../providers/charts/charts';
+//import { ChartsModule } from 'ng2-charts';
 
 @IonicPage()
 @Component({
@@ -43,7 +43,7 @@ export class PSessoesPage {
     public http: Http,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    private charts: ChartsProvider,
+    //private charts: ChartsProvider,
   ) {
 
     if(this.id_tratamento){
@@ -93,11 +93,11 @@ export class PSessoesPage {
       //  });
 
 
-      this.charts.buscarDados().then(res => {
-        console.log(res)
-      }).catch((res) => {
-        console.log(res)
-      });
+      //this.charts.buscarDados().then(res => {
+      //  console.log(res)
+      //}).catch((res) => {
+      //  console.log(res)
+      //});
 
   }
 
@@ -208,7 +208,6 @@ export class PSessoesPage {
                         }]
                       }).present();
                     }
-
                 },
                 err => {
                   loading.dismiss()
