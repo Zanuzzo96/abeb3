@@ -25,26 +25,25 @@ export class MensagemPage {
 
   usuario: any;
 
-  id_prof = this.navParams.get('id');
+  idProfissional = this.navParams.get('idProfissional');
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
   mensagem: any;
   contato: any;
   gostaria: any;
 
-
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad MensagemPage');
-    console.log(this.id_prof)
+    console.log(this.idProfissional)
+    console.log(this.id_cadastro)
+    console.log(this.permissao)
   }
 
   enviarMensagem(){
 
-    this.usuario = this.storage.get("id_cadastro").then((value)=>{
-      let usuario = value;
-
       let email = {
-        "user":usuario,
-        "prof":this.id_prof,
+        "user":this.id_cadastro,
+        "prof":this.idProfissional,
         "mensagem":this.mensagem,
         "contato":this.contato,
         "gostaria":this.gostaria
@@ -79,7 +78,10 @@ export class MensagemPage {
                 buttons : [{
                   text: "OK",
                   handler: () => {
-                    this.navCtrl.push(UsuarioPage)
+                    this.navCtrl.push(UsuarioPage,{
+                      'id_cadastro':this.id_cadastro,
+                      'permissao':this.permissao
+                    })
                   }
                 }]
               }).present();
@@ -111,8 +113,6 @@ export class MensagemPage {
 
           }
         );
-      });
-
   }
 
 }

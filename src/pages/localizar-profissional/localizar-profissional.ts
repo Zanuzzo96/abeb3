@@ -12,7 +12,7 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 })
 export class LocalizarProfissionalPage {
 
-  id: any;
+  idProfissional: any;
   valor:any;
 
   endereco: any
@@ -77,10 +77,10 @@ export class LocalizarProfissionalPage {
     console.log('ionViewDidLoad LocalizarProfissionalPage');
   }
 
-  perfil(perfil_prof,estabelecimento,telefone,endereco,cidade,estado){
+  perfil(idProfissional,estabelecimento,telefone,endereco,cidade,estado){
 
     this.navCtrl.push(PerfilProfissionalPage,{
-      "id":perfil_prof,
+      "idProfissional":idProfissional,
       "estabelecimento":estabelecimento,
       "telefone":telefone,
       "endereco":endereco,
@@ -104,7 +104,7 @@ export class LocalizarProfissionalPage {
           }]
         }).present();
         this.retornoBusca = 0;
-        
+
     }else{
         this.localizacao.buscaProfissional(this.busca).then((response) => {
 

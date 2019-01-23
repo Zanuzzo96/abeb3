@@ -25,51 +25,47 @@ export class PerfilProfissionalPage {
 
   usuario: any;
 
-  id = this.navParams.get('id');
+  idProfissional = this.navParams.get('idProfissional');
   estabelecimento = this.navParams.get('estabelecimento');
   telefone = this.navParams.get('telefone');
   endereco = this.navParams.get('endereco');
   cidade = this.navParams.get('cidade');
   estado = this.navParams.get('estado');
-
-
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilProfissionalPage');
-    console.log(this.id);
+    console.log(this.idProfissional);
     console.log(this.estabelecimento);
     console.log(this.telefone)
     console.log(this.endereco)
     console.log(this.cidade)
     console.log(this.estado)
+    console.log(this.id_cadastro)
+    console.log(this.permissao)
   }
 
   mensagem(){
     this.navCtrl.push(MensagemPage,{
-      "id":this.id
+      "idProfissional":this.idProfissional,
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
     });
   }
 
   adicionar(){
-    console.log(this.id)
-    this.usuario = this.storage.get("id_cadastro").then((value)=>{
-      let usuario = value;
 
       let atualizacao = {
-        "user":usuario,
-        "prof":this.id,
+        "id_cadastro":this.id_cadastro,
+        "idProfissional":this.idProfissional,
       }
 
-      console.log(atualizacao);
+      let loading = this.loadingCtrl.create({content : "Registrando o profissional escolhido"});
+      loading.present();
 
-        let loading = this.loadingCtrl.create({
-          content : "Registrando o profissional escolhido",
-        });
-
-        loading.present();
-
-        let headers: Headers = new Headers();
-        headers.append('Content-type','application/json');
+      let headers: Headers = new Headers();
+      headers.append('Content-type','application/json');
 
       this.http.post(
         'https://lipolysis.grupoanx.com.br/usuario/perfil/registrarProfissionalEscolhido.php',
@@ -89,7 +85,10 @@ export class PerfilProfissionalPage {
                 buttons : [{
                   text: "OK",
                   handler: () => {
-                    this.navCtrl.push(UsuarioPage)
+                    this.navCtrl.push(UsuarioPage,{
+                      'id_cadastro':this.id_cadastro,
+                      'permissao':this.permissao
+                    })
                   }
                 }]
               }).present();
@@ -108,7 +107,6 @@ export class PerfilProfissionalPage {
           },
           err => {
 
-            console.log(err.json());
             loading.dismiss();
 
               this.alertCtrl.create({
@@ -118,10 +116,9 @@ export class PerfilProfissionalPage {
                     text: "OK",
                   }]
                 }).present();
-
           }
         );
-      });
+
   }
 
 }

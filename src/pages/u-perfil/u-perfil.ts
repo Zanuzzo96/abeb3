@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions  } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 @IonicPage()
@@ -17,35 +16,24 @@ export class UPerfilPage {
   atualizacao: any;
 
   perfilUsuario = {
-    "nome":"",
-    "cpf":"",
-    "nasc":"",
-    "sexo":"",
-    "telefone":"",
-    "email":"",
-    "rua":"",
-    "cidade":"",
-    "estado":"",
-    "cep":""
+    "nome":"","cpf":"","nasc":"","sexo":"","telefone":"",
+    "email":"","rua":"","cidade":"","estado":"","cep":""
   }
+
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
               public alertCtrl: AlertController,
-              public storage: Storage,
               public loadingCtrl: LoadingController
             ) {
 
-                let loading = this.loadingCtrl.create({
-                  content : "Carregando dados do perfil",
-                });
-
+                let loading = this.loadingCtrl.create({content : "Carregando dados do perfil"});
                 loading.present();
 
-                this.usuario = storage.get("id_cadastro").then((value)=>{
-                  let id = value;
-                  let api = 'https://lipolysis.grupoanx.com.br/usuario/perfil/usuario.php?user='+ id;
+                  let api = 'https://lipolysis.grupoanx.com.br/usuario/perfil/usuario.php?user='+ this.id_cadastro;
                   this.http.get(api).toPromise().then((resp)=>{
 
                     loading.dismiss();
@@ -76,20 +64,16 @@ export class UPerfilPage {
                     console.log(erro.json())
                     loading.dismiss();
                   });
-                })
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UPerfilPage');
   }
 
-//pegar o novo endereco pelo cep
   atualizarCep(){
 
-    let loading = this.loadingCtrl.create({
-      content : "Atualizando novo endereço",
-    });
-
+    let loading = this.loadingCtrl.create({content : "Atualizando novo endereço"});
     loading.present();
 
     console.log("preencher clicado");
@@ -111,23 +95,15 @@ export class UPerfilPage {
 
   }
 
-// atualizar todo o cadastro
+
   atualizar(){
     console.log(this.perfilUsuario)
 
-    let loading = this.loadingCtrl.create({
-      content : "Atualizando perfil",
-    });
-
+    let loading = this.loadingCtrl.create({content : "Atualizando perfil"});
     loading.present();
 
-    this.storage.get("id_cadastro").then((value)=>{
-      let usuario = value;
-
-      console.log('Usario do perfil', usuario)
-
       this.atualizacao = {
-        "usuario": usuario,
+        "usuario": this.id_cadastro,
         "nome":this.perfilUsuario.nome,
         "cpf":this.perfilUsuario.cpf,
         "nasc":this.perfilUsuario.nasc,
@@ -159,7 +135,13 @@ export class UPerfilPage {
                   title: 'Sucesso',
                   subTitle : "Perfil atualizado com sucesso",
                   buttons : [{
-                    text: "OK"
+                    text: "OK",
+                    handler: () => {
+                      this.navCtrl.push(UsuarioPage,{
+                        'id_cadastro':this.id_cadastro,
+                        'permissao':this.permissao
+                      })
+                    }
                   }]
                 }).present();
               }else if ( retorno == "erro"){
@@ -183,6 +165,5 @@ export class UPerfilPage {
               }).present();
             }
           );
-});
 }
 }

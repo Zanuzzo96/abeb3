@@ -7,10 +7,7 @@ import { ARelatoriosPage } from '../a-relatorios/a-relatorios';
 import { ASorteiosPage } from '../a-sorteios/a-sorteios';
 import { ADicasPage } from '../a-dicas/a-dicas';
 import { HomePage } from '../home/home';
-import { Storage } from '@ionic/storage';
 import { ASugestoesPage } from '../a-sugestoes/a-sugestoes';
-
-
 
 @IonicPage()
 @Component({
@@ -19,20 +16,15 @@ import { ASugestoesPage } from '../a-sugestoes/a-sugestoes';
 })
 export class AdminPage {
 
-constructor(
-  public navCtrl: NavController,
-  public navParams: NavParams,
-  private storage: Storage) { }
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
+
+  constructor(public navCtrl: NavController,public navParams: NavParams) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AdminPage');
-
-    this.storage.get('id_login').then((valor)=>{
-      console.log(valor)
-    });
-    this.storage.get('permissao').then((valor)=>{
-      console.log(valor)
-    });
+    console.log("id usuario", this.id_cadastro);
+    console.log("permissao", this.permissao);
   }
 
   profissionais(){
@@ -60,8 +52,6 @@ constructor(
   }
 
   sair(){
-    this.storage.remove('id_login');
-    this.storage.remove('permissao');
     this.navCtrl.push(HomePage)
   }
 

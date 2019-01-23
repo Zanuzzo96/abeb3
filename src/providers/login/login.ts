@@ -5,15 +5,10 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class LoginProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello LoginProvider Provider');
-  }
+  constructor(public http: Http) {}
 
     validarLogin(login : string , senha : string) {
-
-      console.log(login);
       let api = 'https://lipolysis.grupoanx.com.br/login.php?login=' + login + '&senha=' + senha;
-
       return this.http.get(api).toPromise();
     }
 

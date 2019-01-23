@@ -9,7 +9,6 @@ import { PSessoesPage } from '../p-sessoes/p-sessoes';
 import { PSugestoesPage } from '../p-sugestoes/p-sugestoes';
 import { PPerfilPage } from '../p-perfil/p-perfil';
 import { HomePage } from '../home/home';
-import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { PContatosPage } from '../p-contatos/p-contatos';
@@ -25,45 +24,37 @@ export class ProfissionalPage {
   dia:any;
   nomeProfissional:any;
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private storage: Storage,
-    public http: Http) {
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
-      this.storage.get("id_cadastro").then((value)=>{
-        let id_prof = value;
-        let api = 'https://lipolysis.grupoanx.com.br/profissional/home/nomeProfissional.php?profissional=' + id_prof;
+  constructor(public navCtrl: NavController,public navParams: NavParams, public http: Http) {
 
-        this.http.get(api).toPromise().then((resp)=>{
-            let nome = resp.json();
+    let api = 'https://lipolysis.grupoanx.com.br/profissional/home/nomeProfissional.php?profissional=' + this.id_cadastro;
 
-            this.nomeProfissional = nome[0].nome;
-          }).catch((resp)=>{
-            console.log(resp);
-          });
-        });
-
+      this.http.get(api).toPromise().then((resp)=>{
+        let nome = resp.json();
+        this.nomeProfissional = nome[0].nome;
+      }).catch((resp)=>{
+        console.log(resp);
+      });
     }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfissionalPage');
+    console.log("id usuario", this.id_cadastro);
+    console.log("permissao", this.permissao);
 
-    this.storage.get("id_cadastro").then((value)=>{
-      let id_prof = value;
-      let api = 'https://lipolysis.grupoanx.com.br/profissional/home.php?profissional=' + id_prof;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/home.php?profissional=' + this.id_cadastro;
 
       this.http.get(api).toPromise().then((resp)=>{
           this.dia = resp.json();
         }).catch((resp)=>{
           console.log(resp);
         });
-      });
+
   }
 
   sair(){
-    this.storage.remove('id_cadastro');
-    this.storage.remove('permissao');
     this.navCtrl.push(HomePage)
   }
 
