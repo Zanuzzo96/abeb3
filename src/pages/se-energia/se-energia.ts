@@ -11,20 +11,20 @@ import { SeEsportePage } from '../se-esporte/se-esporte';
 export class SeEnergiaPage {
 
   energia : any;
-  cliente:any;
-  tratamento:any;
+
+  tratamento = this.navParams.get('tratamento');
   sexo = this.navParams.get('sexo');
   data = this.navParams.get('data');
   hora = this.navParams.get('hora');
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.cliente = this.navParams.get('cliente');
-    this.tratamento = this.navParams.get('tratamento');
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeEnergiaPage');
-    console.log("cliente",this.cliente);
+    console.log("cliente",this.id_cadastro);
+    console.log("permissao",this.permissao);
     console.log(this.sexo);
     console.log(this.data);
     console.log(this.hora);
@@ -32,12 +32,13 @@ export class SeEnergiaPage {
 
   continuar(){
     this.navCtrl.push(SeEsportePage,{
-      pontuacao: this.energia,
-      cliente: this.cliente,
-      tratamento: this.tratamento,
-      sexo:this.sexo,
-      data:this.data,
-      hora:this.hora,
+      'pontuacao': this.energia,
+      'id_cadastro': this.id_cadastro,
+      'permissao':this.permissao,
+      'tratamento': this.tratamento,
+      'sexo':this.sexo,
+      'data':this.data,
+      'hora':this.hora,
     })
   }
 

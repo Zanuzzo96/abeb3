@@ -17,26 +17,19 @@ import { PSessoesPage } from '../p-sessoes/p-sessoes';
 export class SeResultadoPage {
 
   usuario: any;
-  nivel:any;
   resultadoFinal : number = parseFloat(this.navParams.get('pontuacao'));
-  cliente:any;
-  tratamento:any;
   sexo = this.navParams.get('sexo');
   data = this.navParams.get('data');
   hora = this.navParams.get('hora');
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
+  tratamento = this.navParams.get('tratamento');
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
               public alertCtrl: AlertController,
-              public storage: Storage,
-              public loadingCtrl: LoadingController) {
-
-                this.cliente = this.navParams.get('cliente');
-                this.tratamento = this.navParams.get('tratamento');
-
-
-   }
+              public loadingCtrl: LoadingController) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeResultadoPage');
@@ -48,12 +41,7 @@ export class SeResultadoPage {
 
   concluir(){
 
-    this.nivel = this.storage.get("permissao").then((value)=>{
-      let permissao = value;
-
-      console.log('permissao', permissao)
-
-      if( permissao == 2 ){
+      if( this.permissao == 2 ){
 
           let loading = this.loadingCtrl.create({
             content : "Registrando a avaliação e enviando para o seu email",
@@ -61,15 +49,9 @@ export class SeResultadoPage {
 
           loading.present();
 
-            let ident = this.cliente;
-
-
-            console.log('id', ident)
-
-
             let sedentarismo = {
               "pontuacao":this.resultadoFinal,
-              "id_usuario":ident
+              "id_usuario":this.id_cadastro
             }
 
             console.log(sedentarismo);
@@ -78,11 +60,7 @@ export class SeResultadoPage {
           let headers: Headers = new Headers();
             headers.append('Content-type','application/json');
 
-            return this.http.post(
-              api,
-              sedentarismo,
-              new RequestOptions({ headers: headers })
-            ).subscribe(
+            return this.http.post(api,sedentarismo,new RequestOptions({ headers: headers })).subscribe(
                 res => {
                   console.log(res.json());
 
@@ -96,7 +74,8 @@ export class SeResultadoPage {
                         text: "OK",
                         handler: () => {
                            this.navCtrl.push(PSessoesPage,{
-                             "id":this.cliente,
+                             'id_cadastro':this.id_cadastro,
+                             'permissao':this.permissao
                              "tratamento": this.tratamento,
                              "sexo":this.sexo,
                              "data":this.data,
@@ -138,9 +117,10 @@ export class SeResultadoPage {
 
             );
     }else{
-      this.navCtrl.push(UsuarioPage)
+      this.navCtrl.push(UsuarioPage,{
+        'id_cadastro':this.id_cadastro,
+        'permissao':this.permissao
+      })
     }
-
-  });
 }
 }

@@ -4,6 +4,8 @@ import { Http, Headers, RequestOptions  } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { UsuarioPage } from '../usuario/usuario';
+
 
 @IonicPage()
 @Component({
