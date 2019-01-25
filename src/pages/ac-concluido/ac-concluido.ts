@@ -67,6 +67,8 @@ export class AcConcluidoPage {
     public loadingCtrl: LoadingController) {
 
       console.log(this.cliente);
+      console.log('id cadastro', this.navParams.get('id_cadastro'));
+      console.log('permissao ', this.navParams.get('permissao'));
   }
 
   ac = {
@@ -127,7 +129,7 @@ export class AcConcluidoPage {
 
     loading.present();
 
-    let api = 'https://lipolysis.grupoanx.com.br/formulario/corporal.php';
+    let api = 'https://lipolysis.grupoanx.com.br/profissional/formularios/corporal.php';
     let headers: Headers = new Headers();
       headers.append('Content-type','application/json');
       console.log(this.ac.ImcResultado)
@@ -152,6 +154,8 @@ export class AcConcluidoPage {
                      "sexo":this.sexo,
                      "data":this.data,
                      "hora":this.hora,
+                     'id_cadastro': this.navParams.get('id_cadastro'),
+                     'permissao': this.navParams.get('permissao')
                    });
                  }
               }]

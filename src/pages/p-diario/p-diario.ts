@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {  Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
@@ -15,27 +14,33 @@ export class PDiarioPage {
 
   diario;
 
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
               public loadingCtrl: LoadingController,
-              public storage: Storage,
               public alertCtrl: AlertController,) {  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PDiarioPage');
 
-    this.storage.get("id_cadastro").then((value)=>{
-      let id_prof = value;
-      let api = 'https://lipolysis.grupoanx.com.br/profissional/diario/diario.php?profissional=' + id_prof;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/diario/diario.php?profissional=' + this.id_cadastro;
 
         this.http.get(api).toPromise().then((resp)=>{
-          this.diario = resp.json();
+
+          let resposta = resp.json();
+
+          if(resposta != "erro"){
+            this.diario = resp.json();
+          }else{
+            this.diario;
+          }
+
         }).catch((resp)=>{
           console.log(resp);
         });
-
-    });
   }
 
   email(id){
@@ -73,17 +78,16 @@ export class PDiarioPage {
             }
 
         }).catch((resp)=>{
-          console.log(resp);
-          loading.dismiss();
+            console.log(resp);
+            loading.dismiss();
 
-          this.alertCtrl.create({
-            subTitle : "Erro no banco de dados, tente novamente",
-            buttons : [{
-              text: "OK",
-            }]
-          }).present();
-
-        });
+            this.alertCtrl.create({
+              subTitle : "Erro no banco de dados, tente novamente",
+              buttons : [{
+                text: "OK",
+              }]
+            }).present();
+        })
 
   }
 

@@ -19,25 +19,36 @@ export class UHomePage {
   agenda;
   agendaData;
   agendaHora;
-
+  nomeUsuario;
+  nome;
   id_cadastro = this.navParams.get('id_cadastro');
   permissao = this.navParams.get('permissao');
 
-  constructor(public navCtrl: NavController,public navParams: NavParams,public http: Http) {}
+  constructor(public navCtrl: NavController,public navParams: NavParams,public http: Http) {
+    //let api = 'https://lipolysis.grupoanx.com.br/usuario/nomeUsuario.php?usuario=' + this.id_cadastro;
+
+  //this.http.get(api).toPromise().then((resp)=>{
+    //    this.agenda = resp.json();
+    //    console.log(this.agenda)
+    //    this.agendaData = this.agenda[0].data;
+    //    this.agendaHora = this.agenda[0].hora;
+
+    //  }).catch((resp)=>{
+    //    console.log(resp);
+    //  });
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UHomePage');
     console.log("id usuario", this.id_cadastro);
     console.log("permissao", this.permissao);
 
-      let api = 'https://lipolysis.grupoanx.com.br/usuario/agenda.php?usuario=' + this.id_cadastro;
+      let api = 'https://lipolysis.grupoanx.com.br/usuario/perfil/perfil.php?user=' + this.id_cadastro;
 
-        this.http.get(api).toPromise().then((resp)=>{
-          this.agenda = resp.json();
-          console.log(this.agenda)
-          this.agendaData = this.agenda[0].data;
-          this.agendaHora = this.agenda[0].hora;
-
+      this.http.get(api).toPromise().then((resp)=>{
+          this.nomeUsuario = resp.json();
+          this.nome = this.nomeUsuario[0].nome;
+          console.log(this.nome)
         }).catch((resp)=>{
           console.log(resp);
         });
@@ -49,10 +60,16 @@ export class UHomePage {
   }
 
   diario(){
-    this.navCtrl.push(UDiarioPage)
+    this.navCtrl.push(UDiarioPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
   perfil(){
-    this.navCtrl.push(UPerfilPage)
+    this.navCtrl.push(UPerfilPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
   dicas(){
     this.navCtrl.push(UDicasPage)

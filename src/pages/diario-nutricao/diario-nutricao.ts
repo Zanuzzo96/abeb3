@@ -21,14 +21,16 @@ export class DiarioNutricaoPage {
 
   proximo(){
     this.navCtrl.push(DiarioFisicoPage,{
-      dia: this.navParams.get('dia'),
-      sono: this.navParams.get('sono'),
-      agua: this.navParams.get('agua'),
-      rd: this.navParams.get('rd'),
-      alimentacao: this.navParams.get('alimentacao'),
-      nutricao: this.nutricao
+      'dia': this.navParams.get('dia'),
+      'sono': this.navParams.get('sono'),
+      'agua': this.navParams.get('agua'),
+      'rd': this.navParams.get('rd'),
+      'alimentacao': this.navParams.get('alimentacao'),
+      'nutricao': this.nutricao,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
     })
   }
 
-  
+
 }

@@ -23,7 +23,7 @@ export class ASorteiosPage {
 
   profissional(){
 
-    let api = 'https://lipolysis.grupoanx.com.br/sorteio/profissional.php?sorteio=true';
+    let api = 'https://lipolysis.grupoanx.com.br/admin/sorteioProfissional.php?sorteio=true';
     this.http.get(api).toPromise().then((response) => {
 
       console.log(response);
@@ -37,14 +37,13 @@ export class ASorteiosPage {
       subTitle : "Enviamos o Profissional contemplado para o seu email",
       buttons : [{
         text: "OK",
-      }],
-      cssClass: 'alertDanger'
+      }]
     }).present();
   }
 
   usuario(){
 
-    let api = 'https://lipolysis.grupoanx.com.br/sorteio/cliente.php?sorteio=true';
+    let api = 'https://lipolysis.grupoanx.com.br/admin/sorteioCliente.php?sorteio=true';
     this.http.get(api).toPromise().then((response) => {
 
       console.log(response);
@@ -58,8 +57,7 @@ export class ASorteiosPage {
       subTitle : "Enviamos o Usuário contemplado para o seu email",
       buttons : [{
         text: "OK",
-      }],
-      cssClass: 'alertDanger'
+      }]
     }).present();
   }
 

@@ -16,23 +16,16 @@ import { ASugestoesPage } from '../a-sugestoes/a-sugestoes';
 })
 export class AdminPage {
 
-  id_cadastro = this.navParams.get('id_cadastro');
-  permissao = this.navParams.get('permissao');
+
 
   constructor(public navCtrl: NavController,public navParams: NavParams) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AdminPage');
-    console.log("id usuario", this.id_cadastro);
-    console.log("permissao", this.permissao);
   }
 
   profissionais(){
     this.navCtrl.push(AProfissionaisPage)
-  }
-
-  clientes(){
-    this.navCtrl.push(AUsuariosPage)
   }
 
   dicas(){
@@ -45,10 +38,6 @@ export class AdminPage {
 
   sorteios(){
     this.navCtrl.push(ASorteiosPage)
-  }
-
-  sugestoes(){
-    this.navCtrl.push(ASugestoesPage)
   }
 
   sair(){

@@ -35,20 +35,22 @@ export class SaudePg3Page {
 
   continuar(){
     this.navCtrl.push(SaudePg4Page,{
-      cliente: this.cliente,
-      sexo: this.sexo,
-      profissao: this.profissao,
-      muitotemposentado: this.muitotemposentado,
-      qualidadesono: this.qualidadesono,
-      antecendentesCirurgicos: this.antecendentesCirurgicos,
-      antecendentesCirurgicosQuais: this.antecendentesCirurgicosQuais,
-      tratamentoAnterior: this.tratamentoAnterior,
-      tratamentoAnteriorQuais: this.tratamentoAnteriorQuais,
-      antecedenterAlergicos: this.antecedenterAlergicos,
-      antecedenterAlergicosQuais: this.antecedenterAlergicosQuais,
-      tratamento:this.tratamento,
-      data:this.data,
-      hora:this.hora,
+      'cliente': this.cliente,
+      'sexo': this.sexo,
+      'profissao': this.profissao,
+      'muitotemposentado': this.muitotemposentado,
+      'qualidadesono': this.qualidadesono,
+      'antecendentesCirurgicos': this.antecendentesCirurgicos,
+      'antecendentesCirurgicosQuais': this.antecendentesCirurgicosQuais,
+      'tratamentoAnterior': this.tratamentoAnterior,
+      'tratamentoAnteriorQuais': this.tratamentoAnteriorQuais,
+      'antecedenterAlergicos': this.antecedenterAlergicos,
+      'antecedenterAlergicosQuais': this.antecedenterAlergicosQuais,
+      'tratamento':this.tratamento,
+      'data':this.data,
+      'hora':this.hora,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
     })
   }
 

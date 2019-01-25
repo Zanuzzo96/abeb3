@@ -7,7 +7,6 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { ADicasPage } from '../a-dicas/a-dicas';
 
-
 @IonicPage()
 @Component({
   selector: 'page-a-adicionardica',
@@ -58,6 +57,8 @@ export class AAdicionardicaPage {
     loading.present();
 
     if(this.emtratamento == true && this.semtratamento == true && this.profissional == true){
+      this.nivel = 5;
+    }else if(this.emtratamento == true && this.semtratamento == true){
       this.nivel = 4;
     }else if(this.profissional == true){
       this.nivel = 3;
@@ -69,20 +70,19 @@ export class AAdicionardicaPage {
 
     console.log(this.nivel);
 
-    let imagem = {
+    let conteudoDica = {
       "imagem":this.img1,
       "mensagem":this.mensagem,
       "permissao":this.nivel,
       "titulo":this.titulo
     }
-    console.log(imagem);
 
     let headers: Headers = new Headers();
     headers.append('Content-type','application/json');
 
       this.http.post(
-        'https://lipolysis.grupoanx.com.br/dica/dica.php',
-        imagem,
+        'https://lipolysis.grupoanx.com.br/admin/consultaeInsereDicas.php',
+        conteudoDica,
         new RequestOptions({ headers: headers })
       ).subscribe(
           res => {

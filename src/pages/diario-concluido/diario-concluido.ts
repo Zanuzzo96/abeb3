@@ -12,33 +12,18 @@ import 'rxjs/add/operator/toPromise';
 })
 export class DiarioConcluidoPage {
 
-  usuario: any;
-
-  dia = this.navParams.get('dia')
-  sono = this.navParams.get('sono')
-  agua = this.navParams.get('agua')
-  rd = this.navParams.get('rd')
-  alimentacao = this.navParams.get('alimentacao')
-  nutricao = this.navParams.get('nutricao')
-  fisico = this.navParams.get('fisico')
-  fumante = this.navParams.get('fumante')
-
-
-
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http,  public storage: Storage) {
-    this.usuario = storage.get("id_cadastro").then((value)=>{
-      let ident = value;
 
       let diario = {
-        "dia":this.dia,
-        "sono":this.sono,
-        "agua":this.agua,
-        "rd":this.rd,
-        "alimentacao":this.alimentacao,
-        "nutricao":this.nutricao,
-        "fisico":this.fisico,
-        "fumante":this.fumante,
-        "id": ident,
+        "dia":this.navParams.get('dia'),
+        "sono":this.navParams.get('sono'),
+        "agua":this.navParams.get('agua'),
+        "rd":this.navParams.get('rd'),
+        "alimentacao":this.navParams.get('alimentacao'),
+        "nutricao":this.navParams.get('nutricao'),
+        "fisico":this.navParams.get('fisico'),
+        "fumante":this.navParams.get('fumante'),
+        'id_cadastro': this.navParams.get('id_cadastro'),
       }
 
       console.log(diario);
@@ -48,10 +33,7 @@ export class DiarioConcluidoPage {
       let headers: Headers = new Headers();
         headers.append('Content-type','application/json');
 
-        return this.http.post(
-          api,
-          diario,
-          new RequestOptions({ headers: headers })
+        this.http.post( api, diario, new RequestOptions({ headers: headers })
         ).subscribe(
             res => {
               console.log(res.json())
@@ -61,14 +43,15 @@ export class DiarioConcluidoPage {
             }
           );
 
-    });
-
   }
 
   ionViewDidLoad() { console.log('ionViewDidLoad DiarioConcluidoPage'); }
 
   proximo(){
-    this.navCtrl.push(UHomePage)
+    this.navCtrl.push(UHomePage,{
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
+    })
   }
 
 }

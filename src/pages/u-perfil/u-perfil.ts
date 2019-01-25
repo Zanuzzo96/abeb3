@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { UsuarioPage } from '../usuario/usuario';
+import { UHomePage } from '../u-home/u-home';
 
 
 @IonicPage()
@@ -31,11 +32,13 @@ export class UPerfilPage {
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController
             ) {
+              console.log("id usuario", this.id_cadastro);
+              console.log("permissao", this.permissao);
 
                 let loading = this.loadingCtrl.create({content : "Carregando dados do perfil"});
                 loading.present();
 
-                  let api = 'https://lipolysis.grupoanx.com.br/usuario/perfil/usuario.php?user='+ this.id_cadastro;
+                  let api = 'https://lipolysis.grupoanx.com.br/usuario/perfil/perfil.php?user='+ this.id_cadastro;
                   this.http.get(api).toPromise().then((resp)=>{
 
                     loading.dismiss();
@@ -132,28 +135,56 @@ export class UPerfilPage {
               loading.dismiss();
               let retorno = res.json();
 
-              if( retorno == "sucesso"){
-                this.alertCtrl.create({
-                  title: 'Sucesso',
-                  subTitle : "Perfil atualizado com sucesso",
-                  buttons : [{
-                    text: "OK",
-                    handler: () => {
-                      this.navCtrl.push(UsuarioPage,{
-                        'id_cadastro':this.id_cadastro,
-                        'permissao':this.permissao
-                      })
+
+                if(this.permissao == 0){
+                  if( retorno == "sucesso"){
+                    this.alertCtrl.create({
+                      title: 'Sucesso',
+                      subTitle : "Perfil atualizado com sucesso",
+                      buttons : [{
+                        text: "OK",
+                        handler: () => {
+                          this.navCtrl.push(UsuarioPage,{
+                            'id_cadastro':this.id_cadastro,
+                            'permissao':this.permissao
+                          })
+                        }
+                      }]
+                    }).present();
+                  }else if ( retorno == "erro"){
+                      this.alertCtrl.create({
+                        title: 'Ops .. Algo deu errado',
+                        subTitle : "Não conseguimos atualizar seu perfil, tente novamente.",
+                        buttons : [{
+                          text: "OK",
+                        }]
+                      }).present()
                     }
-                  }]
-                }).present();
-              }else if ( retorno == "erro"){
-                this.alertCtrl.create({
-                  title: 'Ops .. Algo deu errado',
-                  subTitle : "Não conseguimos atualizar seu perfil, tente novamente.",
-                  buttons : [{
-                    text: "OK",
-                  }]
-                }).present();}
+                  }else{
+                    if( retorno == "sucesso"){
+                      this.alertCtrl.create({
+                        title: 'Sucesso',
+                        subTitle : "Perfil atualizado com sucesso",
+                        buttons : [{
+                          text: "OK",
+                          handler: () => {
+                            this.navCtrl.push(UHomePage,{
+                              'id_cadastro':this.id_cadastro,
+                              'permissao':this.permissao
+                            })
+                          }
+                        }]
+                      }).present();
+                    }   else if ( retorno == "erro"){
+                        this.alertCtrl.create({
+                          title: 'Ops .. Algo deu errado',
+                          subTitle : "Não conseguimos atualizar seu perfil, tente novamente.",
+                          buttons : [{
+                            text: "OK",
+                          }]
+                        }).present();}
+                  }
+
             },
             err => {
               loading.dismiss();

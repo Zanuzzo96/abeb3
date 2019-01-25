@@ -39,7 +39,7 @@ export class AProfissionaisPage {
     loading.present();
 
 // paga os rcs ativos
-    let api1 = 'https://lipolysis.grupoanx.com.br/profissional/lista.php?lista=1';
+    let api1 = 'https://lipolysis.grupoanx.com.br/admin/lista.php?lista=1';
     this.http.get(api1).toPromise().then((resp)=>{
       let retornoApi1 = resp.json();
       console.log(retornoApi1);
@@ -54,7 +54,7 @@ export class AProfissionaisPage {
     });
 
 //paga todos os rcs cadastrados
-    let api2 = 'https://lipolysis.grupoanx.com.br/profissional/lista.php?lista=2';
+    let api2 = 'https://lipolysis.grupoanx.com.br/admin/lista.php?lista=2';
     this.http.get(api2).toPromise().then((resp)=>{
       let retornoApi2 = resp.json();
       console.log(retornoApi2);
@@ -70,7 +70,7 @@ export class AProfissionaisPage {
     });
 
 // pega os bloquiados
-    let api3 = 'https://lipolysis.grupoanx.com.br/profissional/lista.php?lista=3';
+    let api3 = 'https://lipolysis.grupoanx.com.br/admin/lista.php?lista=3';
     this.http.get(api3).toPromise().then((resp)=>{
       let retornoApi3 = resp.json();
       console.log(retornoApi3);

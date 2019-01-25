@@ -23,7 +23,8 @@ export class SeEnergiaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeEnergiaPage');
-    console.log("cliente",this.id_cadastro);
+    console.log("cliente em tratamento",this.navParams.get('id_cliente'));
+    console.log("cliente free/ profissional",this.id_cadastro);
     console.log("permissao",this.permissao);
     console.log(this.sexo);
     console.log(this.data);
@@ -33,6 +34,7 @@ export class SeEnergiaPage {
   continuar(){
     this.navCtrl.push(SeEsportePage,{
       'pontuacao': this.energia,
+      'id_cliente':this.navParams.get('id_cliente'),
       'id_cadastro': this.id_cadastro,
       'permissao':this.permissao,
       'tratamento': this.tratamento,

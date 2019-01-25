@@ -33,7 +33,7 @@ export class ADicasPage {
 
     loading.present();
 
-    let api = 'https://lipolysis.grupoanx.com.br/dica/admin.php?dica=1';
+    let api = 'https://lipolysis.grupoanx.com.br/admin/consultaeInsereDicas.php?dica=1';
     this.http.get(api).toPromise().then((resp)=>{
       console.log(resp);
       this.dicas = resp.json();
@@ -51,7 +51,7 @@ export class ADicasPage {
   excluir(dica){
     console.log(dica);
 
-    let api = 'https://lipolysis.grupoanx.com.br/dica/delete.php?dica=' + dica;
+    let api = 'https://lipolysis.grupoanx.com.br/admin/excluirDica.php?dica=' + dica;
 
     this.http.get(api).toPromise().then((resp)=>{
       console.log(resp);

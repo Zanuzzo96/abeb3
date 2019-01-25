@@ -63,9 +63,11 @@ export class AcPanturilhaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AcPanturilhaPage');
-    console.log('cliente AcPanturilhaPage', this.cliente);
+    console.log('cliente', this.cliente);
     console.log(this.data)
     console.log(this.hora)
+    console.log('id cadastro', this.navParams.get('id_cadastro'));
+    console.log('permissao ', this.navParams.get('permissao'));
   }
 
   continuar(){
@@ -115,6 +117,8 @@ export class AcPanturilhaPage {
       tratamento: this.tratamento,
       data:this.data,
       hora:this.hora,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
     })
   }
 

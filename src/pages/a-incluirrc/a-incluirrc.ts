@@ -42,7 +42,7 @@ export class AIncluirrcPage {
     headers.append('Content-type','application/json');
 
       this.http.post(
-        'https://lipolysis.grupoanx.com.br/rc/index.php',
+        'https://lipolysis.grupoanx.com.br/admin/adicionarRc.php',
         numerorc,
         new RequestOptions({ headers: headers })
       ).subscribe(

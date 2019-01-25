@@ -9,8 +9,7 @@ import { SaudePg5Page } from '../saude-pg5/saude-pg5';
 })
 export class SaudePg4Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {  }
 
   cliente = this.navParams.get('cliente');
   sexo = this.navParams.get('sexo');
@@ -41,29 +40,30 @@ export class SaudePg4Page {
 
   continuar(){
     this.navCtrl.push(SaudePg5Page,{
-      cliente: this.cliente,
-      sexo: this.sexo,
-      profissao: this.profissao,
-      muitotemposentado: this.muitotemposentado,
-      qualidadesono: this.qualidadesono,
-      antecendentesCirurgicos: this.antecendentesCirurgicos,
-      antecendentesCirurgicosQuais: this.antecendentesCirurgicosQuais,
-      tratamentoAnterior: this.tratamentoAnterior,
-      tratamentoAnteriorQuais: this.tratamentoAnteriorQuais,
-      antecedenterAlergicos: this.antecedenterAlergicos,
-      antecedenterAlergicosQuais: this.antecedenterAlergicosQuais,
+      'cliente': this.cliente,
+      'sexo': this.sexo,
+      'profissao': this.profissao,
+      'muitotemposentado': this.muitotemposentado,
+      'qualidadesono': this.qualidadesono,
+      'antecendentesCirurgicos': this.antecendentesCirurgicos,
+      'antecendentesCirurgicosQuais': this.antecendentesCirurgicosQuais,
+      'tratamentoAnterior': this.tratamentoAnterior,
+      'tratamentoAnteriorQuais': this.tratamentoAnteriorQuais,
+      'antecedenterAlergicos': this.antecedenterAlergicos,
+      'antecedenterAlergicosQuais': this.antecedenterAlergicosQuais,
+      'tratamento': this.tratamento,
+      'data':this.data,
+      'hora':this.hora,
+      'funcionamentoIntestinal': this.funcionamentoIntestinal,
+      'funcionamentoIntestinalObs': this.funcionamentoIntestinalObs,
+      'atividadeFisica': this.atividadeFisica,
+      'atividadeFisicaQuais': this.atividadeFisicaQuais,
+      'fumante': this.fumante,
+      'alimentacao': this.alimentacao,
+      'alimentacaoTipo': this.alimentacaoTipo,
 
-      funcionamentoIntestinal: this.funcionamentoIntestinal,
-      funcionamentoIntestinalObs: this.funcionamentoIntestinalObs,
-      atividadeFisica: this.atividadeFisica,
-      atividadeFisicaQuais: this.atividadeFisicaQuais,
-      fumante: this.fumante,
-      alimentacao: this.alimentacao,
-      alimentacaoTipo: this.alimentacaoTipo,
-
-      tratamento: this.tratamento,
-      data:this.data,
-      hora:this.hora,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
 
     })
   }

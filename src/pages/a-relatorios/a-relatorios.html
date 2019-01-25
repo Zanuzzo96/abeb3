@@ -9,7 +9,7 @@
 
 
 <ion-content padding>
-  <button ion-button block large color="amarelo1">Relatório Completo</button><br>
-  <button ion-button block large color="amarelo1">Relatório dos <br>usuários cadastrados</button><br>
-  <button ion-button block large color="amarelo1">Relatório dos <br>profissionais cadastrados</button><br>
+  <button ion-button block large color="amarelo1" (click)="relatorioCompleto()">Relatório Completo</button><br>
+  <button ion-button block large color="amarelo1" (click)="relatorioCliente()">Relatório dos <br>usuários cadastrados</button><br>
+  <button ion-button block large color="amarelo1" (click)="relatorioProfissional()">Relatório dos <br>profissionais cadastrados</button><br>
 </ion-content>

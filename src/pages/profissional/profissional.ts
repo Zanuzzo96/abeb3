@@ -59,39 +59,56 @@ export class ProfissionalPage {
   }
 
   perfil(){
-    this.navCtrl.push(PPerfilPage)
-  }
-
-  agenda(){
-    this.navCtrl.push(PAgendaPage)
+    this.navCtrl.push(PPerfilPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
   diario(){
-    this.navCtrl.push(PDiarioPage)
+    this.navCtrl.push(PDiarioPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
   contato(){
-    this.navCtrl.push(PContatosPage)
+    this.navCtrl.push(PContatosPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
   comunicado(){
-    this.navCtrl.push(PComunicadoPage)
+    this.navCtrl.push(PComunicadoPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
   clientes(){
-    this.navCtrl.push(PClientesPage)
+    this.navCtrl.push(PClientesPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
   sugestoes(){
     this.navCtrl.push(PSugestoesPage)
   }
 
-  historico(){
-    this.navCtrl.push(PHistoricoPage)
+  agenda(){
+    this.navCtrl.push(PAgendaPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
   sessoes(){
-    this.navCtrl.push(PSessoesPage)
+    this.navCtrl.push(PSessoesPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
 }

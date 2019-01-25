@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions  } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { ProfissionalPage } from '../profissional/profissional';
 
@@ -15,7 +14,6 @@ import { ProfissionalPage } from '../profissional/profissional';
 export class PPerfilPage {
 
   cadastro: any ='perfil';
-  usuario: any;
   atualizacao: any;
 
   perfilProf = {
@@ -33,11 +31,13 @@ export class PPerfilPage {
     "cep":""
   }
 
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
+
   constructor(  public navCtrl: NavController,
                 public navParams: NavParams,
                 public http: Http,
                 public alertCtrl: AlertController,
-                public storage: Storage,
                 public loadingCtrl: LoadingController) {
 
                   let loading = this.loadingCtrl.create({
@@ -46,9 +46,8 @@ export class PPerfilPage {
 
                   loading.present();
 
-                  this.usuario = storage.get("id_cadastro").then((value)=>{
-                    let prof = value;
-                    let api = 'https://lipolysis.grupoanx.com.br/profissional/perfil/atualizar.php?prof='+ prof;
+
+                    let api = 'https://lipolysis.grupoanx.com.br/profissional/perfil/atualizar.php?prof='+ this.id_cadastro;
                     this.http.get(api).toPromise().then((resp)=>{
                       loading.dismiss();
                       console.log(resp.json())
@@ -80,7 +79,7 @@ export class PPerfilPage {
                       console.log(err.json())
                       loading.dismiss();
                     });
-                  })
+
   }
 
   ionViewDidLoad() {
@@ -115,9 +114,6 @@ export class PPerfilPage {
 
     }
 
-
-
-    // atualizar todo o cadastro
       atualizar(){
 
         let loading = this.loadingCtrl.create({
@@ -126,13 +122,8 @@ export class PPerfilPage {
 
         loading.present();
 
-        this.storage.get("id_cadastro").then((value)=>{
-          let usuario = value;
-
-          console.log('Usario do perfil', usuario)
-
           this.atualizacao = {
-            "usuario": usuario,
+            "usuario": this.id_cadastro,
             "nome":this.perfilProf.nome,
             "cpf":this.perfilProf.cpf,
             "nasc":this.perfilProf.nasc,
@@ -168,7 +159,10 @@ export class PPerfilPage {
                       buttons : [{
                         text: "OK",
                         handler: () => {
-                          this.navCtrl.push(ProfissionalPage)
+                          this.navCtrl.push(ProfissionalPage,{
+                            'id_cadastro':this.id_cadastro,
+                            'permissao':this.permissao
+                          })
                         }
                       }]
                     }).present();
@@ -194,9 +188,5 @@ export class PPerfilPage {
                   }).present();
                 }
               );
-    });
-    }
-
-
-
+            }
 }

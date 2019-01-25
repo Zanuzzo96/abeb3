@@ -27,6 +27,8 @@ export class PSessoesPage {
   sexo = this.navParams.get('sexo');
   data = this.navParams.get('data');
   hora = this.navParams.get('hora');
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
   configuracao:any;
   orientacao: any;
   peso: any;
@@ -71,16 +73,19 @@ export class PSessoesPage {
       this.configuracao = 1;
     }
 
-    console.log("cliente",this.cliente)
-    console.log("tratamento", this.id_tratamento)
-    console.log("sexo", this.sexo)
-    console.log("data", this.data)
-    console.log("hora", this.hora)
+
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PSessoesPage');
+    console.log("cliente",this.cliente)
+    console.log("tratamento", this.id_tratamento)
+    console.log("sexo", this.sexo)
+    console.log("data", this.data)
+    console.log("hora", this.hora)
+    console.log('id cadastro', this.id_cadastro);
+    console.log('permissao ', this.permissao);
 
     //busca do valores para o grafico
         //let api2 = 'https://lipolysis.grupoanx.com.br/profissional/grafico.php?cliente=' + this.cliente +'&tratamento=' + this.id_tratamento;
@@ -102,7 +107,10 @@ export class PSessoesPage {
   }
 
         sair(){
-          this.navCtrl.push(ProfissionalPage)
+          this.navCtrl.push(ProfissionalPage,{
+            'id_cadastro': this.navParams.get('id_cadastro'),
+            'permissao': this.navParams.get('permissao')
+          })
         }
 
         corporal(){
@@ -112,6 +120,8 @@ export class PSessoesPage {
             "tratamento":this.id_tratamento,
             "data":this.data,
             "hora":this.hora,
+            'id_cadastro': this.navParams.get('id_cadastro'),
+            'permissao': this.navParams.get('permissao')
           })
         }
 
@@ -122,6 +132,8 @@ export class PSessoesPage {
             "tratamento":this.id_tratamento,
             "data":this.data,
             "hora":this.hora,
+            'id_cadastro': this.navParams.get('id_cadastro'),
+            'permissao': this.navParams.get('permissao')
           })
         }
 
@@ -132,6 +144,8 @@ export class PSessoesPage {
             "sexo":this.sexo,
             "data":this.data,
             "hora":this.hora,
+            'id_cadastro': this.navParams.get('id_cadastro'),
+            'permissao': this.navParams.get('permissao')
           })
         }
 
@@ -142,19 +156,25 @@ export class PSessoesPage {
             "sexo":this.sexo,
             "data":this.data,
             "hora":this.hora,
+            'id_cadastro': this.navParams.get('id_cadastro'),
+            'permissao': this.navParams.get('permissao')
           })
         }
 
         agendar(){
           this.navCtrl.push(AgendaPage,{
             "id_user":this.cliente,
-            "id_tratamento":this.id_tratamento
+            "id_tratamento":this.id_tratamento,
+            'id_cadastro': this.navParams.get('id_cadastro'),
+            'permissao': this.navParams.get('permissao')
           })
         }
 
         tratamento(){
           this.navCtrl.push(IniciarTratamentoPage,{
-            "id_user":this.cliente
+            "id_user":this.cliente,
+            'id_cadastro': this.navParams.get('id_cadastro'),
+            'permissao': this.navParams.get('permissao')
           })
         }
 
@@ -194,7 +214,10 @@ export class PSessoesPage {
                         buttons : [{
                           text: "OK",
                           handler: () => {
-                             this.navCtrl.push(ProfissionalPage)
+                             this.navCtrl.push(ProfissionalPage,{
+                               'id_cadastro': this.navParams.get('id_cadastro'),
+                               'permissao': this.navParams.get('permissao')
+                             })
                            }
                         }]
                       }).present();

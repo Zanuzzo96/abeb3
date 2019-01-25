@@ -19,7 +19,11 @@ export class SaudePg1Page {
   hora = this.navParams.get('hora');
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SaudePg1Page', this.cliente + this.sexo);
+    console.log(' SaudePg1Page');
+    console.log('id cliente', this.cliente);
+    console.log('sexo ', this.sexo);
+    console.log('id cadastro', this.navParams.get('id_cadastro'));
+    console.log('permissao ', this.navParams.get('permissao'));
   }
 
   profissao: any;
@@ -27,13 +31,15 @@ export class SaudePg1Page {
 
   continuar(){
     this.navCtrl.push(SaudePg2Page,{
-      cliente: this.cliente,
-      sexo: this.sexo,
-      profissao: this.profissao,
-      muitotemposentado: this.muitotemposentado,
-      tratamento: this.tratamento,
-      data:this.data,
-      hora:this.hora,
+      'cliente': this.cliente,
+      'sexo': this.sexo,
+      'profissao': this.profissao,
+      'muitotemposentado': this.muitotemposentado,
+      'tratamento': this.tratamento,
+      'data':this.data,
+      'hora':this.hora,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
     })
   }
 

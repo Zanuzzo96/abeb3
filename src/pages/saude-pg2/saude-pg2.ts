@@ -11,8 +11,7 @@ import { SaudePg3Page } from '../saude-pg3/saude-pg3';
 })
 export class SaudePg2Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
   cliente = this.navParams.get('cliente');
   sexo = this.navParams.get('sexo');
@@ -24,20 +23,26 @@ export class SaudePg2Page {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaudePg2Page');
+    console.log('id cliente', this.cliente);
+    console.log('sexo ', this.sexo);
+    console.log('id cadastro', this.navParams.get('id_cadastro'));
+    console.log('permissao ', this.navParams.get('permissao'));
   }
 
   qualidadesono: any;
 
   continuar(){
     this.navCtrl.push(SaudePg3Page,{
-      cliente: this.cliente,
-      sexo: this.sexo,
-      profissao: this.profissao,
-      muitotemposentado: this.muitotemposentado,
-      qualidadesono: this.qualidadesono,
-      tratamento: this.tratamento,
-      data:this.data,
-      hora:this.hora,
+      'cliente': this.cliente,
+      'sexo': this.sexo,
+      'profissao': this.profissao,
+      'muitotemposentado': this.muitotemposentado,
+      'qualidadesono': this.qualidadesono,
+      'tratamento': this.tratamento,
+      'data':this.data,
+      'hora':this.hora,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
     })
   }
 }

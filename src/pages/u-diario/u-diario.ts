@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UHomePage } from '../u-home/u-home';
 import { DiarioDiaPage } from '../diario-dia/diario-dia';
-import { Storage } from '@ionic/storage';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
@@ -18,16 +17,19 @@ export class UDiarioPage {
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public http: Http,
-    public storage: Storage
+    public navParams: NavParams,
   ) {  }
+
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UDiarioPage');
+    console.log("id usuario", this.id_cadastro);
+    console.log("permissao", this.permissao);
 
-    this.storage.get("id_cadastro").then((value)=>{
-      let ident = value;
 
-      let api = 'https://lipolysis.grupoanx.com.br/usuario/diario.php?id=' + ident ;
+      let api = 'https://lipolysis.grupoanx.com.br/usuario/diario.php?id=' + this.id_cadastro ;
       this.http.get(api).toPromise()
       .then((res)=>{
         let retorno = res.json();
@@ -39,7 +41,10 @@ export class UDiarioPage {
             buttons : [{
               text: "OK",
               handler: () => {
-               this.navCtrl.push(UHomePage)
+               this.navCtrl.push(UHomePage,{
+                 'id_cadastro':this.id_cadastro,
+                 'permissao':this.permissao
+               })
               }
             }]
           }).present();
@@ -48,18 +53,21 @@ export class UDiarioPage {
       })
       .catch((res)=>{console.log(res)})
 
-    }).catch((value) => {
-      console.log(value);
-    })
 
   }
 
   iniciar(){
-    this.navCtrl.push(DiarioDiaPage)
+    this.navCtrl.push(DiarioDiaPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
   voltar(){
-    this.navCtrl.push(UHomePage)
+    this.navCtrl.push(UHomePage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
 }

@@ -45,6 +45,8 @@ export class AcLipodistrofiaPage {
     console.log('ionViewDidLoad AcLipodistrofiaPage', this.cliente);
     console.log(this.data)
     console.log(this.hora)
+    console.log('id cadastro', this.navParams.get('id_cadastro'));
+    console.log('permissao ', this.navParams.get('permissao'));
 
   }
 
@@ -68,6 +70,8 @@ export class AcLipodistrofiaPage {
       tratamento: this.tratamento,
       data:this.data,
       hora:this.hora,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
     })
 
 

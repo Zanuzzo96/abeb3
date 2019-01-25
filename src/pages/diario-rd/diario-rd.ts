@@ -21,10 +21,12 @@ export class DiarioRdPage {
 
   proximo(){
     this.navCtrl.push(DiarioAlimentacaoPage,{
-      dia: this.navParams.get('dia'),
-      sono: this.navParams.get('sono'),
-      agua: this.navParams.get('agua'),
-      rd: this.rd
+      'dia': this.navParams.get('dia'),
+      'sono': this.navParams.get('sono'),
+      'agua': this.navParams.get('agua'),
+      'rd': this.rd,
+      'id_cadastro':this.navParams.get('id_cadastro'),
+      'permissao':this.navParams.get('permissao')
     })
   }
 

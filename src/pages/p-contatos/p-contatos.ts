@@ -4,7 +4,6 @@ import {  Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { Storage } from '@ionic/storage';
 import { ProfissionalPage } from '../profissional/profissional';
 
 @IonicPage()
@@ -15,22 +14,23 @@ import { ProfissionalPage } from '../profissional/profissional';
 export class PContatosPage {
 
   contato;
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
-    public storage: Storage,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PContatosPage');
+    console.log("id usuario", this.id_cadastro);
+    console.log("permissao", this.permissao);
 
-    this.storage.get("id_cadastro").then((value)=>{
-      let id_prof = value;
-      let api = 'https://lipolysis.grupoanx.com.br/profissional/contato/contato.php?profissional=' + id_prof;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/contato/contato.php?profissional=' + this.id_cadastro;
 
         this.http.get(api).toPromise().then((resp)=>{
           this.contato = resp.json();
@@ -39,8 +39,6 @@ export class PContatosPage {
         }).catch((resp)=>{
           console.log(resp);
         });
-
-    });
   }
 
   apagar(id){
@@ -61,7 +59,10 @@ export class PContatosPage {
               buttons : [{
                 text: "OK",
                 handler: () => {
-                  this.navCtrl.push(PContatosPage)
+                  this.navCtrl.push(PContatosPage,{
+                    'id_cadastro':this.id_cadastro,
+                    'permissao':this.permissao
+                  })
                 }
               }]
             }).present();
@@ -91,7 +92,10 @@ export class PContatosPage {
   }
 
   voltar(){
-    this.navCtrl.push(ProfissionalPage)
+    this.navCtrl.push(ProfissionalPage,{
+      'id_cadastro':this.id_cadastro,
+      'permissao':this.permissao
+    })
   }
 
 }

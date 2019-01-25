@@ -24,13 +24,14 @@ export class SeTrabalhoPage {
   id_cadastro = this.navParams.get('id_cadastro');
   permissao = this.navParams.get('permissao');
   tratamento = this.navParams.get('tratamento');
-  
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeTrabalhoPage');
     console.log(this.pontuacao);
-    console.log("cliente",this.id_cadastro);
+    console.log("cliente em tratamento",this.navParams.get('id_cliente'));
+    console.log("cliente free/ profissional",this.id_cadastro);s
     console.log("permissao",this.permissao);
     console.log(this.sexo);
     console.log(this.data);
@@ -44,7 +45,8 @@ export class SeTrabalhoPage {
 
     this.navCtrl.push(SeAtividadesdomesticasPage,{
       'pontuacao': this.pontuacao,
-      'id_cadastro': this.cliente,
+      'id_cadastro': this.id_cadastro,
+      'id_cliente':this.navParams.get('id_cliente'),
       'permissao':this.permissao,
       'tratamento': this.tratamento,
       'sexo':this.sexo,

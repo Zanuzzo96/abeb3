@@ -42,7 +42,6 @@ import { AAdicionardicaPage } from '../pages/a-adicionardica/a-adicionardica';
 import { AIncluirrcPage } from '../pages/a-incluirrc/a-incluirrc';
 import { AUsuariosPage } from '../pages/a-usuarios/a-usuarios';
 import { AProfissionaisPage } from '../pages/a-profissionais/a-profissionais';
-import { AProspectosPage } from '../pages/a-prospectos/a-prospectos';
 import { ARelatoriosPage } from '../pages/a-relatorios/a-relatorios';
 import { ASorteiosPage } from '../pages/a-sorteios/a-sorteios';
 import { ADicasPage } from '../pages/a-dicas/a-dicas';
@@ -173,7 +172,6 @@ import { ChartsProvider } from '../providers/charts/charts';
     AIncluirrcPage,
     AUsuariosPage,
     AProfissionaisPage,
-    AProspectosPage,
     ARelatoriosPage,
     ASorteiosPage,
     ADicasPage,
@@ -277,7 +275,6 @@ import { ChartsProvider } from '../providers/charts/charts';
     AIncluirrcPage,
     AUsuariosPage,
     AProfissionaisPage,
-    AProspectosPage,
     ARelatoriosPage,
     ASorteiosPage,
     ADicasPage,

@@ -18,6 +18,7 @@ export class SeInicioPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
+  cliente = this.navParams.get('id_user');
   tratamento = this.navParams.get('tratamento');
   sexo = this.navParams.get('sexo');
   data = this.navParams.get('data');
@@ -27,7 +28,8 @@ export class SeInicioPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeInicioPage');
-    console.log("cliente",this.id_cadastro);
+    console.log("cliente em tratamento",this.cliente);
+    console.log("cliente free/ profissional",this.id_cadastro);
     console.log("permissao",this.permissao);
     console.log(this.sexo);
     console.log(this.data);
@@ -36,6 +38,7 @@ export class SeInicioPage {
 
   iniciar(){
     this.navCtrl.push(SeEnergiaPage,{
+      'id_cliente':this.cliente,
       'id_cadastro':this.id_cadastro,
       'permissao':this.permissao,
       'tratamento':this.tratamento,

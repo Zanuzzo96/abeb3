@@ -25,6 +25,8 @@ export class SeResultadoPage {
   permissao = this.navParams.get('permissao');
   tratamento = this.navParams.get('tratamento');
 
+  id_cliente = this.navParams.get('id_cliente')
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
@@ -33,7 +35,9 @@ export class SeResultadoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeResultadoPage');
-    console.log("cliente",this.cliente);
+    console.log("cliente em tratamento",this.navParams.get('id_cliente'));
+    console.log("cliente free/ profissional",this.id_cadastro);
+    console.log(this.pontuacao);
     console.log(this.sexo);
     console.log(this.data);
     console.log(this.hora);
@@ -51,7 +55,7 @@ export class SeResultadoPage {
 
             let sedentarismo = {
               "pontuacao":this.resultadoFinal,
-              "id_usuario":this.id_cadastro
+              "id_usuario":this.cliente
             }
 
             console.log(sedentarismo);
@@ -75,7 +79,8 @@ export class SeResultadoPage {
                         handler: () => {
                            this.navCtrl.push(PSessoesPage,{
                              'id_cadastro':this.id_cadastro,
-                             'permissao':this.permissao
+                             'id':this.id_cliente,
+                             'permissao':this.permissao,
                              "tratamento": this.tratamento,
                              "sexo":this.sexo,
                              "data":this.data,

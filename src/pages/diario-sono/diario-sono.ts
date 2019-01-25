@@ -12,6 +12,7 @@ export class DiarioSonoPage {
 
   sono : string
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {  }
 
   ionViewDidLoad() {
@@ -20,8 +21,10 @@ export class DiarioSonoPage {
 
   proximo(){
     this.navCtrl.push(DiarioAguaPage, {
-      dia :  this.navParams.get('dia'),
-      sono : this.sono
+      'dia':  this.navParams.get('dia'),
+      'sono': this.sono,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
     })
   }
 

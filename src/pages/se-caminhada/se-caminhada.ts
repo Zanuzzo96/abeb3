@@ -23,7 +23,8 @@ export class SeCaminhadaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SeCaminhadaPage');
     console.log(this.pontuacao);
-    console.log("cliente",this.id_cadastro);
+    console.log("cliente em tratamento",this.navParams.get('id_cliente'));
+    console.log("cliente free/ profissional",this.id_cadastro);
     console.log("permissao",this.permissao);
     console.log(this.sexo);
     console.log(this.data);
@@ -38,7 +39,8 @@ export class SeCaminhadaPage {
 
     this.navCtrl.push(SeTresandaresPage,{
       'pontuacao': this.pontuacao,
-      'id_cadastro': this.cliente,
+      'id_cadastro': this.id_cadastro,
+      'id_cliente':this.navParams.get('id_cliente'),
       'permissao':this.permissao,
       'tratamento': this.tratamento,
       'sexo':this.sexo,

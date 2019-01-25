@@ -11,8 +11,7 @@ export class DiarioFisicoPage {
 
   fisico: any
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DiarioFisicoPage');
@@ -20,13 +19,15 @@ export class DiarioFisicoPage {
 
   proximo(){
     this.navCtrl.push(DiarioCigarroPage,{
-      dia: this.navParams.get('dia'),
-      sono: this.navParams.get('sono'),
-      agua: this.navParams.get('agua'),
-      rd: this.navParams.get('rd'),
-      alimentacao: this.navParams.get('alimentacao'),
-      nutricao: this.navParams.get('nutricao'),
-      fisico: this.fisico
+      'dia': this.navParams.get('dia'),
+      'sono': this.navParams.get('sono'),
+      'agua': this.navParams.get('agua'),
+      'rd': this.navParams.get('rd'),
+      'alimentacao': this.navParams.get('alimentacao'),
+      'nutricao': this.navParams.get('nutricao'),
+      'fisico': this.fisico,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
   })
   }
 
