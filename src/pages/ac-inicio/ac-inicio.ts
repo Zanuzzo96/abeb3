@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AcHldgPage } from '../ac-hldg/ac-hldg';
 import { ProfissionalPage } from '../profissional/profissional';
+import { PSessoesPage } from '../p-sessoes/p-sessoes';
+
 
 @IonicPage()
 @Component({
@@ -44,7 +46,15 @@ export class AcInicioPage {
   }
 
   voltar(){
-    this.navCtrl.push(ProfissionalPage)
+    this.navCtrl.push(PSessoesPage,{
+      'sexo': this.sexo,
+      'id': this.cliente,
+      'tratamento': this.tratamento,
+      'data':this.data,
+      'hora':this.hora,
+      'id_cadastro': this.navParams.get('id_cadastro'),
+      'permissao': this.navParams.get('permissao')
+    })
   }
 
 

@@ -31,7 +31,7 @@ export class SeTrabalhoPage {
     console.log('ionViewDidLoad SeTrabalhoPage');
     console.log(this.pontuacao);
     console.log("cliente em tratamento",this.navParams.get('id_cliente'));
-    console.log("cliente free/ profissional",this.id_cadastro);s
+    console.log("cliente free/ profissional",this.id_cadastro);
     console.log("permissao",this.permissao);
     console.log(this.sexo);
     console.log(this.data);

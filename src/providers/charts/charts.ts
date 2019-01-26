@@ -7,8 +7,9 @@ export class ChartsProvider {
 
   constructor(public http: Http) {}
 
-  buscarDados(){
-    return this.http.get("https://lipolysis.grupoanx.com.br/profissional/grafico.php").toPromise();
+  buscarDados(cliente,tratamento){
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/grafico.php?cliente=' + cliente + '&tratamento=' + tratamento;
+    return this.http.get(api).toPromise();
   }
 
 

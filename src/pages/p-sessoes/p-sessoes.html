@@ -16,12 +16,12 @@
 
 <ion-content padding>
   <ion-card *ngIf="configuracao == 0">
-    <ion-card-header text-center style="display: none;">
+    <ion-card-header text-center>
       Evolução do paciente
     </ion-card-header>
     <ion-card-content>
-      <div style="">
-      
+      <div *ngIf='chart'>
+        <canvas #lineCanvas></canvas>
       </div>
       <div class="" style="display:block;">
         <ion-grid>

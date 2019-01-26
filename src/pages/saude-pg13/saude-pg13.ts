@@ -186,7 +186,7 @@ export class SaudePg13Page {
           if( retorno == "sucesso"){
             loading.dismiss();
             this.alertCtrl.create({
-              subTitle : "Avaliação já registrada no banco e enviada para o seu email, caso não encontre na caixa de entrada verifique no caixa de span",
+              subTitle : "Avaliação já registrada no banco e enviada para o seu email, caso não encontre na caixa de entrada verifique no caixa de spam",
               buttons : [{
                 text: "OK",
                 handler: () => {

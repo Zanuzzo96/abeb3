@@ -5,66 +5,30 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-card style="background-color:#eeeded;color:#4e4940" text-center *ngIf="agenda != ''">
+    <ion-card-header>
+      Mensagem do profissional
+    </ion-card-header>
+    <ion-card-content>
+      <h3>Você não tem nenhuma sessão agendada</h3>
+    </ion-card-content>
+  </ion-card>
+
   <ion-card *ngIf="teste != '1'">
     <ion-card-header text-center>
       Sua evolução
     </ion-card-header>
     <ion-card-content>
-      <div style="display: block;">
-      <canvas baseChart width="400" height="200"
-                  [datasets]="lineChartData"
-                  [labels]="lineChartLabels"
-                  [options]="lineChartOptions"
-                  [colors]="lineChartColors"
-                  [legend]="lineChartLegend"
-                  [chartType]="lineChartType"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)"></canvas>
-      </div>
-
-      <div style="display: block"  *ngIf="teste != '1'">
-        <ion-grid>
-          <ion-row>
-            <ion-col col-5 text-center>
-              <h6>Meta atingida</h6>
-              <h1></h1>
-              <ion-row>
-                <ion-col col-6>
-                  <h6>Meta</h6>
-                  <h2></h2>
-                </ion-col>
-                <ion-col col-6>
-                  <h6>Perda</h6>
-                  <h2></h2>
-                </ion-col>
-              </ion-row>
-            </ion-col>
-            <ion-col col-7>
-
-                <canvas baseChart
-                      [data]="doughnutChartData"
-                      [labels]="doughnutChartLabels"
-                      [chartType]="doughnutChartType"
-                      [colors]="doughnutChartColors"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)">
-                </canvas>
-
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
+            
     </ion-card-content>
   </ion-card>
-  <ion-card color="amarelo1" text-center *ngIf="agenda == ''">
-    <ion-card-header>
-      Sua proxima sessão
-    </ion-card-header>
+  <ion-card style="background-color:#ed6160" text-center *ngIf="agenda != ''">
     <ion-card-content>
-      <h1><strong>Você não tem nenhuma sessão agendada</strong></h1>
+      <h2 style="color:#fff"><strong>Você não tem nenhuma sessão agendada</strong></h2>
     </ion-card-content>
   </ion-card>
-  <ion-card color="amarelo1" text-center *ngIf="agenda != '' ">
+  <ion-card color="amarelo1" text-center *ngIf="agenda == '' ">
     <ion-card-header>
       Sua próxima sessão
     </ion-card-header>
@@ -73,7 +37,7 @@
     </ion-card-content>
   </ion-card>
 
-  <h5 text-center  *ngIf="teste != '1'">Imagens da evolução</h5>
+  <h5 text-center  *ngIf="teste != ''">Imagens da evolução</h5>
   <ion-grid  *ngIf="teste != '1'">
     <ion-row>
       <ion-col>
@@ -84,6 +48,7 @@
         <img src=""></ion-col>
     </ion-row>
   </ion-grid>
+
 </ion-content>
 
 <ion-footer text-center>

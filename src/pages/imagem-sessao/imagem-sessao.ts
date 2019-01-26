@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-
 import { PImagensSessaoPage } from '../p-imagens-sessao/p-imagens-sessao';
 import { PSessoesPage } from '../p-sessoes/p-sessoes';
-
-
 
 @IonicPage()
 @Component({
@@ -27,6 +22,8 @@ export class ImagemSessaoPage {
   data = this.navParams.get('data');
   hora = this.navParams.get('hora');
 
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
   constructor(
     public navCtrl: NavController,
@@ -87,7 +84,7 @@ export class ImagemSessaoPage {
     headers.append('Content-type','application/json');
 
       this.http.post(
-        'https://lipolysis.grupoanx.com.br/imagem/uploadProfissional.php',
+        'https://lipolysis.grupoanx.com.br/profissional/formularios/adicionarImagem.php',
         imagem,
         new RequestOptions({ headers: headers })
       ).subscribe(
@@ -105,9 +102,11 @@ export class ImagemSessaoPage {
                      this.navCtrl.push(PSessoesPage,{
                        "id":this.cliente,
                        "tratamento":this.id_tratamento,
+                       "sexo":this.sexo,
                        "data":this.data,
                        "hora":this.hora,
-                       "sexo":this.sexo,
+                       'id_cadastro': this.navParams.get('id_cadastro'),
+                       'permissao': this.navParams.get('permissao')
                      })
                    }
                 }]

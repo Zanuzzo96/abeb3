@@ -29,21 +29,20 @@ export class IniciarTratamentoPage {
   sessoes: any;
   tratamento: any;
 
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad IniciarTratamentoPage');
     console.log(this.cliente);
   }
 
   iniciar(){
-    this.storage.get("id_login").then((value)=>{
-      let profissional = value;
 
           let loading = this.loadingCtrl.create({content : "Iniciando tratamento",});
           loading.present();
 
             let tratamento = {
-              "id_login": this.cliente,
-              "id_profissional": profissional,
+              "id_cadastro": this.cliente,
+              "id_profissional": this.navParams.get('id_cadastro'),
               "tratamento": this.tratamento,
               "meta": this.meta,
               "sessoes": this.sessoes
@@ -51,7 +50,7 @@ export class IniciarTratamentoPage {
 
             console.log(tratamento);
 
-          let api = 'https://lipolysis.grupoanx.com.br/profissional/tratamento.php';
+          let api = 'https://lipolysis.grupoanx.com.br/profissional/formularios/iniciarTratamento.php';
           let headers: Headers = new Headers();
             headers.append('Content-type','application/json');
 
@@ -75,8 +74,10 @@ export class IniciarTratamentoPage {
                           text: "OK",
                           handler: () => {
                              this.navCtrl.push(AgendaPage,{
-                               "id_user":this.cliente,
-                               "id_tratamento":numeroTratamento
+                               "id":this.cliente,
+                               "tratamento":numeroTratamento,
+                               'id_cadastro': this.navParams.get('id_cadastro'),
+                               'permissao': this.navParams.get('permissao')
                              })
                            }
                         }]
@@ -88,7 +89,5 @@ export class IniciarTratamentoPage {
                   loading.dismiss();
                 }
             );
-  });
-
-}
+    }
 }

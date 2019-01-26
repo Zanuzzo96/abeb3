@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 import { SeEnergiaPage } from '../se-energia/se-energia';
 import { UsuarioPage } from '../usuario/usuario';
 import { UHomePage } from '../u-home/u-home';
-import { ProfissionalPage } from '../profissional/profissional';
-
+import { PSessoesPage } from '../p-sessoes/p-sessoes';
 
 @IonicPage()
 @Component({
@@ -13,8 +11,6 @@ import { ProfissionalPage } from '../profissional/profissional';
   templateUrl: 'se-inicio.html',
 })
 export class SeInicioPage {
-
-
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
@@ -51,11 +47,25 @@ export class SeInicioPage {
   voltar(){
 
     if( this.permissao == 1){
-        this.navCtrl.push(UHomePage)
+        this.navCtrl.push(UHomePage,{
+          'id_cadastro': this.navParams.get('id_cadastro'),
+          'permissao': this.navParams.get('permissao')
+        })
     }else if(this.permissao == 0){
-      this.navCtrl.push(UsuarioPage)
+      this.navCtrl.push(UsuarioPage,{
+        'id_cadastro': this.navParams.get('id_cadastro'),
+        'permissao': this.navParams.get('permissao')
+      })
     }else if(this.permissao == 2){
-      this.navCtrl.push(ProfissionalPage)
+      this.navCtrl.push(PSessoesPage,{
+        'sexo': this.sexo,
+        'id': this.cliente,
+        'tratamento': this.tratamento,
+        'data':this.data,
+        'hora':this.hora,
+        'id_cadastro': this.navParams.get('id_cadastro'),
+        'permissao': this.navParams.get('permissao')
+      })
     }
 
   }

@@ -62,7 +62,6 @@ import { UDicasPage } from '../pages/u-dicas/u-dicas';
 import { UPerfilPage } from '../pages/u-perfil/u-perfil';
 
 //funcionalidades importadas
-import { ChartsModule } from 'ng2-charts';
 import { HttpModule } from '@angular/http';
 
 //providers
@@ -249,7 +248,6 @@ import { ChartsProvider } from '../providers/charts/charts';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    ChartsModule,
     HttpModule,
     IonicStorageModule.forRoot()
   ],

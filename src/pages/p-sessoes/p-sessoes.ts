@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { SaudePg1Page } from '../saude-pg1/saude-pg1';
@@ -12,8 +12,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-//import { ChartsProvider } from '../../providers/charts/charts';
-//import { ChartsModule } from 'ng2-charts';
+import { ChartsProvider } from '../../providers/charts/charts';
+import { Chart } from 'chart.js';
 
 @IonicPage()
 @Component({
@@ -21,6 +21,8 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
   templateUrl: 'p-sessoes.html',
 })
 export class PSessoesPage {
+
+  @ViewChild('lineCanvas') lineCanvas;
 
   cliente = this.navParams.get('id');
   id_tratamento = this.navParams.get('tratamento');
@@ -39,13 +41,15 @@ export class PSessoesPage {
 
   grafico:any;
 
+  chart = [];
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    //private charts: ChartsProvider,
+    private charts: ChartsProvider,
   ) {
 
     if(this.id_tratamento){
@@ -75,7 +79,11 @@ export class PSessoesPage {
 
 
 
+
+
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PSessoesPage');
@@ -87,22 +95,47 @@ export class PSessoesPage {
     console.log('id cadastro', this.id_cadastro);
     console.log('permissao ', this.permissao);
 
-    //busca do valores para o grafico
-        //let api2 = 'https://lipolysis.grupoanx.com.br/profissional/grafico.php?cliente=' + this.cliente +'&tratamento=' + this.id_tratamento;
-      //  this.http.get(api2).toPromise().then((resp1)=>{
-      //       this.grafico = resp1.json()
-        //     console.log(this.grafico)
+    this.charts.buscarDados(this.cliente,this.id_tratamento).then(res => {
+      let resposta = res.json();
+      let peso = resposta.map(resposta => resposta.peso)
+      let datas = resposta.map(resposta => resposta.data)
 
-      //  }).catch((resp1)=>{
-      //      console.log(resp1);
-      //  });
+      console.log(res.json())
 
 
-      //this.charts.buscarDados().then(res => {
-      //  console.log(res)
-      //}).catch((res) => {
-      //  console.log(res)
-      //});
+
+      this.chart = new Chart(this.lineCanvas.nativeElement,{
+        type: 'line',
+        data:{
+          labels:datas,
+          datasets: [
+            {
+              data: peso,
+              borderColor: '#f89e33',
+              fill: false,
+              spanGaps: false,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          legend: {
+            display: false
+          },
+          scales: {
+            xAxes: [{
+              display: true
+            }],
+            yAxes:[{
+              display: true
+            }]
+          }
+        }
+      })
+
+    }).catch((res) => {
+     console.log(res)
+    });
 
   }
 

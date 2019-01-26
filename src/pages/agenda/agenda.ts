@@ -17,8 +17,10 @@ export class AgendaPage {
 
   dia:any;
 
-  cliente = this.navParams.get('id_user');
-  id_tratamento = this.navParams.get('id_tratamento');
+  cliente = this.navParams.get('id');
+  id_tratamento = this.navParams.get('tratamento');
+  id_cadastro = this.navParams.get('id_cadastro');
+  permissao = this.navParams.get('permissao');
 
   constructor(
       public navCtrl: NavController,
@@ -41,10 +43,8 @@ export class AgendaPage {
     });
     loading.present();
 
-    this.storage.get("id_login").then((value)=>{
-      let id_prof = value;
-      console.log(id_prof)
-      let api = 'https://lipolysis.grupoanx.com.br/profissional/agendar.php?profissional=' + id_prof + '&data=' + data;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/formularios/agendarSessao.php?profissional=' + this.id_cadastro + '&data=' + data;
+      console.log(api);
 
         this.http.get(api).toPromise().then((resp)=>{
           this.dia = resp.json();
@@ -52,37 +52,28 @@ export class AgendaPage {
         }).catch((resp)=>{
           console.log(resp);
           loading.dismiss();
-
         });
 
-    });
   }
 
   agendar(data,hora){
-
-
-    this.storage.get("id_login").then((value)=>{
-      let id_prof = value;
-      console.log(id_prof)
 
       let agendamento = {
         "data":data,
         "hora":hora,
         "cliente":this.cliente,
         "tratamento":this.id_tratamento,
-        "profissional":id_prof
+        "profissional":this.id_cadastro
       }
 
-      let loading = this.loadingCtrl.create({
-        content : "Fazendo agendamento",
-      });
+      let loading = this.loadingCtrl.create({content : "Fazendo agendamento"});
       loading.present();
 
       let headers: Headers = new Headers();
       headers.append('Content-type','application/json');
 
       this.http.post(
-        'https://lipolysis.grupoanx.com.br/profissional/agendar.php',
+        'https://lipolysis.grupoanx.com.br/profissional/formularios/agendarSessao.php',
         agendamento,
         new RequestOptions({ headers: headers })
       ).subscribe(
@@ -98,7 +89,10 @@ export class AgendaPage {
                 buttons : [{
                   text: "OK",
                   handler: () => {
-                    this.navCtrl.push(ProfissionalPage)
+                    this.navCtrl.push(ProfissionalPage,{
+                      'id_cadastro': this.navParams.get('id_cadastro'),
+                      'permissao': this.navParams.get('permissao')
+                    })
                   }
                 }]
               }).present();
@@ -122,9 +116,10 @@ export class AgendaPage {
           },
           err => {
             console.log(err.json());
+            loading.dismiss();
+            
           }
         );
-      });
 
   }
 

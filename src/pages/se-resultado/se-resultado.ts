@@ -37,7 +37,7 @@ export class SeResultadoPage {
     console.log('ionViewDidLoad SeResultadoPage');
     console.log("cliente em tratamento",this.navParams.get('id_cliente'));
     console.log("cliente free/ profissional",this.id_cadastro);
-    console.log(this.pontuacao);
+    console.log(this.resultadoFinal);
     console.log(this.sexo);
     console.log(this.data);
     console.log(this.hora);
@@ -55,12 +55,12 @@ export class SeResultadoPage {
 
             let sedentarismo = {
               "pontuacao":this.resultadoFinal,
-              "id_usuario":this.cliente
+              "id_usuario":this.navParams.get('id_cliente')
             }
 
             console.log(sedentarismo);
 
-          let api = 'https://lipolysis.grupoanx.com.br/formulario/sedentarismo.php';
+          let api = 'https://lipolysis.grupoanx.com.br/profissional/formularios/sedentarismo.php';
           let headers: Headers = new Headers();
             headers.append('Content-type','application/json');
 
@@ -73,7 +73,7 @@ export class SeResultadoPage {
                   if( retorno == "sucesso"){
                     loading.dismiss();
                     this.alertCtrl.create({
-                      subTitle : "Avaliação já registrada no banco e enviada para o seu email, caso não encontre na caixa de entrada verifique no caixa de span",
+                      subTitle : "Avaliação já registrada no banco e enviada para o seu email, caso não encontre na caixa de entrada verifique no caixa de spam",
                       buttons : [{
                         text: "OK",
                         handler: () => {
