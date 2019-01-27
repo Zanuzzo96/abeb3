@@ -226,7 +226,7 @@ export class PSessoesPage {
 
           loading.present();
 
-          let api = 'https://lipolysis.grupoanx.com.br/profissional/concluir.php';
+          let api = 'https://lipolysis.grupoanx.com.br/profissional/concluirSessao.php';
           let headers: Headers = new Headers();
             headers.append('Content-type','application/json');
 

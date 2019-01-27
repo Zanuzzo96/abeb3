@@ -32,7 +32,7 @@ export class PImagensSessaoPage {
 
                 loading.present();
 
-                let api = 'https://lipolysis.grupoanx.com.br/profissional/imagemsessao.php?cliente=' + this.id_cliente +'&tratamento=' + this.id_tratamento;
+                let api = 'https://lipolysis.grupoanx.com.br/profissional/imagem.php?id_tratamento=' + this.id_tratamento;
 
                   this.http.get(api).toPromise().then((resp)=>{
                     loading.dismiss();

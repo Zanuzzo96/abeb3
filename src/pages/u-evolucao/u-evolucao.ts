@@ -4,6 +4,8 @@ import { ChartsProvider } from '../../providers/charts/charts';
 import { Chart } from 'chart.js';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+
 
 @IonicPage()
 @Component({
@@ -28,13 +30,17 @@ export class UEvolucaoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
-    private charts: ChartsProvider
+    private charts: ChartsProvider,
+    public loadingCtrl: LoadingController
   ) {  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UEvolucaoPage');
     console.log(this.id_cadastro);
     console.log(this.id_tratamento);
+
+    let loading = this.loadingCtrl.create({content : "Carregando evolução"});
+    loading.present();
 
     this.charts.buscarDados(this.id_cadastro,this.id_tratamento).then(res => {
       let resposta = res.json();
@@ -76,6 +82,8 @@ export class UEvolucaoPage {
 
     }).catch((res) => {
      console.log(res)
+     loading.dismiss();
+     
     });
 
 
@@ -87,16 +95,17 @@ export class UEvolucaoPage {
         this.peso = resposta.map(resposta => resposta.peso)
         this.sessoes = resposta.map(resposta => resposta.sessoes)
         this.contsessoes = resposta.map(resposta => resposta.contsessoes)
-        this.imagem = resposta.map(resposta => resposta.imagem)
+        this.imagem = resposta
 
         this.meta = this.meta[0]
         this.peso = this.peso[0]
         this.sessoes = this.sessoes[0]
         this.contsessoes = this.contsessoes[0]
 
-        console.log(resposta);
-        console.log(this.imagem);
+        loading.dismiss();
+
       }).catch((resp)=>{
+        loading.dismiss();
 
         console.log(resp);
       });
