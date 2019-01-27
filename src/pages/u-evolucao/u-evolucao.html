@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar color="cinza1">
+    <ion-title>Evolução</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h3 text-center>Visão geral</h3>
+  <ion-grid>
+    <ion-row text-center>
+      <ion-col>
+        <h6>Meta</h6>
+        <h5>{{meta}} Kg</h5>
+      </ion-col>
+      <ion-col>
+        <h6>Sessões</h6>
+        <h5>{{contsessoes}} / {{sessoes}}</h5>
+      </ion-col>
+      <ion-col>
+        <h6>Peso</h6>
+        <h5>{{peso}}</h5>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h3 text-center>Gráfico do peso</h3>
+  <div *ngIf='chart'>
+    <canvas #lineCanvas></canvas>
+  </div>
+
+  <h3 text-center>Imagens do tratamento</h3>
+  <div *ngFor = "let imagem of imagem">
+    <img [src]="imagem" alt="">
+  </div>
+</ion-content>

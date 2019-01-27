@@ -12,7 +12,7 @@
 
       <ion-item class="item">
         <ion-label stacked text-center>Selecione um dia</ion-label>
-       <ion-datetime displayFormat="DD/MM/YYYY" min="2016" max="2025-12-31" [(ngModel)]="data" text-center></ion-datetime>
+       <ion-datetime displayFormat="DD/MM/YYYY" min="2016" max="2025-12-31" cancelText=Cancelar doneText=Ok [(ngModel)]="data" text-center></ion-datetime>
       </ion-item>
 
       <h6 text-center (click)="verAgenda(data)">Ver agenda do dia</h6>
@@ -38,13 +38,10 @@
           </ion-row>
         </ion-grid>
 
-
       <ion-item class="item">
         <ion-label stacked text-center>Hora inicio</ion-label>
-        <ion-datetime displayFormat="HH:mm" [(ngModel)]="hora" required text-center></ion-datetime>
+        <ion-datetime displayFormat="HH:mm" [(ngModel)]="hora" cancelText=Cancelar doneText=Ok required text-center></ion-datetime>
       </ion-item>
-
-
 
       <button ion-button block color="amarelo1" class="botaoAgendar" (click)="agendar(data,hora)">Agendar</button>
 

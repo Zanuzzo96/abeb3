@@ -14,11 +14,13 @@
 
   <h5 text-center>Comunicados inseridos</h5>
 
-  <ion-card style="background-color:#eeeded;color:#4e4940" text-center *ngIf="agenda != ''">
-    <ion-card-content>
-      <h2>Você não tem nenhuma sessão agendada</h2>
-    </ion-card-content>
-    <h3 (click)="excluirComunicado()" style="color:#f89e33">Excluir comunicado</h3><br>
-  </ion-card>
-
+  <div *ngFor="let comunicados of comunicadosInseridos">
+    <ion-card style="background-color:#eeeded;color:#4e4940"  text-center *ngIf="agenda != ''">
+      <ion-card-content>
+        <h2>{{comunicados.comunicado}}</h2>
+      </ion-card-content>
+      <h3 (click)="excluirComunicado(comunicados.id_comunicado)" style="color:#f89e33">Excluir comunicado</h3><br>
+    </ion-card>
+  </div>
+  
 </ion-content>

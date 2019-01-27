@@ -44,10 +44,12 @@ export class ProfissionalPage {
     console.log("id usuario", this.id_cadastro);
     console.log("permissao", this.permissao);
 
-      let api = 'https://lipolysis.grupoanx.com.br/profissional/home.php?profissional=' + this.id_cadastro;
+      let api = 'https://lipolysis.grupoanx.com.br/profissional/buscarProximaSessao.php?profissional=' + this.id_cadastro;
 
       this.http.get(api).toPromise().then((resp)=>{
           this.dia = resp.json();
+          console.log(resp.json());
+
         }).catch((resp)=>{
           console.log(resp);
         });

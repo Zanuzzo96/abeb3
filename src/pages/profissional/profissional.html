@@ -6,7 +6,7 @@
 
 <ion-content padding>
 
-  <h6 text-center>Sua proxima sessão</h6>
+  <h6 text-center *ngIf="dia">Sua proxima sessão</h6>
 
   <ion-card *ngFor="let item of dia">
     <ion-card-header text-center style="color:#ffffff;font-weight:bold;font-size:16px">

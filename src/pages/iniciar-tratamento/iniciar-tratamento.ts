@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { Storage } from '@ionic/storage';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { AgendaPage } from '../agenda/agenda';
@@ -21,13 +20,13 @@ export class IniciarTratamentoPage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public http: Http,
-    private storage: Storage
   ) {  }
 
   cliente = this.navParams.get('id_user');
   meta: any;
   sessoes: any;
   tratamento: any;
+  peso:any;
 
 
   ionViewDidLoad() {
@@ -45,7 +44,8 @@ export class IniciarTratamentoPage {
               "id_profissional": this.navParams.get('id_cadastro'),
               "tratamento": this.tratamento,
               "meta": this.meta,
-              "sessoes": this.sessoes
+              "sessoes": this.sessoes,
+              "peso": this.peso
             }
 
             console.log(tratamento);

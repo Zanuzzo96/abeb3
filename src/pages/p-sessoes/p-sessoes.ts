@@ -196,8 +196,8 @@ export class PSessoesPage {
 
         agendar(){
           this.navCtrl.push(AgendaPage,{
-            "id_user":this.cliente,
-            "id_tratamento":this.id_tratamento,
+            "id":this.cliente,
+            "tratamento":this.id_tratamento,
             'id_cadastro': this.navParams.get('id_cadastro'),
             'permissao': this.navParams.get('permissao')
           })

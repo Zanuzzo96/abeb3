@@ -117,7 +117,7 @@ export class AgendaPage {
           err => {
             console.log(err.json());
             loading.dismiss();
-            
+
           }
         );
 

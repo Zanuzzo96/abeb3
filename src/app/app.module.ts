@@ -60,6 +60,7 @@ import { UHomePage } from '../pages/u-home/u-home';
 import { UDiarioPage } from '../pages/u-diario/u-diario';
 import { UDicasPage } from '../pages/u-dicas/u-dicas';
 import { UPerfilPage } from '../pages/u-perfil/u-perfil';
+import { UEvolucaoPage } from '../pages/u-evolucao/u-evolucao';
 
 //funcionalidades importadas
 import { HttpModule } from '@angular/http';
@@ -181,6 +182,7 @@ import { ChartsProvider } from '../providers/charts/charts';
     UDiarioPage,
     UDicasPage,
     UPerfilPage,
+    UEvolucaoPage,
     LocalizarProfissionalPage,
     DicasUsuarioFreePage,
     AlertRcNaoCadastradoPage,
@@ -287,6 +289,7 @@ import { ChartsProvider } from '../providers/charts/charts';
     MetodoPage,
     UsuarioPage,
     MensagemPage,
+    UEvolucaoPage,
 //profissional
     PComunicadoPage,
     ProfissionalPage,
